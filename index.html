@@ -1,342 +1,503 @@
-<!doctype html>
-<html lang="bn">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#061321">
-<title>SC Android Studio</title>
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bagerhat Vision — Admin Panel</title>
 <style>
-:root{--bg:#061321;--panel:#0a1b2b;--panel2:#0d2336;--line:#173c57;--blue:#078bff;--cyan:#24d9ff;--text:#eef7ff;--muted:#9db6ca;--green:#00d6a0;--orange:#ffb52e;--shadow:0 14px 40px #0004}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#0b2942 0,#061321 48%,#030b13 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{width:min(1100px,100% - 28px);margin:auto}.topbar{position:sticky;top:0;z-index:10;background:#04101deF;backdrop-filter:blur(16px);border-bottom:1px solid #14354e}.nav{display:flex;align-items:center;gap:14px;min-height:74px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.3px}.brandmark{width:42px;height:42px;flex:0 0 42px;border-radius:13px;display:grid;place-items:center;background:#061321;overflow:hidden;box-shadow:0 0 22px #078bff42}.brandmark img{width:100%;height:100%;object-fit:contain}.tagline{font-size:11px;color:#a7c7dc;font-weight:500;margin-top:2px}.navspacer{flex:1}.navbtn,.iconbtn{border:1px solid var(--line);background:#0a1c2c;color:var(--text);border-radius:12px;padding:10px 14px}.navbtn:hover,.iconbtn:hover{border-color:var(--cyan)}.search{width:min(230px,35vw);background:#081929;color:white;border:1px solid var(--line);border-radius:12px;padding:11px 13px;outline:none}.search:focus,input:focus,textarea:focus,select:focus{border-color:var(--cyan)!important;box-shadow:0 0 0 3px #24d9ff18}.page{display:none;padding:28px 0 90px}.page.active{display:block}.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:8px 0 20px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);font-weight:800}.heading h1{margin:5px 0 0;font-size:clamp(25px,4vw,36px);letter-spacing:-.8px}.muted{color:var(--muted)}.filters{display:flex;gap:8px;flex-wrap:nowrap;margin-bottom:18px;width:100%}.filter{flex:1 1 0;min-width:0;text-align:center;white-space:nowrap;background:#091b2b;border:1px solid var(--line);color:#c7dbea;border-radius:999px;padding:9px 16px}.filter.active{background:var(--blue);border-color:var(--blue);color:white;box-shadow:0 5px 18px #078bff35}.app-list{display:grid;gap:12px}.app-card{display:flex;align-items:center;gap:12px;background:linear-gradient(115deg,#0a1d2e,#071625);border:1px solid var(--line);border-radius:16px;padding:10px 12px;transition:.18s;cursor:pointer;min-width:0}.app-card:hover{border-color:#1889c6;transform:translateY(-1px);box-shadow:var(--shadow)}.appicon{width:64px;height:64px;flex:0 0 64px;display:grid;place-items:center;border:1px solid #215574;border-radius:17px;background:linear-gradient(145deg,#102d45,#06101c);overflow:hidden;color:#4fe0ff;font-weight:900;font-size:24px}.appicon img{width:100%;height:100%;object-fit:cover}.appinfo{flex:1;min-width:0}.appname{font-size:18px;font-weight:800;margin-bottom:2px}.appdesc{font-size:12px;color:#adc6d8;line-height:1.35;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}.meta{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;margin-top:6px;color:#9cbad1;font-size:11px;white-space:nowrap;overflow:hidden}.meta span{flex:0 0 auto}.meta .list-version{display:none}.badge{font-size:11px;font-weight:800;letter-spacing:.3px;padding:6px 9px;border-radius:9px;border:1px solid;white-space:nowrap;align-self:flex-start}.free{color:var(--green);border-color:#00b989;background:#00d6a010}.premium{color:var(--orange);border-color:#c78215;background:#ffb52e10}.chevron{color:#9ac7e3;font-size:23px;padding:0 5px}.pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.pagination button{border:1px solid var(--line);background:#0a1c2c;color:#d9ecfa;border-radius:10px;padding:8px 12px}.pagination button.active{background:var(--blue);border-color:var(--blue);color:#fff}.pagination button:disabled{opacity:.35;cursor:not-allowed}.pagination-info{color:var(--muted);font-size:12px;margin:10px 0;text-align:center}.empty{padding:32px;text-align:center;border:1px dashed var(--line);border-radius:16px;color:var(--muted)}.detailnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.detailnav .back{margin:0;text-align:left}.sharebtn{border:1px solid #25516e;background:#0b2032;color:#eaf7ff;border-radius:12px;padding:9px 15px;font-weight:750;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}.sharebtn:hover{border-color:var(--cyan);filter:brightness(1.08)}.back{background:transparent;border:0;color:#a9d9f3;padding:0;margin-bottom:18px}.detailtop{display:flex;align-items:center;gap:17px;padding:20px;background:linear-gradient(130deg,#0d2b43,#081625);border:1px solid var(--line);border-radius:20px}.detailtop .appicon{width:100px;height:100px;flex-basis:100px}.detailtitle{font-size:clamp(24px,4vw,32px);font-weight:850;margin:0 0 5px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 24px}.primary,.secondary,.whatsapp{border:1px solid transparent;border-radius:12px;padding:12px 17px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary{background:linear-gradient(100deg,#087fff,#06a7e9);color:white;box-shadow:0 7px 20px #078bff27}.secondary{background:#0b2032;border-color:#25516e;color:#eaf7ff}.whatsapp{background:#00b985;color:#032219}.primary:hover,.secondary:hover,.whatsapp:hover{filter:brightness(1.08)}.section{margin-top:18px;background:#081a2a;border:1px solid var(--line);border-radius:18px;padding:20px}.section h2{font-size:17px;margin:0 0 13px}.section p{color:#bad0e0;line-height:1.75;margin:0}.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.fact{background:#0b2235;border:1px solid #173b55;border-radius:12px;padding:12px}.fact small{display:block;color:#92b1c9;font-size:11px;margin-bottom:5px}.fact strong{font-size:13px;overflow-wrap:anywhere}.screenshots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.shot{aspect-ratio:9/16;border-radius:13px;border:1px solid #23506c;background:linear-gradient(160deg,#0d2c45,#07111c);display:grid;place-items:center;text-align:center;color:#7daac6;overflow:hidden;font-size:12px}.shot img{width:100%;height:100%;object-fit:cover}.shot span{padding:12px}.abouthero{text-align:center;padding:32px 20px;background:linear-gradient(145deg,#0c2a43,#071523);border:1px solid var(--line);border-radius:22px}.biglogo{width:110px;height:110px;border-radius:28px;display:grid;place-items:center;margin:0 auto 14px;background:#061321;overflow:hidden;box-shadow:0 0 35px #078bff2e}.biglogo img{width:100%;height:100%;object-fit:contain}.abouthero h1{margin:0;font-size:clamp(25px,5vw,36px)}.abouthero .tagline{font-size:14px;margin-top:8px}.contactgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.contact{padding:16px;border:1px solid var(--line);background:#0a1c2c;border-radius:14px;overflow-wrap:anywhere}.contact small{display:block;color:var(--muted);margin-bottom:6px}.toast{position:fixed;left:50%;bottom:82px;transform:translate(-50%,18px);opacity:0;pointer-events:none;z-index:99;background:#102a3d;border:1px solid #2b6384;color:#effaff;padding:12px 16px;border-radius:12px;box-shadow:0 10px 30px #0007;max-width:calc(100% - 32px);text-align:center;font-size:13px;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}.footer{border-top:1px solid #14334b;color:#789bb5;text-align:center;padding:22px 12px;font-size:12px;margin-top:30px}.mobilebar{display:none}
-.adminlayout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:16px}.adminnav,.admincontent{background:#081a2a;border:1px solid var(--line);border-radius:16px;padding:14px}.adminnav button{display:block;width:100%;text-align:left;background:transparent;border:0;color:#b5cbdc;padding:11px;border-radius:10px;margin:2px 0}.adminnav button.active,.adminnav button:hover{background:#0e3a5a;color:#50dcff}.admincontent h2{margin:3px 0 16px}.adminsection{display:none}.adminsection.active{display:block}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:12px;color:#a8c4d7}.field input,.field textarea,.field select{width:100%;border:1px solid #20435b;background:#061523;color:white;border-radius:10px;padding:11px;outline:none}.field textarea{min-height:85px;resize:vertical}.full{grid-column:1/-1}.hint{font-size:12px;color:#91adc2;line-height:1.6}.adminlist{display:grid;gap:9px}.adminrow{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px}.adminrow .appicon{width:48px;height:48px;flex-basis:48px;border-radius:11px;font-size:15px}.adminrow .appinfo{font-size:13px}.smallbtn{padding:7px 10px;border-radius:9px;border:1px solid #28536d;background:#0a2336;color:white}.danger{border-color:#7e3038;color:#ff9b9b}.notice{border-left:3px solid var(--orange);background:#ffb52e0d;padding:12px;border-radius:0 10px 10px 0;color:#c4d4df;font-size:12px;line-height:1.6;margin:12px 0}
-@media(max-width:650px){.wrap{width:min(100% - 20px,600px)}.nav{min-height:64px;gap:8px}.brand{font-size:15px}.brandmark{width:38px;height:38px}.search{width:100px;padding:9px}.navbtn{padding:9px 10px;font-size:12px}.page{padding:20px 0 90px}.app-card{padding:9px;gap:9px;border-radius:13px}.appicon{width:54px;height:54px;flex-basis:54px;border-radius:12px;font-size:18px}.appname{font-size:15px}.appdesc{font-size:11px;line-height:1.25}.meta{gap:6px;font-size:10px;letter-spacing:-.15px}.badge{font-size:9px;padding:4px 5px}.badge{font-size:9px;padding:5px 6px}.chevron{display:none}.heading{align-items:start}.heading h1{font-size:27px}.filters{display:flex;flex-wrap:nowrap;gap:6px}.filter{flex:1 1 0;min-width:0;padding:9px 4px;font-size:clamp(10px,2.8vw,13px);letter-spacing:-.2px}.detailtop{padding:14px;gap:12px}.detailtop .appicon{width:78px;height:78px;flex-basis:78px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.screenshots{gap:7px}.section{padding:15px}.contactgrid{grid-template-columns:1fr}.adminlayout{grid-template-columns:1fr}.adminnav{display:flex;gap:5px;overflow-x:auto;padding:8px}.adminnav button{white-space:nowrap;width:auto;flex:0 0 auto;font-size:12px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.mobilebar{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;justify-content:space-around;background:#04101df5;border-top:1px solid #17405a;padding:9px 6px calc(9px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.mobilebar button{background:transparent;border:0;color:#9dbbd0;font-size:11px;display:grid;gap:4px;justify-items:center}.mobilebar button span{font-size:19px}.mobilebar button.active{color:var(--cyan)}.footer{margin-bottom:58px}.actions>*{flex:1 1 150px}}
-</style>
-</head>
-<body>
-<header class="topbar"><div class="wrap nav">
-  <a href="#" class="brand" onclick="showPage('home');return false"><div class="brandmark" id="brandMark"><img src="https://i.imgur.com/4ZfSPii.png" alt="SC Android Studio logo"></div><div><div>SC Android Studio</div><div class="tagline">Imagine. Build. Inspire.</div></div></a>
-  <div class="navspacer"></div>
-  <input id="search" class="search" type="search" placeholder="অ্যাপ খুঁজুন…" aria-label="অ্যাপ খুঁজুন" oninput="resetListPages();renderApps()">
-  <button class="navbtn" onclick="showPage('about')">About</button>
-</div></header>
-<main class="wrap">
-<section id="home" class="page active">
-  <div class="heading"><div><div class="eyebrow">Apps collection</div><h1>আমাদের অ্যাপস</h1><div class="muted" style="margin-top:7px;font-size:13px">আপনার পছন্দের অ্যাপটি বেছে নিন</div></div></div>
-  <div class="filters" role="group" aria-label="অ্যাপ পেজ">
-    <button class="filter active" onclick="showPage('home')">সব অ্যাপ</button>
-    <button class="filter" onclick="showPage('free')">Free Apps ↗</button>
-    <button class="filter" onclick="showPage('premium')">Premium Apps ↗</button>
-  </div>
-  <div id="appList" class="app-list"></div><div id="appPagination"></div>
+:root{--bg:#071020;--panel:#0d1930;--panel2:#13233e;--line:#293b5c;--txt:#eff5ff;--muted:#a9b8cf;--cyan:#70e5ff;--purple:#7738f5;--green:#54d9a2;--red:#ff6688}
+*{box-sizing:border-box}body{margin:0;background:#050b17;color:var(--txt);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:1px solid #344866;background:#172743;border-radius:10px;padding:10px 13px;font-weight:650}button.primary{background:linear-gradient(120deg,#20b6d8,#71e5f5);color:#06202a;border:0}button.danger{border-color:#6e3049;color:#ff9cb2}input,select,textarea{width:100%;padding:11px 12px;background:#060e1e;border:1px solid #2d405f;border-radius:10px;color:var(--txt);outline:none}input:focus,select:focus,textarea:focus{border-color:var(--cyan)}label{display:block;font-size:13px;color:#c5d2e8;margin:0 0 6px}.app{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}aside{position:sticky;top:0;height:100vh;background:#081326;border-right:1px solid var(--line);padding:16px 12px;overflow:auto}.brand{display:flex;align-items:center;gap:10px;padding:6px 5px 18px;border-bottom:1px solid var(--line);margin-bottom:15px}.logo{height:42px;width:42px;border-radius:12px;background:linear-gradient(145deg,#642bd1,#12274a);display:grid;place-items:center;font-weight:900;color:var(--cyan);border:1px solid #8057ce}.brand b{display:block}.brand small{font-size:11px;color:var(--muted)}.nav{display:grid;gap:5px}.nav button{display:flex;gap:11px;align-items:center;text-align:left;background:transparent;border-color:transparent;padding:12px 11px;font-weight:600;color:#bfcee2}.nav button.active,.nav button:hover{background:#173455;border-color:#28577b;color:var(--cyan)}.nav span{width:22px;text-align:center;font-size:18px}.sideFoot{font-size:11px;color:#7588a7;padding:18px 8px}main{min-width:0}.top{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 22px;background:#071020;position:sticky;top:0;z-index:4}.top h1{font-size:18px;margin:0}.top small{color:var(--muted)}.grow{flex:1}.pill{font-size:11px;border-radius:30px;background:#142641;color:#b5c8e2;padding:7px 10px}.content{max-width:1150px;margin:auto;padding:22px}.view{display:none}.view.active{display:block}.view.active{display:block}.heading{display:flex;align-items:center;gap:10px;margin-bottom:17px}.heading h2{margin:0;font-size:21px}.heading p{margin:4px 0 0;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat,.card{border:1px solid var(--line);background:linear-gradient(145deg,#0f1d34,#091326);border-radius:15px;padding:16px;margin-bottom:14px}.stat .icon{font-size:23px}.stat .num{font-size:25px;font-weight:800;margin-top:10px}.stat .label{font-size:12px;color:var(--muted)}.stat button{margin-top:12px;font-size:12px}.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{margin-bottom:13px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.muted{color:var(--muted);font-size:12px;line-height:1.55}.formTitle{font-size:16px;font-weight:750;margin:0 0 14px}.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:10px;border-bottom:1px solid #233550;font-size:12px}th{background:#12223c;color:#cce0f6}td{color:#d6e0ef}.empty{text-align:center;color:var(--muted);padding:22px}.result{background:#040a14;border:1px solid #263752;border-radius:10px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 ui-monospace,monospace;min-height:55px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#132743;border:1px solid #375579;border-radius:12px;padding:12px 16px;z-index:10;display:none;max-width:90vw}.toast.show{display:block}.toggle{display:flex;gap:9px;align-items:center}.toggle input{width:auto}.dangerText{color:#ff9ab0}.mobileMenu{display:none}
+@media(max-width:800px){.app{grid-template-columns:1fr}aside{position:fixed;left:-270px;top:0;width:250px;z-index:8;transition:left .2s;box-shadow:15px 0 40px #0006}aside.open{left:0}.mobileMenu{display:block}.top{padding:0 13px}.content{padding:15px 11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.top h1{font-size:16px}.pill{display:none}}
+@media(max-width:420px){.grid{gap:8px}.stat,.card{padding:12px}.stat .num{font-size:21px}.three{grid-template-columns:1fr}}
+.stream-url-fields{display:grid;gap:10px}.stream-url-row{display:flex;align-items:center;gap:8px}.stream-url-row .url-index{min-width:28px;color:var(--muted,#aab6ca);font-weight:700}.stream-url-row input{flex:1;min-width:0}.stream-help{font-size:.9rem;color:var(--muted,#aab6ca)}
+.bulk-progress{margin-top:16px;padding:14px;border:1px solid var(--border,#263750);border-radius:14px;background:rgba(6,14,30,.65)}.bulk-progress-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.bulk-progress-track{height:10px;border-radius:99px;background:#1b2940;overflow:hidden}.bulk-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#20b9d3,#70e2ec);transition:width .2s}.bulk-progress-log{white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;font:14px/1.6 inherit;color:var(--text,#eaf2ff);margin:12px 0 0}.bulk-progress-log:empty{display:none}
+
+/* Restore workflow modal */
+.bv-modal-backdrop{position:fixed;inset:0;z-index:99999;background:rgba(1,7,18,.78);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:18px}
+.bv-modal{width:min(100%,520px);max-height:86vh;overflow:auto;background:linear-gradient(160deg,#101d34,#07101f 75%);border:1px solid #2b4161;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,.55);color:#edf5ff;padding:22px}
+.bv-modal-head{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+.bv-modal-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,#143d5b,#1c2d50);font-size:25px;flex-shrink:0}
+.bv-modal h3{font-size:21px;margin:0 0 4px}.bv-modal-sub{font-size:14px;color:#aebed3}
+.bv-modal p{line-height:1.65;color:#c5d2e4}
+.bv-modal-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.bv-modal-stat{background:#0a1426;border:1px solid #263852;border-radius:15px;padding:12px}.bv-modal-stat span{display:block;font-size:13px;color:#9eafc6}.bv-modal-stat strong{display:block;font-size:22px;margin-top:4px}
+.bv-modal-track{height:10px;border-radius:99px;background:#202f46;overflow:hidden;margin:12px 0}
+.bv-modal-bar{height:100%;width:0;background:linear-gradient(90deg,#23bad3,#78e7ed);border-radius:99px;transition:width .25s}
+.bv-modal-log{white-space:pre-wrap;overflow-wrap:anywhere;max-height:180px;overflow:auto;background:#07101e;border:1px solid #243650;border-radius:13px;padding:12px;font:13px/1.6 monospace;color:#c8d8ea}
+.bv-modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}
+.bv-modal-actions button{border-radius:13px;padding:12px 18px}.bv-modal-actions .bv-primary{background:linear-gradient(120deg,#20b8d1,#70e0ea);color:#062034;font-weight:800;border:0}.bv-modal-actions .bv-secondary{background:#192941;color:#eaf2ff;border:1px solid #30445f}
+@media(max-width:420px){.bv-modal{padding:17px;border-radius:20px}.bv-modal h3{font-size:19px}.bv-modal-stats{gap:8px}.bv-modal-stat{padding:10px}}
+
+
+.channel-url-cell{max-width:280px;min-width:190px;overflow-wrap:anywhere;word-break:break-word;font-size:13px;line-height:1.5;color:#e5edf8}
+.channel-name-cell{min-width:150px;font-weight:700}.channel-name-wrap{display:flex;align-items:center;gap:10px}.channel-logo-mini{width:42px;height:42px;object-fit:contain;border-radius:9px;background:#fff;border:1px solid #31425d;flex-shrink:0}
+.channel-action-set{display:flex;gap:6px;align-items:center;white-space:nowrap}.channel-action-set button{width:38px;height:40px;min-width:38px;padding:0;border:0;border-radius:9px;color:#fff;font-size:18px;display:inline-grid;place-items:center}.channel-action-set .edit-act{background:#087de8}.channel-action-set .dup-act{background:#078bd9}.channel-action-set .del-act{background:#e51f3a}
+#channelsTable tr td{vertical-align:middle;padding:12px 10px}
+@media(max-width:650px){#view-channels .tableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch}#view-channels table{min-width:720px}.channel-url-cell{max-width:260px}}
+
+
+/* Bagerhat Vision legacy-app mobile design */
+:root{--bg:#050b17;--panel:#091326;--panel2:#172238;--line:#202d46;--txt:#f7f8ff;--muted:#a5adbf;--cyan:#b8a0ff;--purple:#7215e8;--green:#28d889;--red:#e91d35}
+body{background:#050916;color:#f7f8ff}button{border:0;border-radius:12px;background:#19243a;color:#fff;min-height:44px}button.primary{background:linear-gradient(110deg,#5207c9,#7d20f4);color:#fff}button.danger{background:#a91429;color:#fff;border:0}input,select,textarea{background:#070f21;border-color:#29364f;border-radius:12px;color:#fff;min-height:46px}input:focus,select:focus,textarea:focus{border-color:#8e4cff;box-shadow:0 0 0 2px #7a26f533}aside{background:#060d1c;border-color:#17233b}.nav button.active,.nav button:hover{background:#23104b;border-color:#4d1d91;color:#fff}.top{background:#040a18;border-color:#18213a}.stat,.card{background:linear-gradient(145deg,#081326,#071020);border-color:#1d2a42;border-radius:18px}th{background:#0d182b;color:#bfc8da}td{color:#f0f3fb}.tableWrap{border-color:#18243a;border-radius:14px}
+@media(max-width:800px){.app{display:block;min-height:100dvh}aside{left:-290px;width:min(280px,86vw);height:100dvh;padding:16px 12px}aside.open{left:0}.top{height:76px;padding:0 14px;gap:10px}.top h1{font-size:18px;line-height:1.2}.top small{font-size:11px}.content{padding:16px 12px 28px;max-width:none}.heading{align-items:flex-start;margin-bottom:16px}.heading h2{font-size:25px}.heading p{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat,.card{padding:14px;margin-bottom:13px}.three{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.three button:last-child:nth-child(odd){grid-column:1/-1}.row{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.actions{gap:8px}.actions button{flex:1 1 140px}.mobileMenu{display:block}.pill{display:none}#view-channels .tableWrap{overflow:visible;border:0;background:transparent}#view-channels table{width:100%;min-width:0;border-collapse:separate;border-spacing:0 10px}#view-channels thead{display:none}#view-channels tbody{display:block;width:100%}#view-channels tbody tr{display:grid;grid-template-columns:1fr;background:#081326;border:1px solid #1d2a42;border-radius:14px;overflow:hidden;margin-bottom:10px}#view-channels tbody td{display:grid;grid-template-columns:minmax(88px,31%) minmax(0,1fr);gap:9px;align-items:start;padding:11px 12px;border-bottom:1px solid #17243a;font-size:13px;min-width:0;overflow-wrap:anywhere;word-break:break-word}#view-channels tbody td:last-child{border-bottom:0}#view-channels tbody td:nth-child(1)::before{content:'#';color:#a5adbf}#view-channels tbody td:nth-child(2)::before{content:'চ্যানেলের নাম';color:#a5adbf}#view-channels tbody td:nth-child(3)::before{content:'Stream URL';color:#a5adbf}#view-channels tbody td:nth-child(4)::before{content:'ক্যাটাগরি';color:#a5adbf}#view-channels tbody td:nth-child(5)::before{content:'স্ট্যাটাস';color:#a5adbf}#view-channels tbody td:nth-child(6)::before{content:'অ্যাকশন';color:#a5adbf}#view-channels tbody td .actions{display:flex;flex-wrap:wrap;gap:6px}#view-channels tbody td button{min-height:38px;padding:8px 10px}#view-channels tbody td.empty{display:block;text-align:center}#view-channels tbody td.empty::before{content:none}.tableWrap:not(#view-channels .tableWrap){overflow-x:auto;-webkit-overflow-scrolling:touch}table:not(#view-channels table){min-width:560px}}
+@media(max-width:420px){.grid{gap:8px}.stat,.card{padding:12px}.three{grid-template-columns:repeat(2,minmax(0,1fr))}.row{grid-template-columns:1fr}#view-channels tbody td{grid-template-columns:88px minmax(0,1fr);padding:10px;font-size:12px}#view-channels tbody td button{font-size:12px}}
+
+
+/* Match the legacy Bagerhat Vision phone workflow */
+#channelFormCard{display:none}
+.channel-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.channel-tools-grid button{min-height:62px;font-size:16px;background:#19243a;border:0;border-radius:15px}
+.channel-tools-grid .primary{background:linear-gradient(110deg,#5207c9,#7d20f4);color:white}
+.channel-tools-grid .danger{grid-column:1/-1;background:#a91429;color:white}
+.bv-modal:has(.channel-form-host) .bv-modal-track,.bv-modal:has(.channel-form-host) #bvModalPct,.bv-modal:has(.channel-form-host) .bv-modal-log{display:none}
+.bv-modal .channel-form-host .card{display:block!important;border:0;margin:0;padding:0;background:transparent;box-shadow:none}
+.bv-modal .channel-form-host .row{grid-template-columns:1fr}
+.bv-modal .channel-form-host .actions button{flex:1 1 140px}
+.bv-modal .channel-form-host .formTitle{font-size:22px}
+.bv-modal .channel-form-host label{font-size:17px}
+.bv-modal .channel-form-host input,.bv-modal .channel-form-host select{min-height:54px;font-size:16px}
+.bv-modal .channel-form-host .muted{font-size:13px}
+.bv-modal .channel-form-host .actions button[onclick="loadList('channels')"],.bv-modal .channel-form-host .actions button[onclick="deleteSelected('channels')"]{display:none}
+.bv-modal .channel-form-host .actions button[onclick="clearChannel()"]{display:none}
+#view-channels .tableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#view-channels table{min-width:680px}
+@media(max-width:800px){.channel-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.channel-tools-grid button{font-size:15px;padding:10px 8px;min-height:72px}#view-channels table{min-width:690px}#view-channels thead{display:table-header-group}#view-channels tbody{display:table-row-group}#view-channels tbody tr{display:table-row;background:transparent;border:0;border-radius:0;margin:0}#view-channels tbody td{display:table-cell;padding:10px 8px;font-size:12px;border-bottom:1px solid #17243a}#view-channels tbody td::before{content:none!important}.channel-logo-mini{width:38px;height:38px}.channel-name-cell{min-width:130px}.channel-url-cell{min-width:175px;max-width:220px}.channel-action-set button{width:34px;height:36px;min-width:34px}}
+
+
+/* Screenshot-matched dashboard: four primary actions, no sidebar navigation */
+#sidebar,.mobileMenu{display:none!important}
+.app{display:block!important;min-height:100dvh}
+main{width:100%;min-width:0}
+.top{height:58px;padding:0 22px;background:#050b19;border-bottom:1px solid #18233c}
+.top h1{font-size:18px}.top small{display:none}
+.dashboard-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0 18px}
+.dashboard-actions button{min-height:54px;padding:13px 10px;border:0;border-radius:13px;background:linear-gradient(115deg,#4b08b9,#7719e8);color:#fff;font-weight:750;font-size:clamp(14px,3.5vw,19px);text-align:center}
+.dashboard-stats{margin:0 0 16px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.dashboard-stats .stat{min-height:95px;margin-bottom:0;padding:18px 16px}
+.dashboard-stats .num{font-size:29px;margin-top:8px}
+#view-dashboard>.heading{margin:0 0 8px}
+#view-dashboard>.heading h2{font-size:29px}
+#view-dashboard #startupChannelCard{margin-top:0;border:1px solid #1d2a42!important;box-shadow:none!important}
+#view-dashboard #startupChannelCard .actions button{min-height:48px}
+#view-dashboard>.card:not(#startupChannelCard){display:none}
+#view-about .divider{height:1px;background:#24334e;margin:18px 0}
+@media(max-width:800px){.content{padding:22px 12px}.dashboard-actions{gap:10px}.dashboard-actions button{min-height:58px}.dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.top{position:relative}.heading h2{font-size:26px}}
+@media(max-width:360px){.dashboard-actions{gap:8px}.dashboard-actions button{font-size:13px;padding:10px 6px}}
+
+
+@media(max-width:800px){#view-categories .tableWrap{overflow:visible;border:0}#view-categories table{min-width:0;width:100%;border-collapse:separate;border-spacing:0 10px}#view-categories thead{display:none}#view-categories tbody{display:block}#view-categories tbody tr{display:grid;grid-template-columns:1fr;background:#081326;border:1px solid #1d2a42;border-radius:14px;overflow:hidden;margin-bottom:10px}#view-categories tbody td{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-bottom:1px solid #17243a}#view-categories tbody td:nth-child(2){flex:1}#view-categories tbody td:last-child{border:0}#view-categories .heading{flex-wrap:wrap}#view-categories .heading h2{font-size:23px}#view-categories .heading .primary{font-size:14px}}
+
+
+@media(max-width:650px){
+ #view-categories .tableWrap{width:100%;max-width:100%;overflow-x:hidden!important}
+ #view-categories table{table-layout:fixed!important;max-width:100%!important}
+ #view-categories tbody tr{box-sizing:border-box}
+ #view-categories tbody td.cat-name-cell{overflow:hidden}
+ #view-categories .cat-demo-item{width:100%;min-width:0}
+ #view-categories .cat-demo-item>div{min-width:0;overflow-wrap:anywhere}
+ #view-categories .cat-demo-item strong{display:block;white-space:normal;overflow-wrap:anywhere}
+ #view-categories tbody td.cat-count{padding-left:66px!important}
+}
+
+/* Category manager demo-style cards */
+#view-categories .tableWrap{overflow:visible;border:0;background:transparent}
+#view-categories table{min-width:0;width:100%;border-collapse:separate;border-spacing:0 10px}
+#view-categories thead{display:none}
+#view-categories tbody tr{background:#081326;border:1px solid #1d2a42;border-radius:16px;overflow:hidden}
+#view-categories tbody td{padding:14px 12px;vertical-align:middle;border-bottom:1px solid #17243a}
+#view-categories tbody tr td:first-child{border-radius:14px 0 0 14px;color:#8e9bb1}
+#view-categories tbody tr td:last-child{border-bottom:0}
+.cat-demo-item{display:flex;align-items:center;gap:12px;min-width:0}
+.category-logo-demo{width:62px;height:62px;object-fit:contain;background:#fff;border-radius:10px;border:1px solid #293b5c;flex-shrink:0}
+.cat-demo-item strong{display:block;font-size:16px;color:#f7f8ff}
+.cat-demo-item small{display:block;color:#a5adbf;font-size:12px;margin-top:4px}
+#view-categories .cat-count{color:#a5adbf;text-align:center}
+#view-categories .channel-action-set{justify-content:flex-start;margin-right:34px}
+.channel-action-set .dup-act{font-size:23px;line-height:1}
+@media(max-width:650px){
+#view-categories .tableWrap{overflow:visible;border:0;background:transparent}
+#view-categories table{display:block;width:100%;border:0;border-spacing:0;background:transparent}
+#view-categories thead{display:none}#view-categories tbody{display:flex;flex-direction:column;gap:10px}
+#view-categories tbody tr{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'name actions' 'count actions';align-items:center;gap:4px 10px;padding:12px;border:1px solid #1d2b43;border-radius:18px;background:linear-gradient(145deg,#0b1729,#071121);min-height:88px;width:100%;max-width:100%;overflow:hidden}
+#view-categories tbody td{display:block!important;padding:0!important;border:0!important;min-width:0}
+#view-categories tbody td.cat-serial{display:none!important}
+#view-categories tbody td.cat-name-cell{grid-area:name;display:flex;align-items:center;min-width:0}
+#view-categories .cat-demo-item{gap:10px}
+#view-categories .category-logo-demo{width:56px;height:56px}
+#view-categories .cat-demo-item strong{font-size:16px;overflow-wrap:anywhere}
+#view-categories .cat-demo-item small{font-size:12px}
+#view-categories tbody td.cat-count{grid-area:count;text-align:left;font-size:13px;color:#aab5c8;padding-left:66px!important}
+#view-categories tbody td.cat-count:before{content:'চ্যানেল: ';color:#a5adbf}
+#view-categories tbody td:last-child{grid-area:actions;align-self:center;justify-self:end;margin:0;padding:0!important;width:auto;max-width:max-content}
+#view-categories .channel-action-set{display:flex;gap:7px;justify-content:flex-end;align-items:center;margin:0;white-space:nowrap}
+#view-categories .channel-action-set button{width:38px;min-width:38px;height:42px;padding:0;border-radius:10px;flex:0 0 38px}
+}
+
+
+/* Mobile category cards: keep text and both action buttons inside viewport */
+@media(max-width:650px){
+ #view-categories .tableWrap{width:100%!important;max-width:100%!important;overflow-x:hidden!important;padding:0!important}
+ #view-categories table{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;table-layout:fixed!important}
+ #view-categories tbody{display:flex!important;width:100%!important;flex-direction:column;gap:10px}
+ #view-categories tbody tr{display:grid!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box;grid-template-columns:minmax(0,1fr) 86px!important;grid-template-areas:'name actions' 'count actions'!important;gap:6px 8px!important;padding:12px!important;overflow:hidden!important}
+ #view-categories tbody td{min-width:0!important;width:auto!important;max-width:100%!important;box-sizing:border-box!important}
+ #view-categories tbody td.cat-serial{display:none!important}
+ #view-categories tbody td.cat-name-cell{grid-area:name!important;display:flex!important;min-width:0!important;overflow:hidden}
+ #view-categories tbody td.cat-count{grid-area:count!important;padding:0 0 0 66px!important;text-align:left!important;white-space:normal;overflow-wrap:anywhere}
+ #view-categories tbody td.cat-actions-cell{grid-area:actions!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;justify-self:stretch!important;align-self:center!important;width:86px!important;max-width:86px!important;margin:0!important;padding:0!important;overflow:visible!important}
+ #view-categories .channel-action-set{display:flex!important;gap:6px!important;width:86px!important;max-width:86px!important;justify-content:flex-end!important;margin:0!important;flex-wrap:nowrap!important}
+ #view-categories .channel-action-set button{display:inline-grid!important;place-items:center;width:40px!important;min-width:40px!important;max-width:40px!important;height:42px!important;flex:0 0 40px!important;padding:0!important}
+ .page-back{width:42px;min-width:42px;height:42px;padding:0!important;display:inline-grid;place-items:center;background:#19243a;border-radius:12px;font-size:23px;flex:0 0 42px}
+ .heading{align-items:center!important;gap:10px!important}
+ .heading h2{min-width:0}
+}
+.page-back{width:38px;min-width:38px;height:38px;padding:0;display:inline-grid;place-items:center;background:#19243a;border-radius:11px;font-size:21px;flex:0 0 38px}
+</style></head><body>
+<div class="app">
+<aside id="sidebar" aria-hidden="true" style="display:none"><div class="brand"><div class="logo">BV</div><div><b>Bagerhat Vision</b><small>Admin Panel</small></div></div>
+<nav class="nav">
+<button class="active" data-view="dashboard" onclick="go('dashboard',this)"><span>▦</span>ড্যাশবোর্ড</button>
+<button data-view="channels" onclick="go('channels',this)"><span>📺</span>চ্যানেল ম্যানেজ</button>
+<button data-view="categories" onclick="go('categories',this)"><span>▧</span>ক্যাটাগরি ম্যানেজ</button>
+<button data-view="notices" onclick="go('notices',this)"><span>📢</span>বিজ্ঞপ্তি / নোটিশ</button>
+<button data-view="schedule" onclick="go('schedule',this)"><span>◷</span>Schedule</button>
+
+<button data-view="settings" onclick="go('settings',this)"><span>⚙</span>সেটিংস</button>
+</nav><div class="sideFoot">Bagerhat Vision<br>Google Sheets Admin</div></aside>
+<main><div class="top" style="display:none"><div><h1 id="topTitle">ড্যাশবোর্ড</h1><small>Google Sheets Data Control</small></div><div class="grow"></div><span class="pill" id="connStatus">সংযোগ সেট করা হয়নি</span></div>
+<div class="content">
+<section class="view active" id="view-dashboard">
+<div class="heading"><div><h2>ড্যাশবোর্ড</h2></div></div>
+<div class="dashboard-actions">
+<button onclick="go('channels')">📺 চ্যানেল ম্যানেজ</button>
+<button onclick="go('categories')">▤ ক্যাটাগরি ম্যানেজ</button>
+<button onclick="go('notices')">📢 বিজ্ঞপ্তি / নোটিশ</button>
+<button onclick="go('about')">ℹ️ এবাউট</button>
+</div>
+<div class="grid dashboard-stats">
+<div class="stat"><div class="label">মোট চ্যানেল</div><div class="num" id="countChannels">—</div></div>
+<div class="stat"><div class="label">মোট ক্যাটাগরি</div><div class="num" id="countCategories">—</div></div>
+</div>
+<div class="card" id="startupChannelCard" style="border:2px solid var(--accent,#25cde3);box-shadow:0 0 18px rgba(37,205,227,.12)"><h3 class="formTitle">📺 স্টার্টআপ চ্যানেল সিলেক্ট</h3><p class="muted">অ্যাপ চালু হলে প্রথমে যে চ্যানেলটি চলবে সেটি এখানে নির্বাচন করে Google Sheets-এ সংরক্ষণ করুন।</p><div class="field"><label for="default_channel">প্রথমে চালু হবে</label><select id="default_channel"><option value="">চ্যানেল লোড হচ্ছে...</option></select></div><div class="actions"><button class="primary" onclick="saveDefaultChannel()">💾 স্টার্টআপ চ্যানেল সংরক্ষণ</button><button onclick="loadStartupChannels()">↻ চ্যানেল রিফ্রেশ</button></div><p class="muted" id="startupChannelStatus">চ্যানেল তালিকা লোড করা হচ্ছে...</p></div><div class="card"><h3 class="formTitle">Google Apps Script সংযোগ</h3><div class="field"><label>Web App URL</label><input id="apiUrl" placeholder="https://script.google.com/macros/s/AKfycbxwLTk2XxT68-VtJ0BIBmrgNcrQNtt6p4siLhVRy5rqty7-1ixwsASCucZFI_CG8fq_CA/exec"></div><div class="actions"><button class="primary" onclick="saveApi()">URL সেভ</button><button onclick="pingApi()">সংযোগ পরীক্ষা</button><button onclick="loadCounts()">ড্যাশবোর্ড রিফ্রেশ</button></div><p class="muted">এটি মূল প্রজেক্টের মতো ব্যবস্থাপনা UI। ডাটা Google Apps Script Web App-এর মাধ্যমে Google Sheets-এ যাবে। নিচে উল্লেখিত API action অনুযায়ী Apps Script backend তৈরি করতে হবে।</p></div>
+<div id="result" class="result" style="display:none" aria-live="polite"></div>
 </section>
-<section id="free" class="page">
-  <button class="back" onclick="showPage('home')">← সব অ্যাপে ফিরে যান</button>
-  <div class="heading"><div><div class="eyebrow">Free collection</div><h1>Free Apps</h1><div class="muted" style="margin-top:7px;font-size:13px">সব ফ্রি অ্যাপ এক জায়গায়</div></div></div>
-  <div id="freeAppList" class="app-list"></div><div id="freePagination"></div>
-</section>
-<section id="premium" class="page">
-  <button class="back" onclick="showPage('home')">← সব অ্যাপে ফিরে যান</button>
-  <div class="heading"><div><div class="eyebrow">Premium collection</div><h1>Premium Apps</h1><div class="muted" style="margin-top:7px;font-size:13px">প্রিমিয়াম অ্যাপ ও ডাউনলোড</div></div></div>
-  <div id="premiumAppList" class="app-list"></div><div id="premiumPagination"></div>
-</section>
-<section id="details" class="page">
-  <div class="detailnav"><button class="back" onclick="goBackFromDetails()">← আগের পেজে ফিরে যান</button><button class="sharebtn" onclick="shareApp(currentId)" aria-label="এই অ্যাপ শেয়ার করুন">↗ শেয়ার</button></div>
-  <div id="detailContent"></div>
-</section>
-<section id="about" class="page">
-  <div class="abouthero">
-    <div class="biglogo" id="aboutLogo"><img src="https://i.imgur.com/4ZfSPii.png" alt="SC Android Studio logo"></div><h1>SC Android Studio</h1>
-    <div class="tagline">Imagine. Build. Inspire.</div>
-    <p class="muted" style="max-width:590px;margin:14px auto 0;line-height:1.7">We imagine useful ideas, build practical digital products, and inspire through technology.</p>
-  </div>
-  <div class="section"><h2>আমাদের পরিচিতি</h2><p>SC Android Studio হলো অ্যাপ ও ডিজিটাল প্রোডাক্ট তৈরির একটি ডেভেলপমেন্ট ব্র্যান্ড। এখানে আমাদের অ্যাপের তথ্য, স্ক্রিনশট এবং ডাউনলোড লিংক পাওয়া যাবে।</p></div>
-  <div class="section"><h2>যোগাযোগ</h2><div class="contactgrid">
-    <div class="contact"><small>Developer Team</small><strong>SC Android Studio</strong></div>
-    <div class="contact"><small>Founder</small><strong>Shagor Chakladar</strong></div>
-    <div class="contact"><small>Contact Number</small><strong><a href="tel:01303072964">01303-072964</a></strong></div>
-    <div class="contact"><small>Email Address</small><strong><a href="mailto:shagorchakladar@gmail.com">shagorchakladar@gmail.com</a></strong></div>
-    <div class="contact"><small>Facebook</small><strong><a href="https://www.facebook.com/shagorch24" target="_blank" rel="noopener">fb.com/shagorch24 ↗</a></strong></div>
-  </div><div class="actions"><a class="primary" href="mailto:shagorchakladar@gmail.com">✉ Email</a><a class="whatsapp" href="https://wa.me/8801303072964" target="_blank" rel="noopener">◉ WhatsApp</a><a class="secondary" href="https://www.facebook.com/shagorch24" target="_blank" rel="noopener">f Facebook</a></div></div>
-  <div class="section" id="aboutShotsSection" style="display:none"><h2>About Screenshots</h2><div id="aboutShots" class="screenshots" style="margin-top:14px"></div></div>
-</section>
-<section id="admin" class="page">
-  <div class="heading"><div><div class="eyebrow">Content management</div><h1>Admin Panel</h1><div class="muted" style="font-size:13px;margin-top:6px">অ্যাপের তথ্য ও ছবি সাজানোর ডেমো</div></div><button class="secondary" onclick="showPage('home')">সাইট দেখুন ↗</button></div>
-  <div class="notice">এই ভার্সনে Admin Panel-এর পরিবর্তন এই ব্রাউজারের Local Storage-এ সেভ হবে। GitHub-এ স্বয়ংক্রিয় Publish/Upload করতে পরে নিরাপদ API সংযোগ লাগবে। GitHub Token কখনো এই HTML ফাইলে রাখবেন না।</div>
-  <div class="adminlayout"><aside class="adminnav">
-    <button class="active" onclick="adminTab('apps',this)">▦ অ্যাপ ম্যানেজ</button>
-    <button onclick="adminTab('edit',this)">＋ নতুন / এডিট অ্যাপ</button>
-    <button onclick="adminTab('media',this)">▧ আইকন ও স্ক্রিনশট</button>
-    <button onclick="adminTab('aboutedit',this)">◎ About তথ্য</button>
-    <button onclick="adminTab('settings',this)">⇩ ডাউনলোড সেটিংস</button>
-    <button onclick="adminTab('backup',this)">⇧ Backup / Export</button>
-  </aside><div class="admincontent">
-    <div id="admin-apps" class="adminsection active"><h2>অ্যাপ ম্যানেজ</h2><div id="adminList" class="adminlist"></div><p style="margin-top:14px"><button class="primary" onclick="newApp()">＋ নতুন অ্যাপ যোগ করুন</button></p></div>
-    <div id="admin-edit" class="adminsection"><h2 id="formTitle">নতুন অ্যাপ যোগ করুন</h2><form id="appForm" onsubmit="saveApp(event)">
-      <input type="hidden" id="fId">
-      <div class="formgrid">
-        <div class="field"><label for="fName">অ্যাপের নাম *</label><input id="fName" required placeholder="যেমন: IPTVPlay"></div>
-        <div class="field"><label for="fStatus">Free / Premium *</label><select id="fStatus"><option value="free">Free</option><option value="premium">Premium</option></select></div>
-        <div class="field"><label for="fVersion">ভার্সন</label><input id="fVersion" placeholder="v1.0.0"></div>
-        <div class="field"><label for="fDate">রিলিজ / আপডেট তারিখ</label><input id="fDate" type="date"></div>
-        <div class="field"><label for="fSize">ফাইল সাইজ</label><input id="fSize" placeholder="যেমন: 12 MB"></div>
-        <div class="field"><label for="fIcon">অ্যাপ আইকন URL</label><input id="fIcon" placeholder="https://.../icon.png"></div>
-        <div class="field full"><label for="fDesc">সংক্ষিপ্ত বিবরণ</label><textarea id="fDesc" placeholder="অ্যাপটি কী কাজ করে?"></textarea></div>
-        <div class="field full"><label for="fFeatures">Key Features (প্রতি লাইনে একটি)</label><textarea id="fFeatures" placeholder="Live TV streaming&#10;Simple interface"></textarea></div>
-        <div class="field full"><label for="fAbout">About This App</label><textarea id="fAbout" placeholder="অ্যাপের বিস্তারিত পরিচিতি"></textarea></div>
-        <div class="field full"><label for="fDownload">APK / ZIP Download URL</label><input id="fDownload" type="url" placeholder="https://..."></div>
-        <div class="field full"><label for="fPin">Premium PIN / WhatsApp নির্দেশনা (ঐচ্ছিক)</label><input id="fPin" placeholder="PIN পেতে WhatsApp-এ যোগাযোগ করুন"></div>
-      </div>
-      <div class="actions"><button class="primary" type="submit">Save App</button><button class="secondary" type="button" onclick="newApp()">Clear</button></div>
-    </form></div>
-    <div id="admin-media" class="adminsection"><h2>আইকন ও স্ক্রিনশট</h2><p class="hint">প্রতিটি অ্যাপ এডিট করে আইকন URL দিন। স্ক্রিনশটের জন্য পাবলিক image URL-গুলো নিচে যোগ করুন—প্রতি লাইনে একটি URL। পরে ফাইল আপলোডের জন্য secure storage/API সংযুক্ত করা যাবে।</p>
-      <div class="field"><label>অ্যাপ বেছে নিন</label><select id="mediaApp" onchange="loadMedia()"></select></div>
-      <div class="field"><label>স্ক্রিনশট URL (প্রতি লাইনে একটি, সর্বোচ্চ 6)</label><textarea id="fShots" placeholder="https://.../screenshot1.png&#10;https://.../screenshot2.png"></textarea></div>
-      <button class="primary" onclick="saveMedia()">স্ক্রিনশট সেভ করুন</button><div id="mediaPreview" class="screenshots" style="margin-top:14px"></div>
-    </div>
-    <div id="admin-aboutedit" class="adminsection"><h2>About তথ্য</h2><p class="hint">এই ডেমোতে ব্র্যান্ডের মূল পরিচিতি নির্ধারিত আছে। এখানে About পেজের অতিরিক্ত বিবরণ ও স্ক্রিনশট URL সেট করা যাবে।</p>
-      <div class="field"><label>SC Android Studio Logo URL</label><input id="brandLogoUrl" type="url" placeholder="আপনার আসল SC Android Studio logo image URL"></div><div class="field"><label>About বিবরণ</label><textarea id="aboutText">SC Android Studio হলো অ্যাপ ও ডিজিটাল প্রোডাক্ট তৈরির একটি ডেভেলপমেন্ট ব্র্যান্ড।</textarea></div>
-      <div class="field"><label>About Screenshot URL (প্রতি লাইনে একটি)</label><textarea id="aboutShotUrls" placeholder="https://.../about1.png"></textarea></div><button class="primary" onclick="saveAbout()">About সেভ করুন</button>
-    </div>
-    <div id="admin-settings" class="adminsection"><h2>Download Settings</h2><p class="hint">Free অ্যাপে সরাসরি APK লিংক দিন। Premium অ্যাপের জন্য পাসওয়ার্ড-প্রটেক্টেড ZIP/7z লিংক দিন এবং PIN পেতে WhatsApp যোগাযোগের নির্দেশনা দিন।</p>
-      <div class="notice">Premium ZIP-এর জন্য AES-256 encryption ব্যবহার করুন। শুধু ZIP-এ পাসওয়ার্ড দিলেই ওয়েবসাইটে ZIP URL লুকানো থাকে না—ফাইলের লিংক যার কাছে থাকবে সে ফাইল ডাউনলোড করতে পারবে।</div>
-      <p>WhatsApp যোগাযোগ: <a href="https://wa.me/8801303072964" target="_blank" rel="noopener">wa.me/8801303072964</a></p>
-      <p class="hint">Details পেজে Download এবং Copy Download Link বোতাম থাকবে। কার্যকর ডাউনলোডের জন্য প্রতিটি অ্যাপের সঠিক APK/ZIP URL যুক্ত করুন।</p>
-    </div>
-    <div id="admin-backup" class="adminsection"><h2>Backup / Export</h2><p class="hint">সব অ্যাপের তথ্য JSON হিসেবে ডাউনলোড করুন অথবা JSON ব্যাকআপ থেকে পুনরুদ্ধার করুন।</p><div class="actions"><button class="primary" onclick="exportData()">Export JSON</button><label class="secondary" style="cursor:pointer">Import JSON<input id="importFile" type="file" accept=".json,application/json" hidden onchange="importData(event)"></label></div></div>
-  </div></div>
-</section>
-</main>
-<div id="toast" class="toast" role="status" aria-live="polite"></div><footer class="footer">© SC Android Studio — All Rights Reserved.</footer>
-<nav class="mobilebar"><button class="active" data-page="home" onclick="showPage('home')"><span>⌂</span>Home</button><button data-page="home" onclick="showPage('home');document.getElementById('search').focus()"><span>▦</span>Apps</button><button data-page="about" onclick="showPage('about')"><span>ⓘ</span>About</button></nav>
+
+<section class="view" id="view-channels"><div class="heading"><div><h2>চ্যানেল ম্যানেজ</h2><p>চ্যানেল যোগ, সম্পাদনা ও মুছুন।</p></div></div>
+<div class="card"><h3 class="formTitle">চ্যানেল টুলস</h3><div class="channel-tools-grid"><button onclick="restoreChannels()">📤 Channel Restore</button><button onclick="backupChannels()">📥 Channel Backup</button><button class="primary" onclick="go('bulk')">＋ বাল্ক চ্যানেল যোগ</button><button class="primary" onclick="openChannelForm()">＋ নতুন চ্যানেল</button><button class="danger" onclick="deleteAllChannels()">🗑️ সব চ্যানেল মুছুন</button></div></div><div class="card" id="channelFormCard"><h3 class="formTitle" id="channelFormTitle">নতুন চ্যানেল যোগ</h3><input type="hidden" id="ch_id">
+<div class="row"><div class="field"><label>চ্যানেলের নাম *</label><input id="ch_name" placeholder="যেমন Asian TV"></div><div class="field"><label>ক্যাটাগরি *</label><select id="ch_category"><option value="">ক্যাটাগরি লোড হচ্ছে...</option></select></div></div>
+<div class="field"><label>Stream URL তালিকা * (সর্বোচ্চ ১৫টি)</label><p class="muted">প্রতি ঘরে একটি করে ভিডিও/স্ট্রিম লিংক দিন। একটি লিংক কাজ না করলে Player পরের লিংক চেষ্টা করতে পারবে—এ জন্য মূল অ্যাপেও fallback support লাগবে।</p><div id="streamUrlFields" class="stream-url-fields"></div><div class="actions"><button type="button" onclick="addStreamUrlField()">＋ আরও Stream URL</button><button type="button" onclick="removeStreamUrlField()">－ শেষ URL সরান</button></div></div>
+<div class="row"><div class="field"><label>Logo URL</label><input id="ch_logo" placeholder="https://.../logo.png"></div><div class="field"><label>Serial Number</label><select id="ch_serial"></select></div></div>
+<div class="row"><div class="field"><label>Content Type</label><select id="ch_type"><option value="auto">Auto Detect</option><option value="hls">HLS / M3U8</option><option value="mp4">MP4</option><option value="m3u">M3U Playlist</option><option value="ts">MPEG-TS</option></select></div><div class="field"><label>চ্যানেল অবস্থা</label><select id="ch_enabled"><option value="true">চালু</option><option value="false">বন্ধ</option></select></div></div>
+<div class="actions"><button class="primary" onclick="saveChannel()">চ্যানেল সংরক্ষণ</button><button onclick="clearChannel()">নতুন ফর্ম</button><button onclick="loadList('channels')">শিট থেকে তালিকা আনুন</button><button class="danger" onclick="deleteSelected('channels')">ID দিয়ে মুছুন</button></div></div>
+<div class="card"><h3 class="formTitle">চ্যানেলের তালিকা</h3><div class="field"><label>সার্চ</label><input id="channelSearch" placeholder="নাম বা ক্যাটাগরি লিখুন" oninput="filterTable('channels')"></div><div class="tableWrap"><table><thead><tr><th>#</th><th>চ্যানেলের নাম</th><th>Stream URL (M3U/M3U8)</th><th>ক্যাটাগরি</th><th>স্ট্যাটাস</th><th>অ্যাকশন</th></tr></thead><tbody id="channelsTable"><tr><td colspan="6" class="empty">শিট থেকে ডাটা আনুন</td></tr></tbody></table></div></div></section>
+
+<section class="view" id="view-categories"><div class="heading"><button type="button" onclick="go('dashboard')">‹</button><div style="flex:1"><h2>ক্যাটাগরি ম্যানেজ</h2></div><button class="primary" onclick="openCategoryForm(false)">＋ নতুন ক্যাটাগরি</button></div>
+<div class="field"><div style="display:flex;gap:12px;align-items:center;margin:8px 0 14px"><span>সব ক্যাটাগরি</span><span class="muted">ফিল্টার <b id="categoryCountLabel">১২টি ক্যাটাগরি</b></span></div><input id="categorySearch" placeholder="সার্চ করুন..." oninput="filterTable('categories')"></div>
+<div class="card"><div class="tableWrap"><table><thead><tr><th>#</th><th>ক্যাটাগরির নাম</th><th>চ্যানেল</th><th>অ্যাকশন</th></tr></thead><tbody id="categoriesTable"><tr><td colspan="4" class="empty">ক্যাটাগরি লোড হচ্ছে...</td></tr></tbody></table></div></div></section>
+
+<section class="view" id="view-notices"><div class="heading"><div><h2>বিজ্ঞপ্তি ও নোটিশ</h2><p>দুটি আলাদা বার্তা নিয়ন্ত্রণ।</p></div></div><div class="card"><h3 class="formTitle">📢 বিজ্ঞপ্তি (অ্যাপের উপরের বারে দেখাবে)</h3><div class="field"><label>বিজ্ঞপ্তির লেখা</label><input id="notice_text" placeholder="পেমেন্ট পেতে আমাদের সাথে থাকুন"></div><div class="toggle field"><input id="notice_enabled" type="checkbox" checked><label for="notice_enabled">বিজ্ঞপ্তি চালু</label></div></div><div class="card"><h3 class="formTitle">📣 নোটিশ (Player-এর নিচের Running Text স্থানে দেখাবে)</h3><div class="field"><label>নোটিশের লেখা</label><input id="running_text" placeholder="নতুন চ্যানেল"></div><div class="toggle field"><input id="ticker_enabled" type="checkbox" checked><label for="ticker_enabled">নোটিশ চালু</label></div><div class="actions"><button class="primary" onclick="saveNotice()">বিজ্ঞপ্তি ও নোটিশ সংরক্ষণ</button><button onclick="loadList('notices')">শিট থেকে ডাটা আনুন</button></div></div></section>
+<section class="view" id="view-about"><div class="heading"><div><h2>About Edit</h2><p>অ্যাপের About তথ্য সম্পাদনা করুন।</p></div></div><div class="card"><h3 class="formTitle">📱 অ্যাপ ভার্সন ও আপডেট তথ্য</h3><div class="row"><div class="field"><label>বর্তমান ভার্সন</label><input id="set_version" placeholder="যেমন 8.0.1"></div><div class="field"><label>রিলিজের তারিখ</label><input id="set_release_date" placeholder="যেমন 24 সেপ্টেম্বর 2026"></div></div><div class="field"><label>ডেভেলপার / টিম</label><input id="set_developer" placeholder="Bagerhat Vision Team"></div><div class="row"><div class="field"><label>সাপোর্ট ইমেইল</label><input id="set_email" placeholder="support@example.com"></div><div class="field"><label>যোগাযোগ নম্বর</label><input id="set_phone" type="text" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></div></div><div class="field"><label>Facebook গ্রুপ URL</label><input id="set_facebook" placeholder="https://facebook.com/groups/..."></div><div class="field"><label>আপডেট / ডাউনলোড URL</label><input id="set_update_url" placeholder="https://..."></div><div class="field"><label>নতুন আপডেট (প্রতি লাইনে একটি)</label><textarea id="set_whats_new" rows="5"></textarea></div><div class="divider"></div><h3 class="formTitle">🔗 Online Shop লিংক</h3><div class="field"><label>Online Shop URL</label><input id="about_link_shop" placeholder="https://..."></div><div class="actions"><button class="primary" onclick="saveAbout()">About সংরক্ষণ</button><button onclick="saveAboutLinks()">Shop লিংক সংরক্ষণ</button><button onclick="loadAboutAndLinks()">ডাটা রিফ্রেশ</button></div><button onclick="loadList('about')">শিট থেকে ডাটা আনুন</button></div></section>
+<section class="view" id="view-bulk"><div class="heading"><button onclick="go('channels')">‹</button><div><h2>বাল্ক চ্যানেল যোগ</h2><p>একসঙ্গে একাধিক চ্যানেল যোগ করুন।</p></div></div><div class="card"><label>চ্যানেলের তালিকা (প্রতি চ্যানেলের জন্য Name, URL, Category, Logo URL)</label><textarea id="bulk_json" style="min-height:240px" placeholder='[{"channel_name":"Asian TV","channel_url":"https://example.com/video.mp4","category":"বাংলাদেশী","serial":1,"enabled":true}]'></textarea><div class="actions"><button id="bulkSubmitBtn" class="primary" onclick="bulkAddChannels()">বাল্ক সাবমিট</button><button type="button" onclick="loadBulkTemplate()">নমুনা JSON</button></div><div id="bulkProgress" class="bulk-progress" role="status" aria-live="polite"><div class="bulk-progress-top"><strong id="bulkProgressTitle">প্রসেসের অবস্থা এখানে দেখাবে</strong><span id="bulkProgressCount">0%</span></div><div class="bulk-progress-track"><div id="bulkProgressBar" class="bulk-progress-bar"></div></div><pre id="bulkProgressLog" class="bulk-progress-log">সাবমিট করলে মোট চ্যানেল, সফল/ব্যর্থ সংখ্যা এবং বর্তমান প্রসেস এখানে দেখাবে।</pre></div></div></section>
+
+<section class="view" id="view-schedule"><div class="heading"><div><h2>Schedule ম্যানেজ</h2><p>চ্যানেল/ভিডিওর নির্ধারিত প্লে-শিডিউল।</p></div></div><div class="card"><div class="row"><div class="field"><label>Schedule / ভিডিও চ্যানেলের নাম *</label><input id="sch_name" placeholder="যেমন: সকালবেলার ভিডিও"></div><div class="field"><label>ক্যাটাগরি *</label><select id="sch_category"><option value="">ক্যাটাগরি লোড হচ্ছে...</option></select></div></div>
+<div class="field"><label>Stream URL তালিকা (সর্বোচ্চ ১৫টি) *</label><p class="muted">প্রতি ঘরে একটি করে MP4 / HLS / M3U8 ভিডিও URL দিন।</p><div id="scheduleUrlFields" class="stream-url-fields"></div><div class="actions"><button type="button" onclick="addScheduleUrlField()">＋ আরও Stream URL</button><button type="button" onclick="removeScheduleUrlField()">－ শেষ URL সরান</button></div></div>
+<div class="row"><div class="field"><label>Logo URL</label><input id="sch_logo" placeholder="https://.../logo.png"></div><div class="field"><label>Serial Number</label><select id="sch_serial"></select></div></div>
+<div class="row"><div class="field"><label>Content Type</label><select id="sch_type"><option value="auto">Auto Detect</option><option value="mp4">MP4 Video</option><option value="hls">HLS / M3U8</option><option value="m3u">M3U Playlist</option><option value="ts">MPEG-TS</option></select></div><div class="field"><label>চ্যানেল অবস্থা</label><select id="sch_enabled"><option value="true">চালু</option><option value="false">বন্ধ</option></select></div></div>
+<div class="row"><div class="field"><label>শুরুর সময় *</label><input id="sch_start" type="datetime-local"></div><div class="field"><label>শেষের সময় (ঐচ্ছিক)</label><input id="sch_end" type="datetime-local"></div></div>
+<div class="field"><label>Play Mode</label><select id="sch_mode"><option value="time">সময় অনুযায়ী</option><option value="serial">Serial</option><option value="random">Random</option></select></div>
+<div class="actions"><button class="primary" onclick="saveSchedule()">Schedule সংরক্ষণ</button><button type="button" onclick="loadList('schedule')">শিট থেকে তালিকা আনুন</button><button type="button" onclick="clearScheduleForm()">নতুন ফর্ম</button><button class="danger" onclick="deleteSelected('schedule')">ID দিয়ে মুছুন</button></div></div><div class="card"><div class="tableWrap"><table><thead><tr><th>ID</th><th>নাম</th><th>শুরু</th><th>শেষ</th><th>Mode</th><th>অবস্থা</th></tr></thead><tbody id="scheduleTable"><tr><td colspan="6" class="empty">শিট থেকে ডাটা আনুন</td></tr></tbody></table></div></div></section>
+
+<section class="view" id="view-links"><div class="heading"><div><h2>Shop ও Device Mode লিংক</h2><p>Footer Shop ও Sidebar Online Shop একই URL ব্যবহার করবে।</p></div></div><div class="card"><div class="field"><label>Online Shop URL</label><input id="link_shop" placeholder="https://your-shop.example"></div><div class="actions"><button class="primary" onclick="saveLinks()">লিংক সংরক্ষণ</button><button onclick="loadList('links')">শিট থেকে লিংক আনুন</button></div><p class="muted">Shop আলাদা HTML/GitHub প্রজেক্টে থাকবে। এখানে শুধু URL সংরক্ষিত হবে।</p></div></section>
+
+<section class="view" id="view-settings"><div class="heading"><div><h2>সেটিংস</h2><p>অ্যাপের সাধারণ কনফিগারেশন।</p></div></div><div class="card"><div class="field"><label>অ্যাপের নাম</label><input id="set_app_name" value="Bagerhat Vision"></div><div class="field"><label>অ্যাপ আপডেট / ডাউনলোড URL</label><input id="set_update_url" placeholder="https://..."></div>
+<div class="divider"></div>
+<h3 class="formTitle">📱 About — অ্যাপের তথ্য</h3>
+<div class="row"><div class="field"><label>বর্তমান ভার্সন</label><input id="set_version" placeholder="যেমন 8.0.1"></div><div class="field"><label>রিলিজের তারিখ</label><input id="set_release_date" placeholder="যেমন 24 সেপ্টেম্বর 2026"></div></div>
+<div class="field"><label>ডেভেলপার / টিম</label><input id="set_developer" placeholder="Bagerhat Vision Team"></div>
+<div class="row"><div class="field"><label>ইমেইল</label><input id="set_email" placeholder="support@example.com"></div><div class="field"><label>যোগাযোগ নম্বর</label><input id="set_phone" type="text" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"></div></div>
+<div class="field"><label>Facebook গ্রুপ URL</label><input id="set_facebook" placeholder="https://facebook.com/groups/..."></div>
+<div class="field"><label>কপিরাইট টেক্সট</label><input id="set_copyright" placeholder="© 2026 Bagerhat Vision. All rights reserved."></div>
+<div class="divider"></div>
+<h3 class="formTitle">✨ নতুন ভার্সন — নতুন কী এসেছে?</h3>
+<p class="muted">প্রতিটি নতুন লাইন About পেজে আলাদা ফিচার হিসেবে দেখানো যাবে।</p>
+<div class="field"><label>আপডেট তালিকা (প্রতি লাইনে একটি ফিচার)</label><textarea id="set_whats_new" rows="7" style="min-height:170px" placeholder="Category অনুযায়ী Channel Navigation&#10;নতুন Pagination সিস্টেম&#10;বিভিন্ন Bug Fix&#10;Performance ও Stability উন্নত করা হয়েছে"></textarea></div>
+<div class="actions"><button class="primary" onclick="saveSettings()">সেটিংস ও আপডেট সংরক্ষণ</button><button onclick="loadList('settings')">শিট থেকে সেটিংস আনুন</button></div></div></section>
+</div></main></div><div id="toast" class="toast"></div>
 <script>
-const KEY='scAndroidStudioApps_v1', ABOUTKEY='scAndroidStudioAbout_v1';
-const GITHUB_RELEASES_API='https://api.github.com/repos/ShagorCh/shagorch.github.io/releases?per_page=100';
-const IPTVPLAY_FALLBACK='https://github.com/ShagorCh/shagorch.github.io/releases/download/v1.0.0/IPTV.Play.apk';
-const defaults=[
-{id:'iptvplay',name:'IPTVPlay',desc:'Your World of Live TV',version:'v1.0.0',date:'2026-10-10',size:'248 KB',downloadCount:0,status:'free',iconText:'IPTV',about:'IPTVPlay একটি সহজ ও শক্তিশালী লাইভ টিভি প্লেয়ার। M3U প্লেলিস্ট চালানো, চ্যানেল ক্যাটাগরি অনুযায়ী দেখা এবং পরিষ্কার ইন্টারফেস ব্যবহার করার সুবিধা রয়েছে।',features:['M3U/M3U8 playlist support','লাইভ টিভি চ্যানেল ক্যাটাগরি','সহজ ও পরিষ্কার ইন্টারফেস','প্লেলিস্ট সেভ করার সুবিধা','Android ফোন ও TV box-এ ব্যবহারযোগ্য'],download:IPTVPLAY_FALLBACK,pin:'',icon:'',shots:[]},
-{id:'silent-camera',name:'Silent Camera',desc:'Background silent camera recording',version:'v1.0.0',date:'2026-10-09',size:'3.2 MB',downloadCount:0,status:'premium',iconText:'◉',about:'Silent Camera অ্যাপের বিস্তারিত তথ্য এখানে যোগ করা হবে।',features:['সহজ রেকর্ডিং কন্ট্রোল','রেকর্ডিং ফাইল ম্যানেজমেন্ট'],download:'',pin:'PIN পেতে WhatsApp-এ যোগাযোগ করুন',icon:'',shots:[]},
-{id:'bagerhat-vision',name:'Bagerhat Vision',desc:'Live TV, Movies, Islamic, Cartoon',version:'v93.4',date:'2026-10-05',size:'15.8 MB',downloadCount:0,status:'free',iconText:'TV',about:'Bagerhat Vision হলো লাইভ টিভি ও ভিডিও কনটেন্ট দেখার অ্যাপ।',features:['লাইভ টিভি','ক্যাটাগরি অনুযায়ী চ্যানেল','ভিডিও প্লেব্যাক'],download:'',pin:'',icon:'',shots:[]},
-{id:'jb-mart',name:'JB Mart',desc:'Local E-commerce Shop App',version:'v1.0.0',date:'2026-10-01',size:'5.4 MB',downloadCount:0,status:'premium',iconText:'🛒',about:'JB Mart হলো স্থানীয় বাজারের জন্য মাল্টিভেন্ডর ই-কমার্স অ্যাপ।',features:['পণ্য ব্রাউজ ও অর্ডার','মার্চেন্ট প্যানেল','লোকাল ডেলিভারি সুবিধা'],download:'',pin:'PIN পেতে WhatsApp-এ যোগাযোগ করুন',icon:'',shots:[]}
-];
+const $=id=>document.getElementById(id);let records={channels:[],categories:[],schedule:[]},selected={channels:'',categories:'',schedule:''},activeView='dashboard';
+const sheetMap={channels:'Channels',categories:'Categories',notices:'Notices',schedule:'Schedule',links:'Links',settings:'Settings'};
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3000)}
+function result(v){$('result').textContent=typeof v==='string'?v:JSON.stringify(v,null,2)}
+function go(id,btn,fromHistory=false){try{if(!id||!document.getElementById('view-'+id))id='dashboard';if(!fromHistory){const hash='#'+id;if(location.hash!==hash){try{history.pushState({bvView:id},'',hash)}catch(_){location.hash=hash}}}activeView=id;document.querySelectorAll('.view').forEach(v=>{const show=v.id==='view-'+id;v.classList.toggle('active',show);v.style.display=show?'block':'none'});document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));const title=$('topTitle');if(title)title.textContent=({'dashboard':'ড্যাশবোর্ড','channels':'চ্যানেল ম্যানেজ','categories':'ক্যাটাগরি ম্যানেজ','notices':'বিজ্ঞপ্তি / নোটিশ','schedule':'Schedule','links':'Shop ও Device Mode','settings':'সেটিংস','about':'About Edit','bulk':'বাল্ক চ্যানেল যোগ'})[id]||id;const topBar=document.querySelector('main>.top');if(topBar)topBar.style.display=id==='dashboard'?'none':'flex';const sidebar=$('sidebar');if(sidebar)sidebar.classList.remove('open');if(['channels','categories','notices','links','settings','schedule'].includes(id)){loadList(id).catch(e=>{toast(e.message||'ডাটা লোড হয়নি');});}if(id==='about')loadAboutAndLinks().catch(e=>toast(e.message||'About ডাটা লোড হয়নি'));window.scrollTo(0,0)}catch(e){console.error(e);toast('এই অপশন খুলতে সমস্যা হয়েছে: '+e.message)}}
+function bvGoBack(){if(history.length>1&&location.hash){history.back();return}go('dashboard')}
+function bvInitPageRouting(){if(!location.hash){try{history.replaceState({bvView:'dashboard'},'',location.pathname+location.search+'#dashboard')}catch(_){location.hash='dashboard'}}const id=decodeURIComponent((location.hash||'#dashboard').slice(1));go(id,true,true);document.querySelectorAll('.view .heading').forEach(h=>{if(h.querySelector('.page-back'))return;const b=document.createElement('button');b.type='button';b.className='page-back';b.textContent='‹';b.setAttribute('aria-label','পেছনে যান');b.title='পেছনে যান';b.onclick=bvGoBack;h.insertBefore(b,h.firstChild)});}
+window.addEventListener('hashchange',()=>{const id=decodeURIComponent((location.hash||'#dashboard').slice(1));go(id,null,true)});
+window.addEventListener('popstate',()=>{const id=decodeURIComponent((location.hash||'#dashboard').slice(1));go(id,null,true)});
 
-function normalizeReleaseText(s=''){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'')}
-function releaseMatchesApp(app, release){
-  const assetNames=(release.assets||[]).map(asset=>asset.name||'').join(' ');
-  const hay=normalizeReleaseText([release.name,release.tag_name,assetNames].join(' '));
-  const id=normalizeReleaseText(app.id), name=normalizeReleaseText(app.name);
-  const aliases={
-    iptvplay:['iptvplay','iptv','ipvplay','ipv','iptv-play','ipv-play'],
-    'silent-camera':['silentcamera','silentcam'],
-    'bagerhat-vision':['bagerhatvision','bagerhatvisiontv'],
-    'jb-mart':['jbmart']
+const DEFAULT_SHEETS_API_URL='https://script.google.com/macros/s/AKfycbxwLTk2XxT68-VtJ0BIBmrgNcrQNtt6p4siLhVRy5rqty7-1ixwsASCucZFI_CG8fq_CA/exec';
+function apiUrl(){return $('apiUrl').value.trim()||localStorage.getItem('bv_admin_api_url')||DEFAULT_SHEETS_API_URL}
+function saveApi(){let u=$('apiUrl').value.trim();if(!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec/.test(u)){toast('সঠিক Apps Script Web App URL দিন');return}localStorage.setItem('bv_admin_api_url',u);$('connStatus').textContent='URL সেভ হয়েছে';toast('Apps Script URL সেভ হয়েছে')}
+async function request(action,sheet,data={}){let url=apiUrl();if(!url)throw Error('প্রথমে Dashboard-এ Apps Script URL সেট করুন');const body={action,sheet,data};const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),12000);try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),redirect:'follow',signal:controller.signal});let t=await r.text();let j;try{j=JSON.parse(t)}catch{j={raw:t}}if(!r.ok)throw Error('HTTP '+r.status+' '+JSON.stringify(j));if(j&&j.ok===false)throw Error(j.error||'Apps Script error');result(j);$('connStatus').textContent='সার্ভার সাড়া দিয়েছে';return j}catch(e){if(e.name==='AbortError')throw Error('১২ সেকেন্ডেও Google Apps Script সাড়া দেয়নি। ইন্টারনেট, Web App URL ও deployment পরীক্ষা করুন।');throw e}finally{clearTimeout(timer)}}
+async function pingApi(){try{await request('ping','Settings',{});toast('Apps Script সংযোগ কাজ করছে')}catch(e){result(e.message);toast('সংযোগ পরীক্ষা ব্যর্থ')}}
+async function loadList(sheet){try{let j=await request('list',sheet,{});let payload=j.data;if(typeof payload==='string'){try{payload=JSON.parse(payload)}catch(_){}}let arr=Array.isArray(payload)?payload:Array.isArray(j.rows)?j.rows:Array.isArray(j.items)?j.items:Array.isArray(j.result)?j.result:Array.isArray(j.records)?j.records:(payload&&Array.isArray(payload.rows)?payload.rows:payload&&Array.isArray(payload.data)?payload.data:[]);try{if(['channels','categories','schedule','notices','links','settings'].includes(sheet))localStorage.setItem('bv_cache_'+sheet,JSON.stringify(arr))}catch(_){}if(sheet==='channels'||sheet==='categories'||sheet==='schedule'){records[sheet]=arr;if(sheet==='channels')records.channels.sort((a,b)=>(Number(a.serial??a.order)||999999)-(Number(b.serial??b.order)||999999));renderTable(sheet);if(sheet==='categories'){populateChannelCategories();populateScheduleCategories()}}if(sheet==='links'){for(const x of arr){if(x.type==='shop'||x.name==='Online Shop')$('link_shop').value=x.url||'';if(x.type==='pc'||x.name==='PC Mode')$('link_pc').value=x.url||'';if(x.type==='tv'||x.name==='Android TV Mode')$('link_tv').value=x.url||''}}if(sheet==='notices'&&arr[0]){$('notice_text').value=arr[0].running_text||arr[0].text||'';$('running_text').value=arr[0].notice_text||'';$('notice_enabled').checked=arr[0].ticker_enabled!==false}if(sheet==='settings'){for(const x of arr){const k=x.key,v=x.value||'';if(k==='app_name')$('set_app_name').value=v;if(k==='default_mode')$('set_mode').value=v||'mobile';if(k==='update_url')$('set_update_url').value=v;if(k==='app_version')$('set_version').value=v;if(k==='release_date')$('set_release_date').value=v;if(k==='developer')$('set_developer').value=v;if(k==='contact_email')$('set_email').value=v;if(k==='contact_phone')$('set_phone').value=v;if(k==='facebook_url')$('set_facebook').value=v;if(k==='copyright')$('set_copyright').value=v;if(k==='whats_new')$('set_whats_new').value=v}}if(sheet==='notices'&&arr[0]){$('notice_text').value=arr[0].running_text||'';$('running_text').value=arr[0].notice_text||'';$('notice_enabled').checked=arr[0].ticker_enabled!==false;$('ticker_enabled').checked=arr[0].notice_enabled!==false}if(sheet==='about'){let x=arr.find(y=>y.key==='about')||arr[0]||{},d=x.value;try{if(typeof d==='string')d=JSON.parse(d)}catch{}d=d||x;$('about_title').value=d.title||'';$('about_description').value=d.description||'';$('about_phone').value=d.phone||'';$('about_email').value=d.email||'';$('about_facebook').value=d.facebookGroup||'';$('about_footer').value=d.footer||''}if(sheet==='channels'){$('default_channel').innerHTML='<option value="">প্রথম চ্যানেল নির্বাচন করুন</option>'+arr.map((x,i)=>{const key=String(x.id||x._id||x.channel_id||x.channel_name||x.name||('serial-'+(x.serial||i+1)));return '<option value="'+escAttr(key)+'">#'+esc(x.serial||i+1)+' — '+esc(x.channel_name||x.name||'নামহীন চ্যানেল')+'</option>'}).join('')}if(sheet==='channels')$('countChannels').textContent=arr.length;if(sheet==='categories')$('countCategories').textContent=arr.length;return arr}catch(e){result('ডাটা লোড হয়নি: '+e.message);throw e}}
+function populateChannelCategories(){const sel=$('ch_category');if(!sel)return;const current=sel.value;const cats=(records.categories||[]).filter(c=>c.enabled!==false&&c.enabled!=='false');sel.innerHTML='<option value="">ক্যাটাগরি নির্বাচন করুন</option>'+cats.map(c=>{const n=c.name||c.category||'';return '<option value="'+escAttr(n)+'">'+esc(n)+'</option>'}).join('');if(current)sel.value=current;if(!cats.length){sel.innerHTML='<option value="">আগে ক্যাটাগরি যোগ করুন</option>';}}
+function renderTable(type){
+ const arr=(records[type]||[]).slice();if(type==='channels')arr.sort((a,b)=>(Number(a.serial??a.order)||999999)-(Number(b.serial??b.order)||999999));let body=$(type==='channels'?'channelsTable':type==='categories'?'categoriesTable':'scheduleTable');if(!body)return;
+ if(type==='categories'){const label=$('categoryCountLabel');if(label)label.textContent=arr.length+'টি ক্যাটাগরি'}if(!arr.length){body.innerHTML='<tr><td colspan="7" class="empty">কোনো ডাটা পাওয়া যায়নি</td></tr>';return}
+ body.innerHTML=arr.map((x,i)=>{
+  const id=x.id||x._id||x.channel_id||x.category_id||'';
+  const name=x.channel_name||x.channelName||x.category_name||x.categoryName||x.name||x.title||x.label||'';
+  const enabled=!(x.enabled===false||x.enabled==='false'||x.status==='inactive'||x.status==='বন্ধ');
+  const status=enabled?'সক্রিয়':'বন্ধ';
+  let cells='';
+  if(type==='channels'){
+   let urls=x.stream_urls;if(typeof urls==='string'){try{urls=JSON.parse(urls)}catch{urls=urls.split(/\r?\n/).filter(Boolean)}}
+   if(!Array.isArray(urls)||!urls.length)urls=[x.channel_url||x.url||''];
+   const urlText=urls.filter(Boolean).join('\n');
+   const logo=x.logo_url||x.logo||'';
+   cells=`<td>${esc(x.serial??x.order??(i+1))}</td><td class="channel-name-cell"><div class="channel-name-wrap">${logo?`<img class="channel-logo-mini" src="${esc(logo)}" alt="" onerror="this.style.display='none'">`:''}<span>${esc(name)}</span></div></td><td class="channel-url-cell">${esc(urlText||'—').replace(/\n/g,'<br>')}</td><td>${esc(x.category||x.cat||'')}</td><td><span style="color:${enabled?'#25d69a':'#ff7188'};font-weight:700">${status}</span></td><td><div class="channel-action-set"><button class="edit-act" title="এডিট" aria-label="এডিট" onclick="editRecord('channels',${i})">✎</button><button class="dup-act" title="ডুপ্লিকেট" aria-label="ডুপ্লিকেট" onclick="duplicateRecord('channels',${i})">⧉</button><button class="del-act" title="ডিলিট" aria-label="ডিলিট" onclick="selectDelete('channels','${escAttr(id)}')">×</button></div></td>`;
+  }else if(type==='categories'){
+   const logo=x.logo_url||x.image||x.image_url||x.category_image_url||x.categoryImageUrl||'';const count=(records.channels||[]).filter(c=>String(c.category||c.cat||c.category_name||'').trim()===String(name).trim()).length;
+   cells=`<td class="cat-serial">#${esc(x.serial??x.order??(i+1))}</td><td class="cat-name-cell"><div class="cat-demo-item">${logo?`<img class="category-logo-demo" src="${esc(logo)}" alt="" onerror="this.style.display='none'">`:''}<div><strong>${esc(name)}</strong><small>ক্রম ${esc(x.serial??x.order??(i+1))}</small></div></div></td><td class="cat-count">${count}</td><td class="cat-actions-cell"><div class="channel-action-set"><button class="edit-act" title="এডিট" aria-label="এডিট" onclick="openCategoryForm(true,${i})">✎</button><button class="del-act" title="মুছুন" aria-label="মুছুন" onclick="selectDelete('categories','${escAttr(id)}')">×</button></div></td>`;
+  }else{
+   cells=`<td>${esc(id)}</td><td>${esc(name)}</td><td>${esc(x.start_time||x.start||'')}</td><td>${esc(x.end_time||x.end||'')}</td><td>${esc(x.mode||'time')}</td><td>${status}</td><td><button onclick="editRecord('${type}',${i})">এডিট</button> <button class="danger" onclick="selectDelete('${type}','${escAttr(id)}')">মুছুন</button></td>`;
+  }
+  return `<tr>${cells}</tr>`;
+ }).join('');
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function escAttr(v){return String(v??'').replace(/['\\]/g,'')}
+function filterTable(type){const searchEl=type==='categories'?$('categorySearch'):$('channelSearch');const q=(searchEl?.value||'').toLowerCase();const arr=records[type]||[];const f=arr.filter(x=>JSON.stringify(x).toLowerCase().includes(q));const old=records[type];records[type]=f;renderTable(type);records[type]=old}
+function editRecord(type,i){const x=records[type][i];if(!x)return;selected[type]=String(x.id||x._id||x.channel_id||x.category_id||'');if(type==='channels'){ $('ch_id').value=selected[type];$('ch_name').value=x.channel_name||x.name||'';$('ch_category').value=x.category||x.cat||'';let urls=x.stream_urls;if(typeof urls==='string'){try{urls=JSON.parse(urls)}catch{urls=urls.split(/\\r?\\n/).filter(Boolean)}}if(!Array.isArray(urls))urls=[x.channel_url||x.url||''];setStreamUrls(urls);populateSerialOptions(x.serial??x.order??1);$('ch_logo').value=x.logo_url||x.logo||'';$('ch_type').value=x.content_type||x.type||'auto';$('ch_enabled').value=String(x.enabled!==false);$('channelFormTitle').textContent='চ্যানেল সম্পাদনা';openChannelForm(true)}else if(type==='categories'){openCategoryForm(true,i);return}else if(type==='schedule'){$('sch_name').value=x.name||x.channel_name||'';$('sch_category').value=x.category||x.cat||'';let urls=x.stream_urls;if(typeof urls==='string'){try{urls=JSON.parse(urls)}catch{urls=urls.split(/\\r?\\n/).filter(Boolean)}}if(!Array.isArray(urls))urls=[x.url||x.channel_url||''];setScheduleUrls(urls);$('sch_logo').value=x.logo_url||'';populateSerialOptionsSchedule(x.serial||1);$('sch_start').value=x.start_time||'';$('sch_end').value=x.end_time||'';$('sch_type').value=x.content_type||'auto';$('sch_mode').value=x.mode||'time';$('sch_enabled').value=String(x.enabled!==false&&x.enabled!=='false')}else toast('এই রেকর্ডের ফর্ম এডিট এখনো যুক্ত হয়নি')}
+function duplicateRecord(type,i){
+ const arr=(records[type]||[]).slice().sort((a,b)=>(Number(a.serial??a.order)||999999)-(Number(b.serial??b.order)||999999));
+ const x=arr[i];if(!x||type!=='channels'){toast('ডুপ্লিকেট বর্তমানে চ্যানেলের জন্য চালু');return}
+ $('ch_id').value='';$('ch_name').value=(x.channel_name||x.name||'চ্যানেল')+' (Copy)';
+ $('ch_category').value=x.category||x.cat||'';
+ let urls=x.stream_urls;if(typeof urls==='string'){try{urls=JSON.parse(urls)}catch{urls=urls.split(/\r?\n/).filter(Boolean)}}if(!Array.isArray(urls))urls=[x.channel_url||x.url||''];setStreamUrls(urls);
+ $('ch_logo').value=x.logo_url||x.logo||'';$('ch_type').value=x.content_type||x.type||'auto';$('ch_enabled').value=String(x.enabled!==false&&x.enabled!=='false');
+ const original=Number(x.serial||x.order)||i+1;$('ch_serial').dataset.insertAfter=String(original);populateSerialOptions(original+1);$('channelFormTitle').textContent='চ্যানেল ডুপ্লিকেট — নতুন হিসেবে সংরক্ষণ';window.bvDuplicateInsertAfter=original;openChannelForm(true);toast('কপি করা চ্যানেলটি মূল চ্যানেলের পরেই যোগ হবে');
+}
+function openChannelForm(isEdit=false){
+ const card=$('channelFormCard');if(!card)return;if(!isEdit){window.bvDuplicateInsertAfter=null;clearChannel();populateChannelCategories();populateSerialOptions(1);}
+ const modal=bvShowModal({title:isEdit?$('channelFormTitle').textContent:'নতুন চ্যানেল যোগ',subtitle:'চ্যানেলের তথ্য দিন এবং সংরক্ষণ করুন',icon:'📺',body:'<div class="channel-form-host" id="channelFormHost"></div>',progress:0,log:'',actions:[{label:'বাতিল',onClick:m=>{m.remove();card.style.display='none';$('view-channels').appendChild(card);window.bvDuplicateInsertAfter=null} }]});
+ const host=modal.wrap.querySelector('#channelFormHost');host.appendChild(card);card.style.display='block';
+ // replace form's own save button with a clear modal footer action
+ const old=card.querySelector('.actions button[onclick="saveChannel()"]');if(old)old.style.display='none';
+ modal.update({actions:[{label:'বাতিল করুন',onClick:m=>{m.remove();card.style.display='none';$('view-channels').appendChild(card);window.bvDuplicateInsertAfter=null}},{label:isEdit?'আপডেট করুন':'সংরক্ষণ করুন',primary:true,onClick:async m=>{const ok=await saveChannel();if(ok){m.remove();card.style.display='none';$('view-channels').appendChild(card)}}}]});
+}
+function addStreamUrlField(value=''){const box=$('streamUrlFields');if(!box||box.children.length>=15){toast('সর্বোচ্চ ১৫টি Stream URL দেওয়া যাবে');return}const n=box.children.length+1;const row=document.createElement('div');row.className='stream-url-row';row.innerHTML='<span class="url-index">'+n+'.</span><input class="stream-url-input" type="url" inputmode="url" placeholder="https://.../video.mp4 অথবা .m3u8" value="'+escAttr(value)+'">';box.appendChild(row);if(box.children.length>=15){const b=box.parentElement.querySelector('button[onclick="addStreamUrlField()"]');if(b)b.disabled=true}}
+function removeStreamUrlField(){const box=$('streamUrlFields');if(box&&box.children.length>1){box.lastElementChild.remove();const b=box.parentElement.querySelector('button[onclick="addStreamUrlField()"]');if(b)b.disabled=false;[...box.children].forEach((r,i)=>r.querySelector('.url-index').textContent=(i+1)+'.')}else toast('কমপক্ষে একটি Stream URL রাখুন')}
+function getStreamUrls(){return [...document.querySelectorAll('.stream-url-input')].map(x=>x.value.trim()).filter(Boolean)}
+function setStreamUrls(urls){const box=$('streamUrlFields');if(!box)return;box.innerHTML='';(Array.isArray(urls)&&urls.length?urls:['']).slice(0,15).forEach(v=>addStreamUrlField(v))}
+function populateSerialOptions(selected=1){const sel=$('ch_serial');if(!sel)return;const max=Math.max(100,(records.channels||[]).length+1);sel.innerHTML=Array.from({length:max},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('');sel.value=String(selected||1)}
+function clearChannel(){['ch_id','ch_name','ch_category','ch_logo'].forEach(id=>$(id).value='');setStreamUrls(['']);populateSerialOptions(1);$('ch_type').value='auto';$('ch_enabled').value='true';$('channelFormTitle').textContent='নতুন চ্যানেল যোগ';selected.channels=''}
+function clearCategory(){['cat_id','cat_name','cat_logo'].forEach(id=>$(id).value='');$('cat_serial').value=1;$('cat_enabled').checked=true;selected.categories=''}
+function openCategoryForm(isEdit=false,index=-1){
+ const x=isEdit?(records.categories||[])[index]||{}:{};const id=x.id||x._id||x.category_id||'';
+ const body=`<div class="field"><label>ক্যাটাগরির নাম${isEdit?'':' *'}</label><input id="catModalName" value="${escAttr(x.name||x.category||'')}" placeholder="ক্যাটাগরির নাম দিন"></div>
+ <div class="field"><label>ক্যাটাগরি ইমেজ URL${isEdit?'':' (ঐচ্ছিক)'}</label><input id="catModalLogo" value="${escAttr(x.logo_url||x.image||x.image_url||'')}" placeholder="https://... Category Image URL দিন" oninput="previewCategoryLogo()"></div>
+ <div id="catLogoPreview" style="display:flex;align-items:center;gap:12px;margin:8px 0 16px"><img id="catPreviewImg" src="${escAttr(x.logo_url||x.image||x.image_url||'')}" style="width:64px;height:64px;object-fit:contain;border-radius:10px;background:white;${(x.logo_url||x.image||x.image_url)?'':'display:none'}" onerror="this.style.display='none'"><span class="muted">ছোট Preview</span></div>
+ ${isEdit?'<button type="button" class="primary" style="width:100%;margin-bottom:12px" onclick="openCategoryChannelPicker('+index+')">📺 একসাথে একাধিক চ্যানেল নির্বাচন</button>':''}`;
+ const modal=bvShowModal({title:isEdit?'ক্যাটাগরি এডিট':'নতুন ক্যাটাগরি যোগ',subtitle:isEdit?'ক্যাটাগরির তথ্য পরিবর্তন করুন':'নতুন ক্যাটাগরির তথ্য দিন',icon:'▧',body,progress:0,log:'',actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:isEdit?'আপডেট করুন':'সংরক্ষণ করুন',primary:true,onClick:async m=>{const name=m.querySelector('#catModalName').value.trim();if(!name){toast('ক্যাটাগরির নাম দিন');return}const d={id:id||undefined,name,category:name,serial:Number(x.serial??x.order)||((records.categories||[]).length+1),logo_url:m.querySelector('#catModalLogo').value.trim(),enabled:x.enabled!==false};try{await request(id?'update':'add','Categories',d);toast(isEdit?'ক্যাটাগরি আপডেটের অনুরোধ পাঠানো হয়েছে':'ক্যাটাগরি যোগের অনুরোধ পাঠানো হয়েছে');m.remove();await loadList('categories')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি: '+e.message)}}}]});
+}
+function previewCategoryLogo(){const u=$('catModalLogo')?.value.trim()||'',im=$('catPreviewImg');if(!im)return;if(u){im.src=u;im.style.display='block'}else{im.removeAttribute('src');im.style.display='none'}}
+function openCategoryChannelPicker(index){
+ const current=(records.categories||[])[index];if(!current)return;
+ const cats=(records.categories||[]).filter(c=>c.enabled!==false&&c.enabled!=='false');
+ const channels=(records.channels||[]).slice().sort((a,b)=>(Number(a.serial||a.order)||999999)-(Number(b.serial||b.order)||999999));
+ const options=cats.map(c=>{const n=c.name||c.category||'';return `<option value="${escAttr(n)}" ${n===(current.name||current.category||'')?'selected':''}>${esc(n)}</option>`}).join('');
+ const body=`<div class="field"><label>যে ক্যাটাগরিতে চ্যানেলগুলো রাখতে চান</label><select id="catMoveTarget">${options}</select></div>
+ <div class="actions" style="margin:8px 0 12px"><button type="button" onclick="document.querySelectorAll('#catChannelChoices input[type=checkbox]').forEach(x=>x.checked=true)">সব নির্বাচন</button><button type="button" onclick="document.querySelectorAll('#catChannelChoices input[type=checkbox]').forEach(x=>x.checked=false)">সব বাদ</button></div>
+ <div id="catChannelChoices" style="max-height:48vh;overflow:auto;border:1px solid #263852;border-radius:14px;padding:4px">${channels.length?channels.map((c,i)=>{const id=c.id||c._id||c.channel_id||c.channel_name||c.name||('serial-'+(c.serial||i+1));const nm=c.channel_name||c.name||'চ্যানেল '+(i+1);const cat=String(c.category||c.cat||'');return `<label style="display:flex;gap:10px;align-items:center;padding:12px;border-bottom:1px solid #233550"><input type="checkbox" value="${escAttr(String(id))}" ${cat===(current.name||current.category||'')?'checked':''} style="width:auto;flex-shrink:0"><span style="flex:1"><b>${esc(nm)}</b><small style="display:block;color:#a9b8cf">${esc(cat)} · #${esc(c.serial||c.order||i+1)}</small></span></label>`}).join(''):'<p class="empty">কোনো চ্যানেল পাওয়া যায়নি। আগে চ্যানেল তালিকা লোড করুন।</p>'}</div>
+ <p class="muted">এখানে সব চ্যানেল দেখা যাবে। যেগুলো নির্বাচন করবেন, সেগুলো নির্বাচিত ক্যাটাগরিতে স্থানান্তর হবে।</p>`;
+ bvShowModal({title:'একসাথে একাধিক চ্যানেল নির্বাচন',subtitle:'সব ক্যাটাগরির চ্যানেল থেকে নির্বাচন করুন',icon:'📺',body,actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:'নির্বাচিত চ্যানেল স্থানান্তর',primary:true,onClick:async m=>{
+  const chosen=[...m.querySelectorAll('#catChannelChoices input[type=checkbox]:checked')].map(x=>x.value);const target=m.querySelector('#catMoveTarget').value;
+  if(!chosen.length){toast('অন্তত একটি চ্যানেল নির্বাচন করুন');return}if(!target){toast('গন্তব্য ক্যাটাগরি নির্বাচন করুন');return}
+  const keyOf=c=>String(c.id||c._id||c.channel_id||c.channel_name||c.name||'');let done=0;const btns=m.querySelectorAll('button');btns.forEach(b=>b.disabled=true);
+  try{for(const key of chosen){const c=channels.find(x=>keyOf(x)===key);if(!c)continue;const d={...c,category:target,cat:target};await request('update','Channels',d);done++}toast(done+'টি চ্যানেল “'+target+'” ক্যাটাগরিতে স্থানান্তরের অনুরোধ পাঠানো হয়েছে');m.remove();await loadList('channels');await loadList('categories')}
+  catch(e){toast('কিছু চ্যানেল স্থানান্তর হয়নি: '+e.message);result(e.message);btns.forEach(b=>b.disabled=false)}
+ }}]});
+}
+async function saveChannel(){let name=$('ch_name').value.trim(),urls=getStreamUrls(),category=$('ch_category').value.trim();if(!name||!urls.length||!category){toast('নাম, অন্তত একটি Stream URL ও ক্যাটাগরি দিন');return false}const isDuplicate=Number.isFinite(Number(window.bvDuplicateInsertAfter))&&window.bvDuplicateInsertAfter!==null;let serial=Number($('ch_serial').value)||1;if(isDuplicate){serial=Number(window.bvDuplicateInsertAfter)+1;for(const x of records.channels){if((Number(x.serial||x.order)||0)>=serial)x.serial=Number(x.serial||x.order)+1}}const d={id:$('ch_id').value||undefined,channel_name:name,name,channel_url:urls[0],url:urls[0],stream_urls:urls,stream_urls_json:JSON.stringify(urls),logo_url:$('ch_logo').value.trim(),category,cat:category,serial,content_type:$('ch_type').value,enabled:$('ch_enabled').value==='true'};try{if(isDuplicate){await request('replace','Channels',records.channels.slice().sort((a,b)=>(Number(a.serial||a.order)||0)-(Number(b.serial||b.order)||0)).concat([d]).sort((a,b)=>(Number(a.serial||a.order)||0)-(Number(b.serial||b.order)||0)))}else{await request(d.id?'update':'add','Channels',d)}toast(isDuplicate?'ডুপ্লিকেট চ্যানেল সংরক্ষণের অনুরোধ পাঠানো হয়েছে':'চ্যানেল সংরক্ষণের অনুরোধ পাঠানো হয়েছে');window.bvDuplicateInsertAfter=null;clearChannel();await loadList('channels');return true}catch(e){result(e.message);toast('সংরক্ষণ হয়নি: '+e.message);return false}}
+async function saveCategory(){let name=$('cat_name').value.trim();if(!name){toast('ক্যাটাগরির নাম দিন');return}let d={id:$('cat_id').value||undefined,name,category:name,serial:Number($('cat_serial').value)||1,logo_url:$('cat_logo').value.trim(),enabled:$('cat_enabled').checked};try{await request(d.id?'update':'add','Categories',d);toast('ক্যাটাগরি সংরক্ষণের কমান্ড পাঠানো হয়েছে');clearCategory();await loadList('categories')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি')}}
+async function saveNotice(){let d={id:'main',notice_text:$('running_text').value.trim(),running_text:$('notice_text').value.trim(),notice_enabled:$('ticker_enabled').checked,ticker_enabled:$('notice_enabled').checked,enabled:true};try{await request('upsert','Notices',d);toast('বিজ্ঞপ্তি ও নোটিশ সংরক্ষণ হয়েছে')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি')}}
+async function populateScheduleCategories(){const sel=$('sch_category');if(!sel)return;const cats=(records.categories||[]).filter(c=>c.enabled!==false&&c.enabled!=='false');const current=sel.value;sel.innerHTML='<option value="">ক্যাটাগরি নির্বাচন করুন</option>'+cats.map(c=>{const n=c.name||c.category||'';return '<option value="'+escAttr(n)+'">'+esc(n)+'</option>'}).join('');if(current)sel.value=current;if(!cats.length)sel.innerHTML='<option value="">আগে ক্যাটাগরি যোগ করুন</option>'}
+function addScheduleUrlField(value=''){const box=$('scheduleUrlFields');if(!box||box.children.length>=15){toast('সর্বোচ্চ ১৫টি Stream URL দেওয়া যাবে');return}const n=box.children.length+1;const row=document.createElement('div');row.className='stream-url-row';row.innerHTML='<span class="url-index">'+n+'.</span><input class="schedule-url-input" type="url" inputmode="url" placeholder="https://.../video.mp4 অথবা .m3u8" value="'+escAttr(value)+'">';box.appendChild(row)}
+function removeScheduleUrlField(){const box=$('scheduleUrlFields');if(box&&box.children.length>1){box.lastElementChild.remove();[...box.children].forEach((r,i)=>r.querySelector('.url-index').textContent=(i+1)+'.')}else toast('কমপক্ষে একটি Stream URL রাখুন')}
+function getScheduleUrls(){return [...document.querySelectorAll('.schedule-url-input')].map(x=>x.value.trim()).filter(Boolean)}
+function setScheduleUrls(urls){const box=$('scheduleUrlFields');if(!box)return;box.innerHTML='';(Array.isArray(urls)&&urls.length?urls:['']).slice(0,15).forEach(v=>addScheduleUrlField(v))}
+function clearScheduleForm(){['sch_name','sch_logo','sch_start','sch_end'].forEach(id=>$(id).value='');$('sch_category').value='';setScheduleUrls(['']);populateSerialOptionsSchedule(1);$('sch_type').value='auto';$('sch_enabled').value='true';$('sch_mode').value='time';selected.schedule=''}
+function populateSerialOptionsSchedule(selected=1){const sel=$('sch_serial');if(!sel)return;const max=Math.max(100,(records.schedule||[]).length+1);sel.innerHTML=Array.from({length:max},(_,i)=>'<option value="'+(i+1)+'">'+(i+1)+'</option>').join('');sel.value=String(selected||1)}
+async function saveSchedule(){const name=$('sch_name').value.trim(),urls=getScheduleUrls(),category=$('sch_category').value,start=$('sch_start').value;if(!name||!urls.length||!category){toast('নাম, ক্যাটাগরি ও অন্তত একটি Stream URL দিন');return}if(!start){toast('শুরুর সময় দিন');return}const d={id:$('sch_id')?.value||undefined,name,channel_name:name,category,cat:category,url:urls[0],channel_url:urls[0],stream_urls:urls,stream_urls_json:JSON.stringify(urls),logo_url:$('sch_logo').value.trim(),serial:Number($('sch_serial').value)||1,content_type:$('sch_type').value,start_time:start,end_time:$('sch_end').value,mode:$('sch_mode').value,enabled:$('sch_enabled').value==='true'};try{await request(d.id?'update':'add','Schedule',d);toast('Schedule সংরক্ষণের কমান্ড পাঠানো হয়েছে');clearScheduleForm();await loadList('schedule')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি')}}
+async function saveLinks(){let d=[{id:'shop',name:'Online Shop',type:'shop',url:$('link_shop').value.trim(),enabled:true},{id:'pc',name:'PC Mode',type:'pc',url:$('link_pc').value.trim(),enabled:true},{id:'tv',name:'Android TV Mode',type:'tv',url:$('link_tv').value.trim(),enabled:true}];try{await request('replace','Links',d);toast('লিংক সংরক্ষণের কমান্ড পাঠানো হয়েছে')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি')}}
+async function saveSettings(){const pairs=[['app_name',$('set_app_name').value.trim()],['default_mode',$('set_mode').value],['update_url',$('set_update_url').value.trim()],['app_version',$('set_version').value.trim()],['release_date',$('set_release_date').value.trim()],['developer',$('set_developer').value.trim()],['contact_email',$('set_email').value.trim()],['contact_phone',$('set_phone').value.trim()],['facebook_url',$('set_facebook').value.trim()],['copyright',$('set_copyright').value.trim()],['whats_new',$('set_whats_new').value.trim()]];try{for(const [key,value] of pairs){await request('upsert','Settings',{id:key,key,value})}toast('সেটিংস ও আপডেট সংরক্ষণের কমান্ড পাঠানো হয়েছে')}catch(e){result(e.message);toast('সংরক্ষণ সম্পূর্ণ হয়নি')}}
+function selectDelete(type,id){selected[type]=id;deleteSelected(type)}
+async function deleteSelected(type){let id=selected[type];if(!id){toast('তালিকা থেকে রেকর্ড নির্বাচন করুন');return}const modal=bvShowModal({title:'রেকর্ড মুছুন',subtitle:'এই কাজটি Google Sheets-এ প্রয়োগ হবে',icon:'🗑️',body:'<p>আপনি কি নির্বাচিত রেকর্ডটি মুছতে চান?</p>',actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:'মুছে ফেলুন',primary:true,onClick:async m=>{m.remove();await performDeleteSelected(type,id)}}]});return}
+async function performDeleteSelected(type,id){try{await request('delete',sheetMap[type]||type,{id});toast('ডিলিট কমান্ড পাঠানো হয়েছে');selected[type]='';await loadList(type)}catch(e){result(e.message);toast('ডিলিট হয়নি')}}
+async function loadCounts(){try{await loadList('channels')}catch{}try{await loadList('categories')}catch{}}
+async function loadStartupChannels(){let status=$('startupChannelStatus');status.textContent='চ্যানেল তালিকা লোড হচ্ছে...';try{let arr=await loadList('channels');let sel=$('default_channel');let saved='',savedName='';try{let st=await request('list','Settings',{});let rows=Array.isArray(st.data)?st.data:[];let rec=rows.find(x=>x.key==='startChannel'||x.id==='startChannel');if(rec){let v=rec.value;try{if(typeof v==='string')v=JSON.parse(v)}catch{}saved=(v&&v.channelId)||'';savedName=(v&&v.channelName)||''}}catch{}if(saved)sel.value=saved;if(!sel.value&&savedName){const match=arr.find(x=>(x.channel_name||x.name||'')===savedName);if(match)sel.value=String(match.id||match._id||match.channel_id||match.channel_name||match.name)}status.textContent=arr.length+'টি চ্যানেল পাওয়া গেছে'+(sel.value?' · সংরক্ষিত চ্যানেল নির্বাচন করা হয়েছে':'');if(!arr.length)status.textContent='চ্যানেল পাওয়া যায়নি। API URL ও Google Sheets-এর Channels শিট পরীক্ষা করুন।'}catch(e){status.textContent='চ্যানেল লোড হয়নি: '+e.message}}
+async function saveDefaultChannel(){let id=$('default_channel').value;if(!id){$('startupChannelStatus').textContent='প্রথমে চালু হবে এমন একটি চ্যানেল নির্বাচন করুন।';return toast('প্রথম চ্যানেল নির্বাচন করুন')}let ch=records.channels.find((x,i)=>String(x.id||x._id||x.channel_id||x.channel_name||x.name||('serial-'+(x.serial||i+1)))===id);if(!ch){$('startupChannelStatus').textContent='নির্বাচিত চ্যানেলটি তালিকায় পাওয়া যায়নি। চ্যানেল রিফ্রেশ করে আবার নির্বাচন করুন।';return toast('নির্বাচিত চ্যানেল পাওয়া যায়নি')}try{const channelName=ch.channel_name||ch.name||'';await request('upsert','Settings',{id:'startChannel',key:'startChannel',value:JSON.stringify({channelId:id,channelName,serial:Number(ch.serial)||0})});$('startupChannelStatus').textContent='স্টার্টআপ চ্যানেল সংরক্ষণের অনুরোধ পাঠানো হয়েছে: '+channelName;toast('স্টার্টআপ চ্যানেল সংরক্ষণের অনুরোধ পাঠানো হয়েছে')}catch(e){result(e.message);$('startupChannelStatus').textContent='সংরক্ষণ হয়নি: '+e.message}}
+function safeJson(v){try{return JSON.parse(v)}catch{return null}}
+function channelToLegacyText(x){
+ const parsed=Array.isArray(x.stream_urls)?x.stream_urls:(safeJson(x.stream_urls_json)||[]);
+ const urls=parsed.length?parsed.join('\n'):String(x.channel_url||x.url||'');
+ return ['Name: '+(x.channel_name||x.name||x.title||''),'URL: '+urls,'Category: '+(x.category||x.cat||'অন্যান্য'),'Logo URL: '+(x.logo_url||x.logo||'')].join('\n');
+}
+function normalizeLegacyChannel(x,i){
+ const parsed=Array.isArray(x.stream_urls)?x.stream_urls:(safeJson(x.stream_urls_json)||[]);
+ const url=x.channel_url||x.url||parsed[0]||'';
+ const name=x.channel_name||x.name||x.title||'',category=x.category||x.cat||'';
+ if(!name||!url||!category)throw Error('রেকর্ড '+(i+1)+': Name, URL এবং Category দিতে হবে।');
+ const urls=parsed.length?parsed:[url];
+ return {id:x.id||undefined,channel_name:name,name,channel_url:url,url,stream_urls:urls,stream_urls_json:JSON.stringify(urls),category,cat:category,logo_url:x.logo_url||x.logo||'',serial:Number(x.serial||x.order)||i+1,content_type:x.content_type||'auto',enabled:x.enabled!==false&&x.enabled!=='false'};
+}
+function parseLegacyChannels(text){
+ const src=String(text||'').replace(/\r/g,'').trim();if(!src)throw Error('চ্যানেলের তালিকা খালি।');
+ if(src.startsWith('[')){const a=JSON.parse(src);if(!Array.isArray(a))throw Error('JSON array দিতে হবে।');return a.map(normalizeLegacyChannel)}
+ const lines=src.split('\n'),out=[];let cur={};
+ const commit=()=>{if(cur.channel_name||cur.name||cur.url||cur.channel_url)out.push(normalizeLegacyChannel(cur,out.length));cur={}};
+ for(const raw of lines){const line=raw.trim();if(!line){if(cur.channel_name||cur.name)commit();continue}
+ const m=line.match(/^(Name|Channel Name|URL|Stream URL|Category|Logo URL|Logo|Serial|Serial Number|Content Type|Status|Enabled)\s*:\s*(.*)$/i);
+ if(!m){if((cur.url||cur.channel_url)&&/^https?:\/\//i.test(line))cur.channel_url=(cur.channel_url||cur.url)+'\n'+line;continue}
+ const k=m[1].toLowerCase().replace(/\s+/g,' '),v=m[2].trim();
+ if((k==='name'||k==='channel name')&&(cur.channel_name||cur.name))commit();
+ if(k==='name'||k==='channel name')cur.channel_name=v;
+ else if(k==='url'||k==='stream url')cur.channel_url=v;
+ else if(k==='category')cur.category=v;
+ else if(k==='logo url'||k==='logo')cur.logo_url=v;
+ else if(k==='serial'||k==='serial number')cur.serial=Number(v)||1;
+ else if(k==='content type')cur.content_type=v||'auto';
+ else if(k==='status'||k==='enabled')cur.enabled=!/^(false|off|inactive|বন্ধ|0)$/i.test(v);
+ }
+ commit();if(!out.length)throw Error('Name:, URL:, Category: ও Logo URL: ফরম্যাটে লিখুন।');return out;
+}
+function bvShowModal({title,subtitle,icon='📦',body='',stats=[],progress=0,log='',actions=[]}){
+ const old=document.getElementById('bvWorkflowModal');if(old)old.remove();
+ const wrap=document.createElement('div');wrap.id='bvWorkflowModal';wrap.className='bv-modal-backdrop';
+ wrap.innerHTML=`<section class="bv-modal" role="dialog" aria-modal="true"><div class="bv-modal-head"><div class="bv-modal-icon">${icon}</div><div><h3 id="bvModalTitle">${title}</h3><div class="bv-modal-sub">${subtitle||''}</div></div></div><div id="bvModalBody">${body}</div><div class="bv-modal-stats" id="bvModalStats">${stats.map(x=>`<div class="bv-modal-stat"><span>${x.label}</span><strong>${x.value}</strong></div>`).join('')}</div><div class="bv-modal-track"><div class="bv-modal-bar" id="bvModalBar" style="width:${progress}%"></div></div><div class="bv-modal-sub" id="bvModalPct">${progress}%</div><pre class="bv-modal-log" id="bvModalLog">${log}</pre><div class="bv-modal-actions" id="bvModalActions">${actions.map((a,i)=>`<button type="button" data-bv-action="${i}" class="${a.primary?'bv-primary':'bv-secondary'}">${a.label}</button>`).join('')}</div></section>`;
+ document.body.appendChild(wrap);
+ wrap.querySelectorAll('[data-bv-action]').forEach(b=>b.addEventListener('click',()=>{const a=actions[Number(b.dataset.bvAction)];if(a&&a.onClick)a.onClick(wrap)}));
+ return {wrap,update({title,subtitle,progress,log,stats,actions}={}){if(title)wrap.querySelector('#bvModalTitle').textContent=title;if(subtitle!==undefined)wrap.querySelector('.bv-modal-sub').textContent=subtitle;if(progress!==undefined){wrap.querySelector('#bvModalBar').style.width=progress+'%';wrap.querySelector('#bvModalPct').textContent=progress+'%'}if(log!==undefined)wrap.querySelector('#bvModalLog').textContent=log;if(stats)wrap.querySelector('#bvModalStats').innerHTML=stats.map(x=>`<div class="bv-modal-stat"><span>${x.label}</span><strong>${x.value}</strong></div>`).join('');if(actions){wrap.querySelector('#bvModalActions').innerHTML=actions.map((a,i)=>`<button type="button" data-bv-action="${i}" class="${a.primary?'bv-primary':'bv-secondary'}">${a.label}</button>`).join('');wrap.querySelectorAll('[data-bv-action]').forEach(b=>b.addEventListener('click',()=>{const a=actions[Number(b.dataset.bvAction)];if(a&&a.onClick)a.onClick(wrap)}))}},close(){wrap.remove()}};
+}
+async function ensureCategoriesForChannels(rows,progressCb){
+ const names=[...new Set((rows||[]).map(x=>String(x.category||x.cat||'').trim()).filter(Boolean))];
+ if(!names.length)return [];
+ let existing=[];
+ try{const j=await request('list','Categories',{});existing=Array.isArray(j.data)?j.data:[]}catch(e){throw Error('ক্যাটাগরি লিস্ট পড়া যায়নি: '+e.message)}
+ const have=new Set(existing.map(x=>String(x.name||x.category||'').trim().toLocaleLowerCase()));
+ const missing=names.filter(n=>!have.has(n.toLocaleLowerCase()));
+ if(missing.length){
+   const start=(existing.length?Math.max(...existing.map(x=>Number(x.serial)||0)):0)+1;
+   const payload=missing.map((name,i)=>({name,category:name,serial:start+i,enabled:true}));
+   if(progressCb)progressCb('নতুন '+missing.length+'টি ক্যাটাগরি ক্যাটাগরি লিস্টে যোগ করা হচ্ছে: '+missing.join(', '));
+   await request('add','Categories',payload);
+ }
+ await loadList('categories');
+ return missing;
+}
+function backupChannels(){
+ const text=(records.channels||[]).map(channelToLegacyText).join('\n\n')+'\n';
+ const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');
+ a.href=url;a.download='BagerhatVision_Channel_Backup.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('TXT ফরম্যাটে ব্যাকআপ তৈরি হয়েছে');
+}
+function restoreChannels(){
+ const input=document.createElement('input');input.type='file';input.accept='.txt,.json,text/plain,application/json';
+ input.onchange=async()=>{if(!input.files||!input.files[0])return;let rows;try{rows=parseLegacyChannels(await input.files[0].text())}catch(e){bvShowModal({title:'Restore যাচাই ব্যর্থ',subtitle:'ফাইলের ফরম্যাট ঠিক করুন',icon:'⚠️',body:'<p>'+esc(e.message)+'</p>',progress:0,log:'বর্তমান চ্যানেল তালিকায় কোনো পরিবর্তন করা হয়নি।',actions:[{label:'বন্ধ করুন',primary:true,onClick:m=>m.remove()}]});return}
+ const total=rows.length;let finished=false;
+ const modal=bvShowModal({title:'Channel Restore',subtitle:'Google Sheets-এ চ্যানেল ফিরিয়ে আনুন',icon:'📥',body:'<p>ফাইলে <b>'+total+'</b>টি চ্যানেল পাওয়া গেছে। Restore করলে বর্তমান তালিকা প্রতিস্থাপিত হবে।</p>',stats:[{label:'ফাইলে পাওয়া গেছে',value:total},{label:'অবস্থা',value:'প্রস্তুত'}],progress:0,log:'১. ফাইল যাচাই সম্পন্ন\\n২. Restore শুরু করার অপেক্ষায়',actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:'Restore শুরু করুন',primary:true,onClick:async m=>{if(finished)return;finished=true;modal.update({title:'Restore চলছে…',subtitle:'Google Sheets-এ ডাটা পাঠানো হচ্ছে',progress:10,stats:[{label:'মোট চ্যানেল',value:total},{label:'অবস্থা',value:'চলছে'}],log:'✓ ফাইল যাচাই সম্পন্ন\\n⏳ '+total+'টি চ্যানেল Google Sheets-এ পাঠানো হচ্ছে…',actions:[]});try{const addedCats=await ensureCategoriesForChannels(rows,msg=>modal.update({title:'Restore চলছে…',subtitle:'ক্যাটাগরি লিস্ট আপডেট হচ্ছে',progress:25,log:'✓ ফাইল যাচাই সম্পন্ন\\n⏳ '+msg}));modal.update({title:'Restore চলছে…',subtitle:'Google Sheets-এ চ্যানেল ফিরিয়ে আনা হচ্ছে',progress:45,log:'✓ ক্যাটাগরি লিস্ট যাচাই সম্পন্ন'+(addedCats.length?'\\n✓ নতুন ক্যাটাগরি যোগ: '+addedCats.join(', '):'\\n✓ সব ক্যাটাগরি আগে থেকেই ছিল')+'\\n⏳ '+total+'টি চ্যানেল Restore হচ্ছে…'});await request('replace','Channels',rows);modal.update({title:'Restore সম্পন্ন',subtitle:'চ্যানেল তালিকা আপডেট হয়েছে',progress:85,log:'✓ '+total+'টি চ্যানেল Google Sheets-এ পাঠানো হয়েছে\\n⏳ চ্যানেল তালিকা রিফ্রেশ হচ্ছে…'});await loadList('channels');modal.update({progress:100,stats:[{label:'মোট চ্যানেল',value:total},{label:'অবস্থা',value:'সফল'}],log:'✓ ফাইল যাচাই সম্পন্ন\\n✓ '+total+'টি চ্যানেল Restore হয়েছে\\n✓ চ্যানেল তালিকা রিফ্রেশ হয়েছে',actions:[{label:'সম্পন্ন',primary:true,onClick:m=>m.remove()}]});toast(total+'টি চ্যানেল Restore হয়েছে')}catch(e){modal.update({title:'Restore ব্যর্থ',subtitle:'Google Sheets সংযোগ বা API-তে সমস্যা হয়েছে',progress:100,log:'✗ Restore ব্যর্থ\\nকারণ: '+e.message,actions:[{label:'বন্ধ করুন',primary:true,onClick:m=>m.remove()}]});result(e.message)}}}]});
+ };
+ input.click();
+}
+async function bulkAddChannels(){
+ const btn=$('bulkSubmitBtn'),title=$('bulkProgressTitle'),count=$('bulkProgressCount'),bar=$('bulkProgressBar'),log=$('bulkProgressLog');
+ const update=(pct,msg,txt)=>{if(title)title.textContent=msg;if(count)count.textContent=pct+'%';if(bar)bar.style.width=pct+'%';if(log)log.textContent=txt};
+ let items;try{items=parseLegacyChannels($('bulk_json').value)}catch(e){update(0,'তালিকা যাচাই ব্যর্থ',e.message);toast(e.message);return}
+ if(!confirm('মোট '+items.length+'টি চ্যানেল Google Sheets-এ যোগ করবেন?'))return;
+ btn.disabled=true;let done=0,failed=0;const lines=['মোট চ্যানেল: '+items.length,'প্রসেস শুরু হচ্ছে…'];update(0,'প্রসেস শুরু হচ্ছে',lines.join('\n'));
+ try{const addedCats=await ensureCategoriesForChannels(items,msg=>{lines.push('⏳ '+msg);update(5,'ক্যাটাগরি লিস্ট আপডেট হচ্ছে',lines.join('\n'))});if(addedCats.length)lines.push('✓ ক্যাটাগরি লিস্টে যোগ: '+addedCats.join(', '));else lines.push('✓ সব ক্যাটাগরি আগে থেকেই লিস্টে আছে');update(5,'ক্যাটাগরি যাচাই সম্পন্ন',lines.join('\n'));for(let i=0;i<items.length;i+=10){const batch=items.slice(i,i+10);update(Math.round((done+failed)/items.length*100),'Google Sheets-এ পাঠানো হচ্ছে ('+(done+failed)+'/'+items.length+')',lines.join('\n'));try{await request('add','Channels',batch);done+=batch.length;lines.push('✓ '+done+'/'+items.length+'টি চ্যানেল যোগ হয়েছে')}catch(e){failed+=batch.length;lines.push('✗ '+(i+1)+'–'+(i+batch.length)+' ব্যাচ ব্যর্থ: '+e.message)}update(Math.round((done+failed)/items.length*100),'প্রসেস চলছে ('+(done+failed)+'/'+items.length+')',lines.join('\n'))}
+ try{await loadList('channels');lines.push('চ্যানেল তালিকা রিফ্রেশ হয়েছে')}catch(e){lines.push('তালিকা রিফ্রেশ হয়নি: '+e.message)}
+ update(100,failed?'প্রসেস শেষ — কিছু ব্যর্থ':'প্রসেস সম্পন্ন',lines.concat(['','সফল: '+done,'ব্যর্থ: '+failed,'মোট: '+items.length]).join('\n'));toast('বাল্ক প্রসেস শেষ: সফল '+done+', ব্যর্থ '+failed)
+ }catch(e){lines.push('ত্রুটি: '+e.message);update(100,'প্রসেসে সমস্যা হয়েছে',lines.join('\n'));result(e.message)}finally{btn.disabled=false}
+}
+function loadBulkTemplate(){
+ $('bulk_json').value=['Name: Amar Bangla','URL: https://example.com/amar-bangla.mp4','Category: বাংলাদেশী','Logo URL: https://example.com/amar-bangla.png','','Name: Bagerhat Vision','URL: https://example.com/bagerhat-vision.mp4','Category: অন্যান্য','Logo URL: https://example.com/bv-logo.png'].join('\n');
+}
+async function deleteAllChannels(){
+ const a=1+Math.floor(Math.random()*8),b=1+Math.floor(Math.random()*8);let busy=false;
+ const modal=bvShowModal({title:'⚠️ সব চ্যানেল মুছুন',subtitle:'নিরাপত্তা যাচাই প্রয়োজন',icon:'⚠️',body:'<p style="font-size:17px;font-weight:700;color:#f4f6ff">এই অপশনটি শুধুমাত্র চ্যানেল মুছবে। কোনো TV ক্যাটাগরি মুছবে না। ডিলিট করার আগে হিসাবটি সমাধান করুন।</p><p style="font-size:20px;color:#fff">'+a+' + '+b+' = ?</p><input id="deleteCaptchaAnswer" inputmode="numeric" type="number" placeholder="উত্তর লিখুন" style="border-color:#7738f5">',progress:0,log:'',actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:'ডিলিট করুন',primary:true,onClick:async m=>{if(busy)return;const ans=Number(m.querySelector('#deleteCaptchaAnswer').value);if(ans!==a+b){toast('ক্যাপচা উত্তর সঠিক নয়');return}busy=true;try{await request('replace','Channels',[]);records.channels=[];renderTable('channels');m.remove();toast('সব চ্যানেল মুছে ফেলার অনুরোধ সফল হয়েছে')}catch(e){busy=false;result(e.message);toast('ডিলিট হয়নি: '+e.message)}}}]});
+}
+async function deleteChannelRange(){let a=+$('delete_start').value,b=+$('delete_end').value;if(!a||!b||b<a)return toast('সঠিক রেঞ্জ দিন');let rows=records.channels.filter(x=>Number(x.serial||x.order)>=a&&Number(x.serial||x.order)<=b);const modal=bvShowModal({title:'চ্যানেল রেঞ্জ ডিলিট',subtitle:'নির্বাচিত চ্যানেলগুলো মুছে ফেলা হবে',icon:'🗑️',body:'<p>'+rows.length+'টি চ্যানেল ('+a+'–'+b+') মুছে ফেলবেন?</p>',progress:0,log:'ডিলিট নিশ্চিত করার অপেক্ষায়',actions:[{label:'বাতিল',onClick:m=>m.remove()},{label:'ডিলিট করুন',primary:true,onClick:async m=>{m.update({title:'ডিলিট চলছে…',subtitle:'Google Sheets-এ পরিবর্তন পাঠানো হচ্ছে',progress:10,log:'⏳ '+rows.length+'টি চ্যানেল মুছে ফেলা হচ্ছে',actions:[]});try{for(let i=0;i<rows.length;i++){await request('delete','Channels',{id:rows[i].id||rows[i]._id||rows[i].channel_id});m.update({progress:Math.round((i+1)/Math.max(rows.length,1)*90),log:'✓ '+(i+1)+' / '+rows.length+' সম্পন্ন'})}await loadList('channels');m.update({title:'ডিলিট সম্পন্ন',subtitle:'চ্যানেল তালিকা আপডেট হয়েছে',progress:100,log:'✓ '+rows.length+'টি চ্যানেল মুছে ফেলা হয়েছে',actions:[{label:'বন্ধ করুন',primary:true,onClick:m=>m.remove()}]})}catch(e){m.update({title:'ডিলিট ব্যর্থ',subtitle:e.message,progress:100,log:'✗ কাজ সম্পূর্ণ হয়নি',actions:[{label:'বন্ধ করুন',primary:true,onClick:m=>m.remove()}]})}}}]});}
+async function loadAboutFromSettings(){
+ const j=await request('list','Settings',{});const rows=Array.isArray(j.data)?j.data:[];
+ const norm=v=>String(v??'').trim().toLowerCase().replace(/[ _-]+/g,'');const get=(...keys)=>{const wanted=keys.map(norm);const r=rows.find(y=>wanted.includes(norm(y.key||y.id||y.name||y.setting_key||y.settingName||'')));return r?(r.value??r.setting_value??r.settingValue??r.val??''):''};
+ let d={};const x=rows.find(y=>String(y.key||y.id||'').trim().toLowerCase()==='about');if(x){d=x.value;try{if(typeof d==='string')d=JSON.parse(d)}catch{} }d=d&&typeof d==='object'?d:{};
+ const set=(id,v)=>{const e=$(id);if(e)e.value=v==null?'':String(v)};
+ set('about_title',d.title||d.appName||get('about_title','abouttitle','app_name','appName','title'));
+ set('about_description',d.description||d.aboutDescription||get('about_description','aboutdescription','app_description','description','aboutText'));
+ set('about_phone',d.phone||d.contactPhone||get('contact_phone','about_phone','phone','mobile','contactNumber'));
+ set('about_email',d.email||d.contactEmail||get('contact_email','about_email','email','supportEmail'));
+ set('about_facebook',d.facebookGroup||d.facebook||d.facebookUrl||get('facebook_url','facebook_group','about_facebook','facebookUrl','groupLink'));
+ set('about_footer',d.footer||d.footerText||get('copyright','footer','footer_text','copyrightText'));
+ set('set_version',get('app_version','version','version_name'));
+ set('set_release_date',get('release_date','app_release_date'));
+ set('set_developer',get('developer','developer_team','team'));
+ set('set_email',get('contact_email','support_email','email')||d.email);
+ set('set_phone',get('contact_phone','support_phone','phone')||d.phone);
+ set('set_facebook',get('facebook_url','facebook_group','facebook')||d.facebookGroup||d.facebook);
+ set('set_update_url',get('update_url','download_url','apk_url'));
+ set('set_whats_new',get('whats_new','update_notes','changelog'));
+}
+async function saveAbout(){try{const settings=[['app_version',$('set_version').value],['release_date',$('set_release_date').value],['developer',$('set_developer').value],['contact_email',$('set_email').value],['contact_phone',String($('set_phone').value||'').trim()],['facebook_url',$('set_facebook').value],['update_url',$('set_update_url').value],['whats_new',$('set_whats_new').value]];for(const [key,value] of settings)await request('upsert','Settings',{id:key,key,value});await saveAboutLinks();toast('অ্যাপ ভার্সন, আপডেট ও Shop লিংক সংরক্ষণের অনুরোধ পাঠানো হয়েছে')}catch(e){result(e.message);toast('সংরক্ষণ হয়নি: '+e.message)}}
+
+async function loadAboutAndLinks(){
+ try{
+  await loadAboutFromSettings();
+  // Pull the Shop URL from both supported sheets; old rows may use different key/name columns.
+  let found='';
+  const norm=v=>String(v??'').trim().toLowerCase().replace(/[\s_-]+/g,'');
+  const isShopRow=r=>{
+   const vals=[r.key,r.id,r.name,r.type,r.setting_key,r.settingName,r.url_key,r.label].map(norm);
+   return vals.some(v=>['shop','onlineshop','shopurl','onlineshopurl','linkshop','footer_shop','onlineshoplink'].map(norm).includes(v)) || vals.some(v=>v.includes('shop')&&v!=='');
   };
-  const terms=[id,name,...(aliases[app.id]||[])].map(normalizeReleaseText).filter(x=>x.length>=3);
-  return terms.some(term=>hay.includes(term));
-}
-function assetUrl(asset){return asset && asset.browser_download_url ? asset.browser_download_url : ''}
-function imageAssetsForRelease(release){
-  const images=(release.assets||[]).filter(a=>/\.(png|jpe?g|webp|gif)$/i.test(a.name||''));
-  const logo=images.find(a=>/(^|[-_. ])(logo|icon|appicon|app-logo|application-logo)([-_. ]|$)/i.test(a.name||''))
-    || images.find(a=>/^(logo|icon|appicon|app-logo|application-logo)\.(png|jpe?g|webp|gif)$/i.test(a.name||''))
-    || images.find(a=>/(logo|icon)/i.test(a.name||''));
-  const shots=images.filter(a=>a!==logo && !/(banner|cover|feature|logo|icon)/i.test(a.name||''))
-    .sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:'base'}));
-  return {logo:assetUrl(logo),shots:shots.slice(0,6).map(assetUrl).filter(Boolean)};
-}
-async function syncGitHubReleases(){
-  try{
-    const response=await fetch(GITHUB_RELEASES_API,{headers:{'Accept':'application/vnd.github+json'}});
-    if(!response.ok) throw new Error('GitHub Releases API unavailable');
-    const releases=await response.json();
-    if(!Array.isArray(releases)) return;
-    let changed=false;
-    const publicReleases=releases.filter(release=>!release.draft&&!release.prerelease);
-    for(const app of apps){
-      const candidates=publicReleases.filter(release=>releaseMatchesApp(app,release));
-      if(!candidates.length) continue;
-      candidates.sort((a,b)=>new Date(b.published_at||b.created_at||0)-new Date(a.published_at||a.created_at||0));
-      const release=candidates[0];
-      const assets=release.assets||[];
-      const typeMatch=String(release.body||'').match(/^\s*Type\s*:\s*(Premium|Free)\s*$/im);
-      const declaredType=typeMatch?typeMatch[1].toLowerCase():'';
-      const releaseHasPremiumArchive=assets.some(asset=>/\.(zip|7z)$/i.test(asset.name||''));
-      const releaseStatus=declaredType || (releaseHasPremiumArchive && !assets.some(asset=>/\.apk$/i.test(asset.name||''))?'premium':'free');
-      const downloadAsset=assets.find(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'') &&
-        (releaseStatus==='premium'?/\.(zip|7z)$/i.test(asset.name||''):/\.apk$/i.test(asset.name||'')))
-        || assets.find(asset=>/\.(apk|zip|7z)$/i.test(asset.name||''));
-      app.status=releaseStatus;
-      if(downloadAsset) app.download=assetUrl(downloadAsset);
-      const countedAssets=assets.filter(asset=>/\.(apk|zip|7z)$/i.test(asset.name||''));
-      app.downloadCount=countedAssets.reduce((sum,asset)=>sum+Number(asset.download_count||0),0);
-      if(release.tag_name) app.version=release.tag_name;
-      const media=imageAssetsForRelease(release);
-      if(media.logo) app.icon=media.logo;
-      if(media.shots.length) app.shots=media.shots;
-      const releaseDescription=String(release.body||'').replace(/\r/g,'').trim();
-      app.platform=''; app.license='';
-      if(releaseDescription){
-        // Strip embedded HTML markup from GitHub release notes before displaying it to customers.
-        const cleanDescription=releaseDescription
-          .replace(/^\s*Type\s*:\s*(?:Premium|Free)\s*$/gim,'')
-          .replace(/<img\b[^>]*>/gi,' ')
-          .replace(/<br\s*\/?>/gi,'\n')
-          .replace(/<\/(p|div|h[1-6]|li|blockquote)>/gi,'\n')
-          .replace(/<[^>]*>/g,' ')
-          .replace(/&nbsp;/gi,' ')
-          .replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>')
-          .replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'")
-          .replace(/^#{1,6}\s+/gm,'').replace(/\*\*(.*?)\*\*/g,'$1')
-          .replace(/__(.*?)__/g,'$1').replace(/`([^`]+)`/g,'$1')
-          .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'$1 — $2')
-          .replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
-        if(cleanDescription){
-          // Split the Release body into a clean introduction and ordered feature bullets.
-          // GitHub's Markdown body may arrive with headings/bullets on the same line.
-          const headingPattern=/(?:⚙[️]?\s*)?(?:key\s*features|features|মূল\s*বৈশিষ্ট্য|ফিচার)\s*[:：.।…-]*/i;
-          const featureMatch=headingPattern.exec(cleanDescription);
-          // If the release notes contain bullets but no heading, treat the bullets as the Features list.
-          const firstBullet=cleanDescription.search(/^\s*[-*•▪◦]\s+/m);
-          const splitAt=featureMatch ? featureMatch.index : (firstBullet>=0 ? firstBullet : -1);
-          let introText=splitAt>=0 ? cleanDescription.slice(0,splitAt).trim() : cleanDescription;
-          introText=introText.replace(/[\s.。…·•-]+$/g,'').trim();
-          // About contains only the original introductory description, never a second copy of the feature list.
-          if(introText) app.about=introText;
-          if(splitAt>=0){
-            let featureText=featureMatch
-              ? cleanDescription.slice(featureMatch.index+featureMatch[0].length)
-              : cleanDescription.slice(firstBullet);
-            const sectionPattern=/(?:^|\n)\s*(platform|license|প্ল্যাটফর্ম|লাইসেন্স)\s*:?\s*/ig;
-            const sectionMatches=[...featureText.matchAll(sectionPattern)];
-            if(sectionMatches.length){
-              const allSectionsText=featureText;
-              featureText=allSectionsText.slice(0,sectionMatches[0].index);
-              for(let si=0;si<sectionMatches.length;si++){
-                const sm=sectionMatches[si];
-                const valueStart=sm.index+sm[0].length;
-                const valueEnd=si+1<sectionMatches.length?sectionMatches[si+1].index:allSectionsText.length;
-                const value=allSectionsText.slice(valueStart,valueEnd).trim().replace(/[\s.。…]+$/g,'');
-                const label=sm[1].toLowerCase();
-                if(/platform|প্ল্যাটফর্ম/i.test(label)) app.platform=value;
-                if(/license|লাইসেন্স/i.test(label)) app.license=value;
-              }
-            }
-            // Preserve original order and remove only Markdown bullet/number markers.
-            featureText=featureText.replace(/\s+[-*•▪◦]\s+/g,'\n').replace(/\s+\d+[.)]\s+/g,'\n');
-            const parsed=featureText.split(/\n+/)
-              .map(line=>line.replace(/^\s*[-*•▪◦]+\s*/, '').replace(/^\s*\d+[.)]\s*/, '').replace(/[\s.。…·•]+$/g,'').trim())
-              .filter(line=>line && !/^(?:⚙[️]?\s*)?(?:key\s*features|features|মূল\s*বৈশিষ্ট্য|ফিচার)$/i.test(line));
-            if(parsed.length) app.features=parsed;
-          }
-          const shortDesc=introText.split('\n').map(x=>x.trim()).find(x=>x && !/^[-*•#]/.test(x));
-          if(shortDesc && (!app.desc || app.desc==='Your World of Live TV')) app.desc=shortDesc.slice(0,180);
-        }
-      }
-      const bytes=Number(downloadAsset?.size||0);
-      if(bytes>0) app.size=bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':Math.max(1,Math.round(bytes/1024))+' KB';
-      const published=release.published_at||release.created_at;
-      if(published){app.date=published.slice(0,10);app.publishedAt=published;}
-      changed=true;
-    }
-    // Automatically add every public release that has a downloadable APK/ZIP/7z,
-    // even when the app was not listed in the original demo array.
-    const installableReleases=publicReleases.filter(release=>(release.assets||[]).some(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'')));
-    for(const release of installableReleases){
-      if(apps.some(app=>releaseMatchesApp(app,release))) continue;
-      const assets=release.assets||[];
-      const typeMatch=String(release.body||'').match(/^\s*Type\s*:\s*(Premium|Free)\s*$/im);
-      const declaredType=typeMatch?typeMatch[1].toLowerCase():'';
-      const premiumAsset=assets.find(asset=>/\.(zip|7z)$/i.test(asset.name||''));
-      const apkAsset=assets.find(asset=>/\.apk$/i.test(asset.name||''));
-      const releaseStatus=declaredType || (premiumAsset&&!apkAsset?'premium':'free');
-      const downloadAsset=releaseStatus==='premium'?(premiumAsset||apkAsset):(apkAsset||premiumAsset);
-      if(!downloadAsset) continue;
-      const media=imageAssetsForRelease(release);
-      const clean=String(release.body||'').replace(/\r/g,'').replace(/^\s*Type\s*:\s*(?:Premium|Free)\s*$/gim,'').replace(/<img\b[^>]*>/gi,' ').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,' ').replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'").replace(/^#{1,6}\s+/gm,'').replace(/\*\*(.*?)\*\*/g,'$1').replace(/__(.*?)__/g,'$1').replace(/`([^`]+)`/g,'$1').trim();
-      const lines=clean.split(/\n/).map(line=>line.trim()).filter(Boolean);
-      const bulletIndex=lines.findIndex(line=>/^[-*•▪◦]\s+/.test(line));
-      const intro=(bulletIndex>=0?lines.slice(0,bulletIndex):lines).join(' ').replace(/^#+\s*/,'').replace(/[\s.。…·•-]+$/g,'').trim();
-      const features=(bulletIndex>=0?lines.slice(bulletIndex):[]).map(line=>line.replace(/^[-*•▪◦]+\s*/, '').replace(/[\s.。…·•]+$/g,'').trim()).filter(Boolean);
-      const baseName=String(release.name||release.tag_name||'New App').replace(/\s+v?\d+(?:[._-]\d+)*\s*$/i,'').trim()||String(release.tag_name||'New App');
-      const id=normalizeReleaseText(baseName)||('release-'+String(release.id||Date.now()));
-      if(apps.some(app=>app.id===id||normalizeReleaseText(app.name)===normalizeReleaseText(baseName))) continue;
-      const bytes=Number(downloadAsset.size||0), published=release.published_at||release.created_at;
-      apps.push({id,name:baseName,desc:(intro.split(/[.!?।\n]/).map(x=>x.trim()).find(Boolean)||baseName).slice(0,180),version:release.tag_name||'',date:published?published.slice(0,10):'',size:bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':bytes?Math.max(1,Math.round(bytes/1024))+' KB':'',downloadCount:assets.filter(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'')).reduce((sum,asset)=>sum+Number(asset.download_count||0),0),status:releaseStatus,iconText:baseName.slice(0,3).toUpperCase(),about:intro||baseName,features,download:assetUrl(downloadAsset),pin:releaseStatus==='premium'?'PIN পেতে WhatsApp-এ যোগাযোগ করুন':'',icon:media.logo||'',shots:media.shots||[],platform:'',license:'',publishedAt:published||''});
-      changed=true;
-    }
-    // Remove the four built-in sample cards when no corresponding real release exists.
-    const sampleIds=['iptvplay','silent-camera','bagerhat-vision','jb-mart'];
-    const releasedIds=new Set(installableReleases.map(release=>release.id));
-    const matchedSampleIds=new Set();
-    for(const id of sampleIds){const app=apps.find(item=>item.id===id);if(app&&installableReleases.some(release=>releaseMatchesApp(app,release)))matchedSampleIds.add(id)}
-    const beforePrune=apps.length;
-    apps=apps.filter(app=>!sampleIds.includes(app.id)||matchedSampleIds.has(app.id));
-    if(apps.length!==beforePrune) changed=true;
-    if(changed){persist();renderApps();if(currentId)openDetails(currentId,true);else{const requested=getAppIdFromHash();if(requested){const match=apps.find(a=>a.id===requested);if(match)openDetails(match.id,true)}}}
-  }catch(err){
-    console.warn('Could not sync GitHub Releases; using saved/default links.',err);
+  const extract=r=>String(r.url??r.value??r.link??r.setting_value??r.settingValue??r.shop_url??r.shopUrl??'').trim();
+  for(const sheet of ['Links','Settings']){
+   try{
+    const j=await request('list',sheet,{});
+    let rows=j.data;
+    if(typeof rows==='string'){try{rows=JSON.parse(rows)}catch{rows=[]}}
+    if(!Array.isArray(rows)) rows=Array.isArray(j.rows)?j.rows:Array.isArray(j.items)?j.items:[];
+    const hit=rows.find(isShopRow);
+    if(hit){found=extract(hit);if(found)break;}
+   }catch(e){console.warn('Shop URL lookup '+sheet,e)}
   }
-}
-
-let apps=loadApps(),filter='all',currentId=null;
-function loadApps(){try{const a=JSON.parse(localStorage.getItem(KEY));return Array.isArray(a)?a:defaults.map(x=>({...x}))}catch(e){return defaults.map(x=>({...x}))}}
-function persist(){localStorage.setItem(KEY,JSON.stringify(apps))}
-function safe(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function appIcon(a){return a.icon?`<img src="${safe(a.icon)}" alt="${safe(a.name)} icon" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>${safe(a.iconText||'APP')}</span>')">`:`<span>${safe(a.iconText||a.name.slice(0,3).toUpperCase())}</span>`}
-const PAGE_SIZE=10;const listPages={all:1,free:1,premium:1};
-function setFilter(f,btn){filter=f;renderApps()}
-function resetListPages(){listPages.all=1;listPages.free=1;listPages.premium=1}
-function appCards(list){if(!list.length)return '<div class="empty">কোনো অ্যাপ পাওয়া যায়নি।</div>';return list.map(a=>`<article class="app-card" tabindex="0" role="button" onclick="openDetails('${safe(a.id)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetails('${safe(a.id)}')}"><div class="appicon">${appIcon(a)}</div><div class="appinfo"><div class="appname">${safe(a.name)}</div><div class="appdesc">${safe(a.desc||'')}</div><div class="meta"><span>▣ ${safe(a.date||'তারিখ নেই')}</span><span>${safe(a.size||'সাইজ নেই')}</span><span>⬇ ${Number(a.downloadCount||0).toLocaleString()} downloads</span></div></div><span class="badge ${a.status==='premium'?'premium':'free'}">${a.status==='premium'?'PREMIUM':'FREE'}</span><span class="chevron">›</span></article>`).join('')}
-function sortedNewest(list){return [...list].sort((a,b)=>{const ta=Date.parse(a.publishedAt||a.date||0)||0,tb=Date.parse(b.publishedAt||b.date||0)||0;return tb-ta||String(b.name).localeCompare(String(a.name),undefined,{numeric:true,sensitivity:'base'})})}
-function paginationMarkup(key,total){
-  const pages=Math.ceil(total/PAGE_SIZE);if(pages<=1)return '';
-  const current=Math.min(listPages[key]||1,pages);let buttons='';
-  for(let i=1;i<=pages;i++){
-    if(pages>7&&i>2&&i<pages-1&&Math.abs(i-current)>1){if(i===3||i===pages-2)buttons+='<span class="muted">…</span>';continue}
-    buttons+=`<button class="${i===current?'active':''}" onclick="goListPage('${key}',${i})">${i}</button>`;
+  // Cached data is a fallback only when the live sheet does not return the URL.
+  if(!found){
+   for(const key of ['bv_cache_links','bv_cache_settings']){
+    try{const rows=JSON.parse(localStorage.getItem(key)||'[]');const hit=rows.find(isShopRow);if(hit&&(found=extract(hit)))break;}catch{}
+   }
   }
-  return `<div class="pagination-info">মোট ${total}টি অ্যাপ · পৃষ্ঠা ${current} / ${pages}</div><div class="pagination"><button ${current===1?'disabled':''} onclick="goListPage('${key}',${current-1})">← আগের</button>${buttons}<button ${current===pages?'disabled':''} onclick="goListPage('${key}',${current+1})">পরের →</button></div>`;
+  const shop=$('about_link_shop');if(shop&&found)shop.value=found;
+  // Keep the number as a string; never parse it as a numeric value.
+  const phone=$('set_phone');if(phone){phone.type='text';phone.setAttribute('inputmode','tel');phone.setAttribute('autocomplete','tel');}
+ }catch(e){toast('About/লিংক লোড হয়নি: '+e.message)}
 }
-function renderList(listKey,items,listId,paginationId){const pageCount=Math.max(1,Math.ceil(items.length/PAGE_SIZE));listPages[listKey]=Math.min(Math.max(1,listPages[listKey]||1),pageCount);const start=(listPages[listKey]-1)*PAGE_SIZE;document.getElementById(listId).innerHTML=appCards(items.slice(start,start+PAGE_SIZE));document.getElementById(paginationId).innerHTML=paginationMarkup(listKey,items.length)}
-function goListPage(key,page){listPages[key]=page;renderApps();const target=key==='all'?'home':key;showPage(target);}
-function renderApps(){const q=(document.getElementById('search')?.value||'').toLowerCase().trim();const matches=sortedNewest(apps.filter(a=>`${a.name} ${a.desc}`.toLowerCase().includes(q)));const free=matches.filter(a=>a.status==='free'),premium=matches.filter(a=>a.status==='premium');renderList('all',matches,'appList','appPagination');renderList('free',free,'freeAppList','freePagination');renderList('premium',premium,'premiumAppList','premiumPagination')}
-let previousPage='home';
-function getAppIdFromHash(){const h=location.hash||'';if(h.startsWith('#app/'))return decodeURIComponent(h.slice(5));if(h.startsWith('#app='))return decodeURIComponent(h.slice(5));return ''}
-function appDetailsUrl(a){return location.origin+location.pathname+'#app/'+encodeURIComponent(a.id)}
-function showPage(id,fromPop=false){if(!document.getElementById(id))id='home';const state=history.state||{};const current=state.scPage||'home';if(id==='details'&&current!=='details')previousPage=current;if(!fromPop){if(id==='details'){const a=apps.find(x=>x.id===currentId);if(a)history.pushState({scPage:'details',appId:a.id,hasInAppParent:current!=='details'},'',appDetailsUrl(a))}else if(current!==id){history.pushState({scPage:id},'',location.pathname+location.search+'#'+id)}}document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.mobilebar button').forEach(b=>b.classList.toggle('active',b.dataset.page===id||((id==='details')&&b.dataset.page==='home')));window.scrollTo({top:0,behavior:'auto'});if(id==='admin'){renderAdminList();refreshMediaSelect()}}
-function goBackFromDetails(){const state=history.state||{};if(state.scPage==='details'&&state.hasInAppParent&&history.length>1){history.back();return}showPage(previousPage||'home')}
-window.addEventListener('popstate',function(event){const state=event.state||{};const hashId=getAppIdFromHash();if(hashId){const found=apps.find(a=>a.id===hashId);if(found){currentId=found.id;openDetails(found.id,true);return}currentId=hashId;showPage('details',true);return}let id=state.scPage;if(!id){const hash=location.hash.slice(1);id=['home','about','free','premium','details','admin'].includes(hash)?hash:'home'}if(id==='details'){const target=state.appId||'';if(target&&apps.some(a=>a.id===target)){openDetails(target,true);return}id='home'}showPage(id,true)});
-const initialAppId=getAppIdFromHash();const initialHash=location.hash.slice(1);if(!history.state||!history.state.scPage)history.replaceState(initialAppId?{scPage:'details',appId:initialAppId,hasInAppParent:false}:{scPage:['home','about','free','premium','admin'].includes(initialHash)?initialHash:'home'},'',location.pathname+location.search+location.hash);
-function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(window.__scToastTimer);window.__scToastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
-async function shareApp(id){const a=apps.find(x=>x.id===id);if(!a){toast('অ্যাপের তথ্য পাওয়া যায়নি।');return}const url=appDetailsUrl(a);const description=String(a.desc||'অ্যাপের বিস্তারিত ও ডাউনলোড লিংক দেখুন।').trim();const message=`📱 ${a.name} — SC Android Studio
+async function saveAboutLinks(){try{const url=String($('about_link_shop').value||'').trim();await request('upsert','Links',{id:'shop',key:'shop',name:'Online Shop',type:'shop',value:url,url,link:url});try{const rows=JSON.parse(localStorage.getItem('bv_cache_links')||'[]');const next=rows.filter(r=>!['shop','onlineshop','shopurl','onlineshopurl'].includes(String(r.key||r.id||r.name||r.type||'').toLowerCase().replace(/[\s_-]+/g,'')));next.push({id:'shop',key:'shop',name:'Online Shop',type:'shop',value:url,url,link:url});localStorage.setItem('bv_cache_links',JSON.stringify(next))}catch{}toast('Shop লিংক সংরক্ষণের অনুরোধ পাঠানো হয়েছে')}catch(e){toast('Shop লিংক সংরক্ষণ হয়নি: '+e.message)}}
 
-${description}
+function init(){ $('channelFormCard').style.display='none'; setStreamUrls(['']);populateSerialOptions(1);setScheduleUrls(['']);populateSerialOptionsSchedule(1);$('apiUrl').value=localStorage.getItem('bv_admin_api_url')||DEFAULT_SHEETS_API_URL;localStorage.setItem('bv_admin_api_url',$('apiUrl').value);
+ // Show last known records immediately; then refresh from Sheets in the background.
+ ['channels','categories','schedule','notices','links','settings'].forEach(k=>{try{const cached=JSON.parse(localStorage.getItem('bv_cache_'+k)||'null');if(Array.isArray(cached)){if(['channels','categories','schedule'].includes(k)){records[k]=cached;renderTable(k);if(k==='categories'){populateChannelCategories();populateScheduleCategories()}}else if(k==='channels'){} }}catch(_){}});
+ $('connStatus').textContent='সর্বশেষ ডাটা দেখানো হচ্ছে; আপডেট পরীক্ষা চলছে…';
+ Promise.allSettled(['channels','categories','schedule','notices','links','settings'].map(k=>loadList(k))).then(results=>{const failed=results.some(x=>x.status==='rejected');$('connStatus').textContent=failed?'কিছু ডাটা রিফ্রেশ হয়নি':'ডাটা আপডেট হয়েছে';loadStartupChannels().catch(()=>{});request('ping','Channels',{}).catch(()=>{});if(failed)toast('কিছু ডাটা লোড হয়নি—ইন্টারনেট ও Apps Script deployment পরীক্ষা করুন')});
+}
+init();
 
-🔗 বিস্তারিত ও ডাউনলোড:
-${url}
+/* Consistent visible processing feedback for save/delete/restore actions. */
+(function(){
+ const busyButtons=new WeakSet();
+ const labels={saveChannel:'চ্যানেল সংরক্ষণ হচ্ছে…',saveCategory:'ক্যাটাগরি সংরক্ষণ হচ্ছে…',saveNotice:'বিজ্ঞপ্তি/নোটিশ সংরক্ষণ হচ্ছে…',saveAbout:'About তথ্য সংরক্ষণ হচ্ছে…',saveAboutLinks:'Shop লিংক সংরক্ষণ হচ্ছে…',saveSchedule:'Schedule সংরক্ষণ হচ্ছে…',saveLinks:'লিংক সংরক্ষণ হচ্ছে…',saveSettings:'সেটিংস সংরক্ষণ হচ্ছে…',saveDefaultChannel:'স্টার্টআপ চ্যানেল সংরক্ষণ হচ্ছে…',deleteSelected:'ডিলিট হচ্ছে…',deleteAllChannels:'চ্যানেল মুছে ফেলা হচ্ছে…',deleteChannelRange:'নির্বাচিত চ্যানেল মুছে ফেলা হচ্ছে…',bulkAddChannels:'বাল্ক চ্যানেল যোগ হচ্ছে…',restoreChannels:'চ্যানেল রিস্টোর হচ্ছে…',backupChannels:'ব্যাকআপ তৈরি হচ্ছে…',saveApi:'URL সংরক্ষণ হচ্ছে…',pingApi:'সংযোগ পরীক্ষা হচ্ছে…'};
+ let activeButton=null;
+ document.addEventListener('click',e=>{const b=e.target.closest('button');if(b)activeButton=b},true);
+ function setBusy(btn,label){if(!btn||busyButtons.has(btn))return null;busyButtons.add(btn);const old=btn.innerHTML;btn.disabled=true;btn.setAttribute('aria-busy','true');btn.innerHTML='<span class="bv-inline-spinner" aria-hidden="true"></span> '+label;return()=>{btn.innerHTML=old;btn.disabled=false;btn.removeAttribute('aria-busy');busyButtons.delete(btn)}}
+ const style=document.createElement('style');style.textContent='.bv-inline-spinner{display:inline-block;width:15px;height:15px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;vertical-align:-2px;animation:bvspin .7s linear infinite;margin-right:5px}@keyframes bvspin{to{transform:rotate(360deg)}}button[aria-busy="true"]{opacity:.88;cursor:progress!important}';document.head.appendChild(style);
+ const names=Object.keys(labels);
+ names.forEach(name=>{const original=window[name];if(typeof original!=='function'||original.__bvBusyWrapped)return;const wrapped=async function(...args){let btn=activeButton;activeButton=null;if(!btn){const candidates=[...document.querySelectorAll('button')];btn=candidates.find(b=>!b.disabled&&((b.getAttribute('onclick')||'').includes(name)))||null}const release=setBusy(btn,labels[name]);try{return await original.apply(this,args)}finally{if(release)release()}};wrapped.__bvBusyWrapped=true;window[name]=wrapped});
+})();
 
-SC Android Studio
-Imagine. Build. Inspire.`;if(navigator.share){try{await navigator.share({title:`${a.name} — SC Android Studio`,text:message});return}catch(err){if(err&&err.name==='AbortError')return}}let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(message);copied=true}}catch(e){}if(!copied){const ta=document.createElement('textarea');ta.value=message;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{copied=document.execCommand('copy')}catch(e){}ta.remove()}toast(copied?'শেয়ারের মেসেজ ও অ্যাপের লিংক কপি হয়েছে।':'এই ব্রাউজারে শেয়ার বা কপি করা যাচ্ছে না।')}
-function openDetails(id,fromPop=false){const a=apps.find(x=>x.id===id);if(!a)return;currentId=id;const buttonLabel=a.status==='premium'?'⇩ Download ZIP / 7z':'⇩ Download APK';const download=`<button class="primary" onclick="downloadApp('${safe(a.id)}')">${buttonLabel}</button>`;const pin=a.status==='premium'?`<a class="whatsapp" href="https://wa.me/8801303072964?text=${encodeURIComponent('আসসালামু আলাইকুম, '+a.name+' অ্যাপের Premium PIN চাই।') }" target="_blank" rel="noopener">◉ Get PIN on WhatsApp</a>`:'';const features=(a.features||[]).filter(Boolean);const shots=(a.shots||[]).filter(Boolean);const screenshots=shots.length?`<div class="section"><h2>▧ App Screenshots (${shots.length})</h2><div class="screenshots">${shots.map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="${safe(a.name)} screenshot ${i+1}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`).join('')}</div></div>`:'';document.getElementById('detailContent').innerHTML=`<div class="detailtop"><div class="appicon">${appIcon(a)}</div><div style="min-width:0;flex:1"><div class="detailtitle">${safe(a.name)}</div><div class="muted">${safe(a.desc||'')}</div><div class="meta"><span>${safe(a.version||'')}</span><span>${safe(a.date||'')}</span><span>${safe(a.size||'')}</span><span>⬇ ${Number(a.downloadCount||0).toLocaleString()} downloads</span></div></div><span class="badge ${a.status==='premium'?'premium':'free'}">${a.status==='premium'?'PREMIUM':'FREE'}</span></div><div class="actions">${download}<button class="secondary" onclick="copyDownload('${safe(a.id)}')">⧉ Copy Download Link</button>${pin}</div><div class="facts"><div class="fact"><small>App Version</small><strong>${safe(a.version||'—')}</strong></div><div class="fact"><small>Updated</small><strong>${safe(a.date||'—')}</strong></div><div class="fact"><small>File Size</small><strong>${safe(a.size||'—')}</strong></div><div class="fact"><small>Downloads</small><strong>${Number(a.downloadCount||0).toLocaleString()}</strong></div><div class="fact"><small>License</small><strong>${a.status==='premium'?'Premium':'Free'}</strong></div></div>${screenshots}<div class="section"><h2>About This App</h2><p style="white-space:pre-line">${safe(a.about||a.desc||'')}</p>${features.length?`<h2 style="margin-top:20px">⚙ Key Features</h2><ul style="padding-left:20px;color:#bad0e0;line-height:1.9">${features.map(f=>`<li>${safe(f)}</li>`).join('')}</ul>`:''}${a.platform?`<h2 style="margin-top:20px">Platform</h2><p style="white-space:pre-line">${safe(a.platform)}</p>`:''}${a.license?`<h2 style="margin-top:20px">License</h2><p style="white-space:pre-line">${safe(a.license)}</p>`:''}</div>${a.status==='premium'?'<div class="notice">Premium অ্যাপ ব্যবহারের জন্য ZIP/7z ফাইলের PIN প্রয়োজন হতে পারে। PIN পেতে WhatsApp-এ যোগাযোগ করুন।</div>':''}`;showPage('details',fromPop)}
-function downloadApp(id){const a=apps.find(x=>x.id===id);if(!a)return;if(!a.download){toast('এই অ্যাপের ডাউনলোড লিংক শিগগিরই যুক্ত করা হবে।');return}window.open(a.download,'_blank','noopener')}
-async function copyDownload(id){const a=apps.find(x=>x.id===id);if(!a)return;if(!a.download){toast('এই অ্যাপের ডাউনলোড লিংক এখনো প্রস্তুত নয়।');return}let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(a.download);copied=true}}catch(e){}if(!copied){const ta=document.createElement('textarea');ta.value=a.download;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{copied=document.execCommand('copy')}catch(e){}ta.remove()}toast(copied?'Download link কপি হয়েছে।':'এই ব্রাউজারে কপি করা যাচ্ছে না।')}
-function adminTab(id,btn){document.querySelectorAll('.adminsection').forEach(x=>x.classList.toggle('active',x.id==='admin-'+id));document.querySelectorAll('.adminnav button').forEach(x=>x.classList.toggle('active',x===btn));if(id==='apps')renderAdminList();if(id==='media'){refreshMediaSelect();loadMedia()}}
-function renderAdminList(){const el=document.getElementById('adminList');if(!el)return;el.innerHTML=apps.map(a=>`<div class="adminrow"><div class="appicon">${appIcon(a)}</div><div class="appinfo"><strong>${safe(a.name)}</strong><div class="muted">${safe(a.version||'')} · ${a.status==='premium'?'Premium':'Free'}</div></div><button class="smallbtn" onclick="editApp('${safe(a.id)}')">Edit</button><button class="smallbtn danger" onclick="deleteApp('${safe(a.id)}')">Delete</button></div>`).join('')||'<div class="empty">কোনো অ্যাপ নেই।</div>'}
-function newApp(){document.getElementById('appForm').reset();document.getElementById('fId').value='';document.getElementById('formTitle').textContent='নতুন অ্যাপ যোগ করুন';const btn=[...document.querySelectorAll('.adminnav button')].find(b=>b.textContent.includes('নতুন'));adminTab('edit',btn)}
-function editApp(id){const a=apps.find(x=>x.id===id);if(!a)return;document.getElementById('fId').value=a.id;document.getElementById('fName').value=a.name||'';document.getElementById('fStatus').value=a.status||'free';document.getElementById('fVersion').value=a.version||'';document.getElementById('fDate').value=a.date||'';document.getElementById('fSize').value=a.size||'';document.getElementById('fIcon').value=a.icon||'';document.getElementById('fDesc').value=a.desc||'';document.getElementById('fFeatures').value=(a.features||[]).join('\n');document.getElementById('fAbout').value=a.about||'';document.getElementById('fDownload').value=a.download||'';document.getElementById('fPin').value=a.pin||'';document.getElementById('formTitle').textContent='অ্যাপ এডিট করুন';adminTab('edit',[...document.querySelectorAll('.adminnav button')].find(b=>b.textContent.includes('নতুন')))}
-function saveApp(e){e.preventDefault();const oldid=document.getElementById('fId').value;const name=document.getElementById('fName').value.trim();let id=oldid||name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||('app-'+Date.now());const a={id,name,status:document.getElementById('fStatus').value,version:document.getElementById('fVersion').value.trim(),date:document.getElementById('fDate').value,size:document.getElementById('fSize').value.trim(),icon:document.getElementById('fIcon').value.trim(),iconText:name.slice(0,3).toUpperCase(),desc:document.getElementById('fDesc').value.trim(),features:document.getElementById('fFeatures').value.split('\n').map(x=>x.trim()).filter(Boolean),about:document.getElementById('fAbout').value.trim(),download:document.getElementById('fDownload').value.trim(),pin:document.getElementById('fPin').value.trim(),shots:apps.find(x=>x.id===oldid)?.shots||[]};const idx=apps.findIndex(x=>x.id===id);if(idx>=0)apps[idx]=a;else apps.push(a);persist();renderApps();renderAdminList();refreshMediaSelect();alert('অ্যাপের তথ্য এই ব্রাউজারে সেভ হয়েছে।');adminTab('apps',[...document.querySelectorAll('.adminnav button')][0])}
-function deleteApp(id){const a=apps.find(x=>x.id===id);if(!a||!confirm(`“${a.name}” মুছে ফেলবেন?`))return;apps=apps.filter(x=>x.id!==id);persist();renderApps();renderAdminList();refreshMediaSelect()}
-function refreshMediaSelect(){const s=document.getElementById('mediaApp');if(!s)return;const prev=s.value;s.innerHTML=apps.map(a=>`<option value="${safe(a.id)}">${safe(a.name)}</option>`).join('');if(apps.some(a=>a.id===prev))s.value=prev}
-function loadMedia(){const id=document.getElementById('mediaApp').value;const a=apps.find(x=>x.id===id);document.getElementById('fShots').value=(a?.shots||[]).join('\n');document.getElementById('mediaPreview').innerHTML=(a?.shots||[]).map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="Preview ${i+1}" onerror="this.parentElement.innerHTML='<span>ছবি লোড হয়নি</span>'"></div>`).join('')}
-function saveMedia(){const a=apps.find(x=>x.id===document.getElementById('mediaApp').value);if(!a)return;a.shots=document.getElementById('fShots').value.split('\n').map(x=>x.trim()).filter(x=>/^https?:\/\//i.test(x)).slice(0,6);persist();loadMedia();alert('স্ক্রিনশট URL সেভ হয়েছে।')}
-function saveAbout(){const data={text:document.getElementById('aboutText').value,logo:document.getElementById('brandLogoUrl').value.trim()||'https://i.imgur.com/4ZfSPii.png',shots:document.getElementById('aboutShotUrls').value.split('\n').map(x=>x.trim()).filter(x=>/^https?:\/\//i.test(x)).slice(0,6)};localStorage.setItem(ABOUTKEY,JSON.stringify(data));renderAbout();toast('About তথ্য সেভ হয়েছে।')}
-function renderAbout(){try{const a=JSON.parse(localStorage.getItem(ABOUTKEY)||'{}');const logo=a.logo||'https://i.imgur.com/4ZfSPii.png';document.getElementById('brandMark').innerHTML=`<img src="${safe(logo)}" alt="SC Android Studio logo" onerror="this.style.display='none'">`;document.getElementById('aboutLogo').innerHTML=`<img src="${safe(logo)}" alt="SC Android Studio logo" onerror="this.style.display='none'">`;if(a.text)document.querySelector('#about .section p').textContent=a.text;if(document.getElementById('brandLogoUrl'))document.getElementById('brandLogoUrl').value=logo;const shots=(a.shots||[]);document.getElementById('aboutShots').innerHTML=shots.map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="About screenshot ${i+1}" onerror="this.parentElement.style.display='none'"></div>`).join('');document.getElementById('aboutShotsSection').style.display=shots.length?'block':'none'}catch(e){}}
-function exportData(){const data={brand:'SC Android Studio',apps,about:JSON.parse(localStorage.getItem(ABOUTKEY)||'{}')};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sc-android-studio-backup.json';a.click();URL.revokeObjectURL(url)}
-function importData(e){const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);if(!Array.isArray(data.apps))throw new Error('Invalid');apps=data.apps;persist();if(data.about)localStorage.setItem(ABOUTKEY,JSON.stringify(data.about));renderApps();renderAdminList();renderAbout();alert('Backup import হয়েছে।')}catch(err){alert('এই JSON ফাইলটি সঠিক backup নয়।')}};r.readAsText(f)}
-document.getElementById('mediaApp').addEventListener('change',loadMedia);
-renderApps();renderAbout();
-if(initialAppId){const existing=apps.find(a=>a.id===initialAppId);if(existing){currentId=existing.id;openDetails(existing.id,true)}else{currentId=initialAppId;showPage('details',true);document.getElementById('detailContent').innerHTML='<div class="empty">অ্যাপের তথ্য লোড হচ্ছে…</div>'}}
-else if(['home','about','free','premium','admin'].includes(location.hash.slice(1))){showPage(location.hash.slice(1),true)}
-syncGitHubReleases();
-</script>
-</body>
-</html>
+
+document.addEventListener('DOMContentLoaded',bvInitPageRouting);if(document.readyState!=='loading')setTimeout(bvInitPageRouting,0);
+</script></body></html>
