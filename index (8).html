@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#061321">
+<title>SC Android Studio</title>
+<style>
+:root{--bg:#061321;--panel:#0a1b2b;--panel2:#0d2336;--line:#173c57;--blue:#078bff;--cyan:#24d9ff;--text:#eef7ff;--muted:#9db6ca;--green:#00d6a0;--orange:#ffb52e;--shadow:0 14px 40px #0004}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#0b2942 0,#061321 48%,#030b13 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{width:min(1100px,100% - 28px);margin:auto}.topbar{position:sticky;top:0;z-index:10;background:#04101deF;backdrop-filter:blur(16px);border-bottom:1px solid #14354e}.nav{display:flex;align-items:center;gap:14px;min-height:74px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.3px}.brandmark{width:42px;height:42px;flex:0 0 42px;border-radius:13px;display:grid;place-items:center;background:#061321;overflow:hidden;box-shadow:0 0 22px #078bff42}.brandmark img{width:100%;height:100%;object-fit:contain}.tagline{font-size:11px;color:#a7c7dc;font-weight:500;margin-top:2px}.navspacer{flex:1}.navbtn,.iconbtn{border:1px solid var(--line);background:#0a1c2c;color:var(--text);border-radius:12px;padding:10px 14px}.navbtn:hover,.iconbtn:hover{border-color:var(--cyan)}.search{width:min(230px,35vw);background:#081929;color:white;border:1px solid var(--line);border-radius:12px;padding:11px 13px;outline:none}.search:focus,input:focus,textarea:focus,select:focus{border-color:var(--cyan)!important;box-shadow:0 0 0 3px #24d9ff18}.page{display:none;padding:28px 0 90px}.page.active{display:block}.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:8px 0 20px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);font-weight:800}.heading h1{margin:5px 0 0;font-size:clamp(25px,4vw,36px);letter-spacing:-.8px}.muted{color:var(--muted)}.filters{display:flex;gap:8px;flex-wrap:nowrap;margin-bottom:18px;width:100%}.filter{flex:1 1 0;min-width:0;text-align:center;white-space:nowrap;background:#091b2b;border:1px solid var(--line);color:#c7dbea;border-radius:999px;padding:9px 16px}.filter.active{background:var(--blue);border-color:var(--blue);color:white;box-shadow:0 5px 18px #078bff35}.app-list{display:grid;gap:12px}.app-card{display:flex;align-items:center;gap:12px;background:linear-gradient(115deg,#0a1d2e,#071625);border:1px solid var(--line);border-radius:16px;padding:10px 12px;transition:.18s;cursor:pointer;min-width:0}.app-card:hover{border-color:#1889c6;transform:translateY(-1px);box-shadow:var(--shadow)}.appicon{width:64px;height:64px;flex:0 0 64px;display:grid;place-items:center;border:1px solid #215574;border-radius:17px;background:linear-gradient(145deg,#102d45,#06101c);overflow:hidden;color:#4fe0ff;font-weight:900;font-size:24px}.appicon img{width:100%;height:100%;object-fit:cover}.appinfo{flex:1;min-width:0}.appname{font-size:18px;font-weight:800;margin-bottom:2px}.appdesc{font-size:12px;color:#adc6d8;line-height:1.35;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}.meta{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;margin-top:6px;color:#9cbad1;font-size:11px;white-space:nowrap;overflow:hidden}.meta span{flex:0 0 auto}.meta .list-version{display:none}.badge{font-size:11px;font-weight:800;letter-spacing:.3px;padding:6px 9px;border-radius:9px;border:1px solid;white-space:nowrap;align-self:flex-start}.free{color:var(--green);border-color:#00b989;background:#00d6a010}.premium{color:var(--orange);border-color:#c78215;background:#ffb52e10}.chevron{color:#9ac7e3;font-size:23px;padding:0 5px}.pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.pagination button{border:1px solid var(--line);background:#0a1c2c;color:#d9ecfa;border-radius:10px;padding:8px 12px}.pagination button.active{background:var(--blue);border-color:var(--blue);color:#fff}.pagination button:disabled{opacity:.35;cursor:not-allowed}.pagination-info{color:var(--muted);font-size:12px;margin:10px 0;text-align:center}.empty{padding:32px;text-align:center;border:1px dashed var(--line);border-radius:16px;color:var(--muted)}.detailnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.detailnav .back{margin:0;text-align:left}.sharebtn{border:1px solid #25516e;background:#0b2032;color:#eaf7ff;border-radius:12px;padding:9px 15px;font-weight:750;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}.sharebtn:hover{border-color:var(--cyan);filter:brightness(1.08)}.back{background:transparent;border:0;color:#a9d9f3;padding:0;margin-bottom:18px}.detailtop{display:flex;align-items:center;gap:17px;padding:20px;background:linear-gradient(130deg,#0d2b43,#081625);border:1px solid var(--line);border-radius:20px}.detailtop .appicon{width:100px;height:100px;flex-basis:100px}.detailtitle{font-size:clamp(24px,4vw,32px);font-weight:850;margin:0 0 5px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 24px}.primary,.secondary,.whatsapp{border:1px solid transparent;border-radius:12px;padding:12px 17px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary{background:linear-gradient(100deg,#087fff,#06a7e9);color:white;box-shadow:0 7px 20px #078bff27}.secondary{background:#0b2032;border-color:#25516e;color:#eaf7ff}.whatsapp{background:#00b985;color:#032219}.primary:hover,.secondary:hover,.whatsapp:hover{filter:brightness(1.08)}.section{margin-top:18px;background:#081a2a;border:1px solid var(--line);border-radius:18px;padding:20px}.section h2{font-size:17px;margin:0 0 13px}.section p{color:#bad0e0;line-height:1.75;margin:0}.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.fact{background:#0b2235;border:1px solid #173b55;border-radius:12px;padding:12px}.fact small{display:block;color:#92b1c9;font-size:11px;margin-bottom:5px}.fact strong{font-size:13px;overflow-wrap:anywhere}.screenshots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.shot{aspect-ratio:9/16;border-radius:13px;border:1px solid #23506c;background:linear-gradient(160deg,#0d2c45,#07111c);display:grid;place-items:center;text-align:center;color:#7daac6;overflow:hidden;font-size:12px}.shot img{width:100%;height:100%;object-fit:cover}.shot span{padding:12px}.abouthero{text-align:center;padding:32px 20px;background:linear-gradient(145deg,#0c2a43,#071523);border:1px solid var(--line);border-radius:22px}.biglogo{width:110px;height:110px;border-radius:28px;display:grid;place-items:center;margin:0 auto 14px;background:#061321;overflow:hidden;box-shadow:0 0 35px #078bff2e}.biglogo img{width:100%;height:100%;object-fit:contain}.abouthero h1{margin:0;font-size:clamp(25px,5vw,36px)}.abouthero .tagline{font-size:14px;margin-top:8px}.contactgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.contact{padding:16px;border:1px solid var(--line);background:#0a1c2c;border-radius:14px;overflow-wrap:anywhere}.contact small{display:block;color:var(--muted);margin-bottom:6px}.toast{position:fixed;left:50%;bottom:82px;transform:translate(-50%,18px);opacity:0;pointer-events:none;z-index:99;background:#102a3d;border:1px solid #2b6384;color:#effaff;padding:12px 16px;border-radius:12px;box-shadow:0 10px 30px #0007;max-width:calc(100% - 32px);text-align:center;font-size:13px;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}.footer{border-top:1px solid #14334b;color:#789bb5;text-align:center;padding:22px 12px;font-size:12px;margin-top:30px}.mobilebar{display:none}
+.adminlayout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:16px}.adminnav,.admincontent{background:#081a2a;border:1px solid var(--line);border-radius:16px;padding:14px}.adminnav button{display:block;width:100%;text-align:left;background:transparent;border:0;color:#b5cbdc;padding:11px;border-radius:10px;margin:2px 0}.adminnav button.active,.adminnav button:hover{background:#0e3a5a;color:#50dcff}.admincontent h2{margin:3px 0 16px}.adminsection{display:none}.adminsection.active{display:block}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:12px;color:#a8c4d7}.field input,.field textarea,.field select{width:100%;border:1px solid #20435b;background:#061523;color:white;border-radius:10px;padding:11px;outline:none}.field textarea{min-height:85px;resize:vertical}.full{grid-column:1/-1}.hint{font-size:12px;color:#91adc2;line-height:1.6}.adminlist{display:grid;gap:9px}.adminrow{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px}.adminrow .appicon{width:48px;height:48px;flex-basis:48px;border-radius:11px;font-size:15px}.adminrow .appinfo{font-size:13px}.smallbtn{padding:7px 10px;border-radius:9px;border:1px solid #28536d;background:#0a2336;color:white}.danger{border-color:#7e3038;color:#ff9b9b}.notice{border-left:3px solid var(--orange);background:#ffb52e0d;padding:12px;border-radius:0 10px 10px 0;color:#c4d4df;font-size:12px;line-height:1.6;margin:12px 0}
+@media(max-width:650px){.wrap{width:min(100% - 20px,600px)}.nav{min-height:64px;gap:8px}.brand{font-size:15px}.brandmark{width:38px;height:38px}.search{width:100px;padding:9px}.navbtn{padding:9px 10px;font-size:12px}.page{padding:20px 0 90px}.app-card{padding:9px;gap:9px;border-radius:13px}.appicon{width:54px;height:54px;flex-basis:54px;border-radius:12px;font-size:18px}.appname{font-size:15px}.appdesc{font-size:11px;line-height:1.25}.meta{gap:6px;font-size:10px;letter-spacing:-.15px}.badge{font-size:9px;padding:4px 5px}.badge{font-size:9px;padding:5px 6px}.chevron{display:none}.heading{align-items:start}.heading h1{font-size:27px}.filters{display:flex;flex-wrap:nowrap;gap:6px}.filter{flex:1 1 0;min-width:0;padding:9px 4px;font-size:clamp(10px,2.8vw,13px);letter-spacing:-.2px}.detailtop{padding:14px;gap:12px}.detailtop .appicon{width:78px;height:78px;flex-basis:78px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.screenshots{gap:7px}.section{padding:15px}.contactgrid{grid-template-columns:1fr}.adminlayout{grid-template-columns:1fr}.adminnav{display:flex;gap:5px;overflow-x:auto;padding:8px}.adminnav button{white-space:nowrap;width:auto;flex:0 0 auto;font-size:12px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.mobilebar{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;justify-content:space-around;background:#04101df5;border-top:1px solid #17405a;padding:9px 6px calc(9px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.mobilebar button{background:transparent;border:0;color:#9dbbd0;font-size:11px;display:grid;gap:4px;justify-items:center}.mobilebar button span{font-size:19px}.mobilebar button.active{color:var(--cyan)}.footer{margin-bottom:58px}.actions>*{flex:1 1 150px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap nav">
+  <a href="#" class="brand" onclick="showPage('home');return false"><div class="brandmark" id="brandMark"><img src="https://i.imgur.com/4ZfSPii.png" alt="SC Android Studio logo"></div><div><div>SC Android Studio</div><div class="tagline">Imagine. Build. Inspire.</div></div></a>
+  <div class="navspacer"></div>
+  <input id="search" class="search" type="search" placeholder="অ্যাপ খুঁজুন…" aria-label="অ্যাপ খুঁজুন" oninput="resetListPages();renderApps()">
+  <button class="navbtn" onclick="showPage('about')">About</button>
+</div></header>
+<main class="wrap">
+<section id="home" class="page active">
+  <div class="heading"><div><div class="eyebrow">Apps collection</div><h1>আমাদের অ্যাপস</h1><div class="muted" style="margin-top:7px;font-size:13px">আপনার পছন্দের অ্যাপটি বেছে নিন</div></div></div>
+  <div class="filters" role="group" aria-label="অ্যাপ পেজ">
+    <button class="filter active" onclick="showPage('home')">সব অ্যাপ</button>
+    <button class="filter" onclick="showPage('free')">Free Apps ↗</button>
+    <button class="filter" onclick="showPage('premium')">Premium Apps ↗</button>
+  </div>
+  <div id="appList" class="app-list"></div><div id="appPagination"></div>
+</section>
+<section id="free" class="page">
+  <button class="back" onclick="showPage('home')">← সব অ্যাপে ফিরে যান</button>
+  <div class="heading"><div><div class="eyebrow">Free collection</div><h1>Free Apps</h1><div class="muted" style="margin-top:7px;font-size:13px">সব ফ্রি অ্যাপ এক জায়গায়</div></div></div>
+  <div id="freeAppList" class="app-list"></div><div id="freePagination"></div>
+</section>
+<section id="premium" class="page">
+  <button class="back" onclick="showPage('home')">← সব অ্যাপে ফিরে যান</button>
+  <div class="heading"><div><div class="eyebrow">Premium collection</div><h1>Premium Apps</h1><div class="muted" style="margin-top:7px;font-size:13px">প্রিমিয়াম অ্যাপ ও ডাউনলোড</div></div></div>
+  <div id="premiumAppList" class="app-list"></div><div id="premiumPagination"></div>
+</section>
+<section id="details" class="page">
+  <div class="detailnav"><button class="back" onclick="goBackFromDetails()">← আগের পেজে ফিরে যান</button><button class="sharebtn" onclick="shareApp(currentId)" aria-label="এই অ্যাপ শেয়ার করুন">↗ শেয়ার</button></div>
+  <div id="detailContent"></div>
+</section>
+<section id="about" class="page">
+  <div class="abouthero">
+    <div class="biglogo" id="aboutLogo"><img src="https://i.imgur.com/4ZfSPii.png" alt="SC Android Studio logo"></div><h1>SC Android Studio</h1>
+    <div class="tagline">Imagine. Build. Inspire.</div>
+    <p class="muted" style="max-width:590px;margin:14px auto 0;line-height:1.7">We imagine useful ideas, build practical digital products, and inspire through technology.</p>
+  </div>
+  <div class="section"><h2>আমাদের পরিচিতি</h2><p>SC Android Studio হলো অ্যাপ ও ডিজিটাল প্রোডাক্ট তৈরির একটি ডেভেলপমেন্ট ব্র্যান্ড। এখানে আমাদের অ্যাপের তথ্য, স্ক্রিনশট এবং ডাউনলোড লিংক পাওয়া যাবে।</p></div>
+  <div class="section"><h2>যোগাযোগ</h2><div class="contactgrid">
+    <div class="contact"><small>Developer Team</small><strong>SC Android Studio</strong></div>
+    <div class="contact"><small>Founder</small><strong>Shagor Chakladar</strong></div>
+    <div class="contact"><small>Contact Number</small><strong><a href="tel:01303072964">01303-072964</a></strong></div>
+    <div class="contact"><small>Email Address</small><strong><a href="mailto:shagorchakladar@gmail.com">shagorchakladar@gmail.com</a></strong></div>
+    <div class="contact"><small>Facebook</small><strong><a href="https://www.facebook.com/shagorch24" target="_blank" rel="noopener">fb.com/shagorch24 ↗</a></strong></div>
+  </div><div class="actions"><a class="primary" href="mailto:shagorchakladar@gmail.com">✉ Email</a><a class="whatsapp" href="https://wa.me/8801303072964" target="_blank" rel="noopener">◉ WhatsApp</a><a class="secondary" href="https://www.facebook.com/shagorch24" target="_blank" rel="noopener">f Facebook</a></div></div>
+  <div class="section" id="aboutShotsSection" style="display:none"><h2>About Screenshots</h2><div id="aboutShots" class="screenshots" style="margin-top:14px"></div></div>
+</section>
+<section id="admin" class="page">
+  <div class="heading"><div><div class="eyebrow">Content management</div><h1>Admin Panel</h1><div class="muted" style="font-size:13px;margin-top:6px">অ্যাপের তথ্য ও ছবি সাজানোর ডেমো</div></div><button class="secondary" onclick="showPage('home')">সাইট দেখুন ↗</button></div>
+  <div class="notice">এই ভার্সনে Admin Panel-এর পরিবর্তন এই ব্রাউজারের Local Storage-এ সেভ হবে। GitHub-এ স্বয়ংক্রিয় Publish/Upload করতে পরে নিরাপদ API সংযোগ লাগবে। GitHub Token কখনো এই HTML ফাইলে রাখবেন না।</div>
+  <div class="adminlayout"><aside class="adminnav">
+    <button class="active" onclick="adminTab('apps',this)">▦ অ্যাপ ম্যানেজ</button>
+    <button onclick="adminTab('edit',this)">＋ নতুন / এডিট অ্যাপ</button>
+    <button onclick="adminTab('media',this)">▧ আইকন ও স্ক্রিনশট</button>
+    <button onclick="adminTab('aboutedit',this)">◎ About তথ্য</button>
+    <button onclick="adminTab('settings',this)">⇩ ডাউনলোড সেটিংস</button>
+    <button onclick="adminTab('backup',this)">⇧ Backup / Export</button>
+  </aside><div class="admincontent">
+    <div id="admin-apps" class="adminsection active"><h2>অ্যাপ ম্যানেজ</h2><div id="adminList" class="adminlist"></div><p style="margin-top:14px"><button class="primary" onclick="newApp()">＋ নতুন অ্যাপ যোগ করুন</button></p></div>
+    <div id="admin-edit" class="adminsection"><h2 id="formTitle">নতুন অ্যাপ যোগ করুন</h2><form id="appForm" onsubmit="saveApp(event)">
+      <input type="hidden" id="fId">
+      <div class="formgrid">
+        <div class="field"><label for="fName">অ্যাপের নাম *</label><input id="fName" required placeholder="যেমন: IPTVPlay"></div>
+        <div class="field"><label for="fStatus">Free / Premium *</label><select id="fStatus"><option value="free">Free</option><option value="premium">Premium</option></select></div>
+        <div class="field"><label for="fVersion">ভার্সন</label><input id="fVersion" placeholder="v1.0.0"></div>
+        <div class="field"><label for="fDate">রিলিজ / আপডেট তারিখ</label><input id="fDate" type="date"></div>
+        <div class="field"><label for="fSize">ফাইল সাইজ</label><input id="fSize" placeholder="যেমন: 12 MB"></div>
+        <div class="field"><label for="fIcon">অ্যাপ আইকন URL</label><input id="fIcon" placeholder="https://.../icon.png"></div>
+        <div class="field full"><label for="fDesc">সংক্ষিপ্ত বিবরণ</label><textarea id="fDesc" placeholder="অ্যাপটি কী কাজ করে?"></textarea></div>
+        <div class="field full"><label for="fFeatures">Key Features (প্রতি লাইনে একটি)</label><textarea id="fFeatures" placeholder="Live TV streaming&#10;Simple interface"></textarea></div>
+        <div class="field full"><label for="fAbout">About This App</label><textarea id="fAbout" placeholder="অ্যাপের বিস্তারিত পরিচিতি"></textarea></div>
+        <div class="field full"><label for="fDownload">APK / ZIP Download URL</label><input id="fDownload" type="url" placeholder="https://..."></div>
+        <div class="field full"><label for="fPin">Premium PIN / WhatsApp নির্দেশনা (ঐচ্ছিক)</label><input id="fPin" placeholder="PIN পেতে WhatsApp-এ যোগাযোগ করুন"></div>
+      </div>
+      <div class="actions"><button class="primary" type="submit">Save App</button><button class="secondary" type="button" onclick="newApp()">Clear</button></div>
+    </form></div>
+    <div id="admin-media" class="adminsection"><h2>আইকন ও স্ক্রিনশট</h2><p class="hint">প্রতিটি অ্যাপ এডিট করে আইকন URL দিন। স্ক্রিনশটের জন্য পাবলিক image URL-গুলো নিচে যোগ করুন—প্রতি লাইনে একটি URL। পরে ফাইল আপলোডের জন্য secure storage/API সংযুক্ত করা যাবে।</p>
+      <div class="field"><label>অ্যাপ বেছে নিন</label><select id="mediaApp" onchange="loadMedia()"></select></div>
+      <div class="field"><label>স্ক্রিনশট URL (প্রতি লাইনে একটি, সর্বোচ্চ 6)</label><textarea id="fShots" placeholder="https://.../screenshot1.png&#10;https://.../screenshot2.png"></textarea></div>
+      <button class="primary" onclick="saveMedia()">স্ক্রিনশট সেভ করুন</button><div id="mediaPreview" class="screenshots" style="margin-top:14px"></div>
+    </div>
+    <div id="admin-aboutedit" class="adminsection"><h2>About তথ্য</h2><p class="hint">এই ডেমোতে ব্র্যান্ডের মূল পরিচিতি নির্ধারিত আছে। এখানে About পেজের অতিরিক্ত বিবরণ ও স্ক্রিনশট URL সেট করা যাবে।</p>
+      <div class="field"><label>SC Android Studio Logo URL</label><input id="brandLogoUrl" type="url" placeholder="আপনার আসল SC Android Studio logo image URL"></div><div class="field"><label>About বিবরণ</label><textarea id="aboutText">SC Android Studio হলো অ্যাপ ও ডিজিটাল প্রোডাক্ট তৈরির একটি ডেভেলপমেন্ট ব্র্যান্ড।</textarea></div>
+      <div class="field"><label>About Screenshot URL (প্রতি লাইনে একটি)</label><textarea id="aboutShotUrls" placeholder="https://.../about1.png"></textarea></div><button class="primary" onclick="saveAbout()">About সেভ করুন</button>
+    </div>
+    <div id="admin-settings" class="adminsection"><h2>Download Settings</h2><p class="hint">Free অ্যাপে সরাসরি APK লিংক দিন। Premium অ্যাপের জন্য পাসওয়ার্ড-প্রটেক্টেড ZIP/7z লিংক দিন এবং PIN পেতে WhatsApp যোগাযোগের নির্দেশনা দিন।</p>
+      <div class="notice">Premium ZIP-এর জন্য AES-256 encryption ব্যবহার করুন। শুধু ZIP-এ পাসওয়ার্ড দিলেই ওয়েবসাইটে ZIP URL লুকানো থাকে না—ফাইলের লিংক যার কাছে থাকবে সে ফাইল ডাউনলোড করতে পারবে।</div>
+      <p>WhatsApp যোগাযোগ: <a href="https://wa.me/8801303072964" target="_blank" rel="noopener">wa.me/8801303072964</a></p>
+      <p class="hint">Details পেজে Download এবং Copy Download Link বোতাম থাকবে। কার্যকর ডাউনলোডের জন্য প্রতিটি অ্যাপের সঠিক APK/ZIP URL যুক্ত করুন।</p>
+    </div>
+    <div id="admin-backup" class="adminsection"><h2>Backup / Export</h2><p class="hint">সব অ্যাপের তথ্য JSON হিসেবে ডাউনলোড করুন অথবা JSON ব্যাকআপ থেকে পুনরুদ্ধার করুন।</p><div class="actions"><button class="primary" onclick="exportData()">Export JSON</button><label class="secondary" style="cursor:pointer">Import JSON<input id="importFile" type="file" accept=".json,application/json" hidden onchange="importData(event)"></label></div></div>
+  </div></div>
+</section>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div><footer class="footer">© SC Android Studio — All Rights Reserved.</footer>
+<nav class="mobilebar"><button class="active" data-page="home" onclick="showPage('home')"><span>⌂</span>Home</button><button data-page="home" onclick="showPage('home');document.getElementById('search').focus()"><span>▦</span>Apps</button><button data-page="about" onclick="showPage('about')"><span>ⓘ</span>About</button></nav>
+<script>
+const KEY='scAndroidStudioApps_v1', ABOUTKEY='scAndroidStudioAbout_v1';
+const GITHUB_RELEASES_API='https://api.github.com/repos/ShagorCh/shagorch.github.io/releases?per_page=100';
+const IPTVPLAY_FALLBACK='https://github.com/ShagorCh/shagorch.github.io/releases/download/v1.0.0/IPTV.Play.apk';
+const defaults=[
+{id:'iptvplay',name:'IPTVPlay',desc:'Your World of Live TV',version:'v1.0.0',date:'2026-10-10',size:'248 KB',downloadCount:0,status:'free',iconText:'IPTV',about:'IPTVPlay একটি সহজ ও শক্তিশালী লাইভ টিভি প্লেয়ার। M3U প্লেলিস্ট চালানো, চ্যানেল ক্যাটাগরি অনুযায়ী দেখা এবং পরিষ্কার ইন্টারফেস ব্যবহার করার সুবিধা রয়েছে।',features:['M3U/M3U8 playlist support','লাইভ টিভি চ্যানেল ক্যাটাগরি','সহজ ও পরিষ্কার ইন্টারফেস','প্লেলিস্ট সেভ করার সুবিধা','Android ফোন ও TV box-এ ব্যবহারযোগ্য'],download:IPTVPLAY_FALLBACK,pin:'',icon:'',shots:[]},
+{id:'silent-camera',name:'Silent Camera',desc:'Background silent camera recording',version:'v1.0.0',date:'2026-10-09',size:'3.2 MB',downloadCount:0,status:'premium',iconText:'◉',about:'Silent Camera অ্যাপের বিস্তারিত তথ্য এখানে যোগ করা হবে।',features:['সহজ রেকর্ডিং কন্ট্রোল','রেকর্ডিং ফাইল ম্যানেজমেন্ট'],download:'',pin:'PIN পেতে WhatsApp-এ যোগাযোগ করুন',icon:'',shots:[]},
+{id:'bagerhat-vision',name:'Bagerhat Vision',desc:'Live TV, Movies, Islamic, Cartoon',version:'v93.4',date:'2026-10-05',size:'15.8 MB',downloadCount:0,status:'free',iconText:'TV',about:'Bagerhat Vision হলো লাইভ টিভি ও ভিডিও কনটেন্ট দেখার অ্যাপ।',features:['লাইভ টিভি','ক্যাটাগরি অনুযায়ী চ্যানেল','ভিডিও প্লেব্যাক'],download:'',pin:'',icon:'',shots:[]},
+{id:'jb-mart',name:'JB Mart',desc:'Local E-commerce Shop App',version:'v1.0.0',date:'2026-10-01',size:'5.4 MB',downloadCount:0,status:'premium',iconText:'🛒',about:'JB Mart হলো স্থানীয় বাজারের জন্য মাল্টিভেন্ডর ই-কমার্স অ্যাপ।',features:['পণ্য ব্রাউজ ও অর্ডার','মার্চেন্ট প্যানেল','লোকাল ডেলিভারি সুবিধা'],download:'',pin:'PIN পেতে WhatsApp-এ যোগাযোগ করুন',icon:'',shots:[]}
+];
+
+function normalizeReleaseText(s=''){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'')}
+function releaseMatchesApp(app, release){
+  const assetNames=(release.assets||[]).map(asset=>asset.name||'').join(' ');
+  const hay=normalizeReleaseText([release.name,release.tag_name,assetNames].join(' '));
+  const id=normalizeReleaseText(app.id), name=normalizeReleaseText(app.name);
+  const aliases={
+    iptvplay:['iptvplay','iptv','ipvplay','ipv','iptv-play','ipv-play'],
+    'silent-camera':['silentcamera','silentcam'],
+    'bagerhat-vision':['bagerhatvision','bagerhatvisiontv'],
+    'jb-mart':['jbmart']
+  };
+  const terms=[id,name,...(aliases[app.id]||[])].map(normalizeReleaseText).filter(x=>x.length>=3);
+  return terms.some(term=>hay.includes(term));
+}
+function assetUrl(asset){return asset && asset.browser_download_url ? asset.browser_download_url : ''}
+function imageAssetsForRelease(release){
+  const images=(release.assets||[]).filter(a=>/\.(png|jpe?g|webp|gif)$/i.test(a.name||''));
+  const logo=images.find(a=>/(^|[-_. ])(logo|icon|appicon|app-logo|application-logo)([-_. ]|$)/i.test(a.name||''))
+    || images.find(a=>/^(logo|icon|appicon|app-logo|application-logo)\.(png|jpe?g|webp|gif)$/i.test(a.name||''))
+    || images.find(a=>/(logo|icon)/i.test(a.name||''));
+  const shots=images.filter(a=>a!==logo && !/(banner|cover|feature|logo|icon)/i.test(a.name||''))
+    .sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:'base'}));
+  return {logo:assetUrl(logo),shots:shots.slice(0,6).map(assetUrl).filter(Boolean)};
+}
+async function syncGitHubReleases(){
+  try{
+    const response=await fetch(GITHUB_RELEASES_API,{headers:{'Accept':'application/vnd.github+json'}});
+    if(!response.ok) throw new Error('GitHub Releases API unavailable');
+    const releases=await response.json();
+    if(!Array.isArray(releases)) return;
+    let changed=false;
+    const publicReleases=releases.filter(release=>!release.draft&&!release.prerelease);
+    for(const app of apps){
+      const candidates=publicReleases.filter(release=>releaseMatchesApp(app,release));
+      if(!candidates.length) continue;
+      candidates.sort((a,b)=>new Date(b.published_at||b.created_at||0)-new Date(a.published_at||a.created_at||0));
+      const release=candidates[0];
+      const assets=release.assets||[];
+      const typeMatch=String(release.body||'').match(/^\s*Type\s*:\s*(Premium|Free)\s*$/im);
+      const declaredType=typeMatch?typeMatch[1].toLowerCase():'';
+      const releaseHasPremiumArchive=assets.some(asset=>/\.(zip|7z)$/i.test(asset.name||''));
+      const releaseStatus=declaredType || (releaseHasPremiumArchive && !assets.some(asset=>/\.apk$/i.test(asset.name||''))?'premium':'free');
+      const downloadAsset=assets.find(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'') &&
+        (releaseStatus==='premium'?/\.(zip|7z)$/i.test(asset.name||''):/\.apk$/i.test(asset.name||'')))
+        || assets.find(asset=>/\.(apk|zip|7z)$/i.test(asset.name||''));
+      app.status=releaseStatus;
+      if(downloadAsset) app.download=assetUrl(downloadAsset);
+      const countedAssets=assets.filter(asset=>/\.(apk|zip|7z)$/i.test(asset.name||''));
+      app.downloadCount=countedAssets.reduce((sum,asset)=>sum+Number(asset.download_count||0),0);
+      if(release.tag_name) app.version=release.tag_name;
+      const media=imageAssetsForRelease(release);
+      if(media.logo) app.icon=media.logo;
+      if(media.shots.length) app.shots=media.shots;
+      const releaseDescription=String(release.body||'').replace(/\r/g,'').trim();
+      app.platform=''; app.license='';
+      if(releaseDescription){
+        // Strip embedded HTML markup from GitHub release notes before displaying it to customers.
+        const cleanDescription=releaseDescription
+          .replace(/^\s*Type\s*:\s*(?:Premium|Free)\s*$/gim,'')
+          .replace(/<img\b[^>]*>/gi,' ')
+          .replace(/<br\s*\/?>/gi,'\n')
+          .replace(/<\/(p|div|h[1-6]|li|blockquote)>/gi,'\n')
+          .replace(/<[^>]*>/g,' ')
+          .replace(/&nbsp;/gi,' ')
+          .replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>')
+          .replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'")
+          .replace(/^#{1,6}\s+/gm,'').replace(/\*\*(.*?)\*\*/g,'$1')
+          .replace(/__(.*?)__/g,'$1').replace(/`([^`]+)`/g,'$1')
+          .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'$1 — $2')
+          .replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+        if(cleanDescription){
+          // Split the Release body into a clean introduction and ordered feature bullets.
+          // GitHub's Markdown body may arrive with headings/bullets on the same line.
+          const headingPattern=/(?:⚙[️]?\s*)?(?:key\s*features|features|মূল\s*বৈশিষ্ট্য|ফিচার)\s*[:：.।…-]*/i;
+          const featureMatch=headingPattern.exec(cleanDescription);
+          // If the release notes contain bullets but no heading, treat the bullets as the Features list.
+          const firstBullet=cleanDescription.search(/^\s*[-*•▪◦]\s+/m);
+          const splitAt=featureMatch ? featureMatch.index : (firstBullet>=0 ? firstBullet : -1);
+          let introText=splitAt>=0 ? cleanDescription.slice(0,splitAt).trim() : cleanDescription;
+          introText=introText.replace(/[\s.。…·•-]+$/g,'').trim();
+          // About contains only the original introductory description, never a second copy of the feature list.
+          if(introText) app.about=introText;
+          if(splitAt>=0){
+            let featureText=featureMatch
+              ? cleanDescription.slice(featureMatch.index+featureMatch[0].length)
+              : cleanDescription.slice(firstBullet);
+            const sectionPattern=/(?:^|\n)\s*(platform|license|প্ল্যাটফর্ম|লাইসেন্স)\s*:?\s*/ig;
+            const sectionMatches=[...featureText.matchAll(sectionPattern)];
+            if(sectionMatches.length){
+              const allSectionsText=featureText;
+              featureText=allSectionsText.slice(0,sectionMatches[0].index);
+              for(let si=0;si<sectionMatches.length;si++){
+                const sm=sectionMatches[si];
+                const valueStart=sm.index+sm[0].length;
+                const valueEnd=si+1<sectionMatches.length?sectionMatches[si+1].index:allSectionsText.length;
+                const value=allSectionsText.slice(valueStart,valueEnd).trim().replace(/[\s.。…]+$/g,'');
+                const label=sm[1].toLowerCase();
+                if(/platform|প্ল্যাটফর্ম/i.test(label)) app.platform=value;
+                if(/license|লাইসেন্স/i.test(label)) app.license=value;
+              }
+            }
+            // Preserve original order and remove only Markdown bullet/number markers.
+            featureText=featureText.replace(/\s+[-*•▪◦]\s+/g,'\n').replace(/\s+\d+[.)]\s+/g,'\n');
+            const parsed=featureText.split(/\n+/)
+              .map(line=>line.replace(/^\s*[-*•▪◦]+\s*/, '').replace(/^\s*\d+[.)]\s*/, '').replace(/[\s.。…·•]+$/g,'').trim())
+              .filter(line=>line && !/^(?:⚙[️]?\s*)?(?:key\s*features|features|মূল\s*বৈশিষ্ট্য|ফিচার)$/i.test(line));
+            if(parsed.length) app.features=parsed;
+          }
+          const shortDesc=introText.split('\n').map(x=>x.trim()).find(x=>x && !/^[-*•#]/.test(x));
+          if(shortDesc && (!app.desc || app.desc==='Your World of Live TV')) app.desc=shortDesc.slice(0,180);
+        }
+      }
+      const bytes=Number(downloadAsset?.size||0);
+      if(bytes>0) app.size=bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':Math.max(1,Math.round(bytes/1024))+' KB';
+      const published=release.published_at||release.created_at;
+      if(published){app.date=published.slice(0,10);app.publishedAt=published;}
+      changed=true;
+    }
+    // Automatically add every public release that has a downloadable APK/ZIP/7z,
+    // even when the app was not listed in the original demo array.
+    const installableReleases=publicReleases.filter(release=>(release.assets||[]).some(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'')));
+    for(const release of installableReleases){
+      if(apps.some(app=>releaseMatchesApp(app,release))) continue;
+      const assets=release.assets||[];
+      const typeMatch=String(release.body||'').match(/^\s*Type\s*:\s*(Premium|Free)\s*$/im);
+      const declaredType=typeMatch?typeMatch[1].toLowerCase():'';
+      const premiumAsset=assets.find(asset=>/\.(zip|7z)$/i.test(asset.name||''));
+      const apkAsset=assets.find(asset=>/\.apk$/i.test(asset.name||''));
+      const releaseStatus=declaredType || (premiumAsset&&!apkAsset?'premium':'free');
+      const downloadAsset=releaseStatus==='premium'?(premiumAsset||apkAsset):(apkAsset||premiumAsset);
+      if(!downloadAsset) continue;
+      const media=imageAssetsForRelease(release);
+      const clean=String(release.body||'').replace(/\r/g,'').replace(/^\s*Type\s*:\s*(?:Premium|Free)\s*$/gim,'').replace(/<img\b[^>]*>/gi,' ').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,' ').replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'").replace(/^#{1,6}\s+/gm,'').replace(/\*\*(.*?)\*\*/g,'$1').replace(/__(.*?)__/g,'$1').replace(/`([^`]+)`/g,'$1').trim();
+      const lines=clean.split(/\n/).map(line=>line.trim()).filter(Boolean);
+      const bulletIndex=lines.findIndex(line=>/^[-*•▪◦]\s+/.test(line));
+      const intro=(bulletIndex>=0?lines.slice(0,bulletIndex):lines).join(' ').replace(/^#+\s*/,'').replace(/[\s.。…·•-]+$/g,'').trim();
+      const features=(bulletIndex>=0?lines.slice(bulletIndex):[]).map(line=>line.replace(/^[-*•▪◦]+\s*/, '').replace(/[\s.。…·•]+$/g,'').trim()).filter(Boolean);
+      const baseName=String(release.name||release.tag_name||'New App').replace(/\s+v?\d+(?:[._-]\d+)*\s*$/i,'').trim()||String(release.tag_name||'New App');
+      const id=normalizeReleaseText(baseName)||('release-'+String(release.id||Date.now()));
+      if(apps.some(app=>app.id===id||normalizeReleaseText(app.name)===normalizeReleaseText(baseName))) continue;
+      const bytes=Number(downloadAsset.size||0), published=release.published_at||release.created_at;
+      apps.push({id,name:baseName,desc:(intro.split(/[.!?।\n]/).map(x=>x.trim()).find(Boolean)||baseName).slice(0,180),version:release.tag_name||'',date:published?published.slice(0,10):'',size:bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':bytes?Math.max(1,Math.round(bytes/1024))+' KB':'',downloadCount:assets.filter(asset=>/\.(apk|zip|7z)$/i.test(asset.name||'')).reduce((sum,asset)=>sum+Number(asset.download_count||0),0),status:releaseStatus,iconText:baseName.slice(0,3).toUpperCase(),about:intro||baseName,features,download:assetUrl(downloadAsset),pin:releaseStatus==='premium'?'PIN পেতে WhatsApp-এ যোগাযোগ করুন':'',icon:media.logo||'',shots:media.shots||[],platform:'',license:'',publishedAt:published||''});
+      changed=true;
+    }
+    // Remove the four built-in sample cards when no corresponding real release exists.
+    const sampleIds=['iptvplay','silent-camera','bagerhat-vision','jb-mart'];
+    const releasedIds=new Set(installableReleases.map(release=>release.id));
+    const matchedSampleIds=new Set();
+    for(const id of sampleIds){const app=apps.find(item=>item.id===id);if(app&&installableReleases.some(release=>releaseMatchesApp(app,release)))matchedSampleIds.add(id)}
+    const beforePrune=apps.length;
+    apps=apps.filter(app=>!sampleIds.includes(app.id)||matchedSampleIds.has(app.id));
+    if(apps.length!==beforePrune) changed=true;
+    if(changed){persist();renderApps();if(currentId)openDetails(currentId,true);else{const requested=getAppIdFromHash();if(requested){const match=apps.find(a=>a.id===requested);if(match)openDetails(match.id,true)}}}
+  }catch(err){
+    console.warn('Could not sync GitHub Releases; using saved/default links.',err);
+  }
+}
+
+let apps=loadApps(),filter='all',currentId=null;
+function loadApps(){try{const a=JSON.parse(localStorage.getItem(KEY));return Array.isArray(a)?a:defaults.map(x=>({...x}))}catch(e){return defaults.map(x=>({...x}))}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(apps))}
+function safe(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function appIcon(a){return a.icon?`<img src="${safe(a.icon)}" alt="${safe(a.name)} icon" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>${safe(a.iconText||'APP')}</span>')">`:`<span>${safe(a.iconText||a.name.slice(0,3).toUpperCase())}</span>`}
+const PAGE_SIZE=10;const listPages={all:1,free:1,premium:1};
+function setFilter(f,btn){filter=f;renderApps()}
+function resetListPages(){listPages.all=1;listPages.free=1;listPages.premium=1}
+function appCards(list){if(!list.length)return '<div class="empty">কোনো অ্যাপ পাওয়া যায়নি।</div>';return list.map(a=>`<article class="app-card" tabindex="0" role="button" onclick="openDetails('${safe(a.id)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetails('${safe(a.id)}')}"><div class="appicon">${appIcon(a)}</div><div class="appinfo"><div class="appname">${safe(a.name)}</div><div class="appdesc">${safe(a.desc||'')}</div><div class="meta"><span>▣ ${safe(a.date||'তারিখ নেই')}</span><span>${safe(a.size||'সাইজ নেই')}</span><span>⬇ ${Number(a.downloadCount||0).toLocaleString()} downloads</span></div></div><span class="badge ${a.status==='premium'?'premium':'free'}">${a.status==='premium'?'PREMIUM':'FREE'}</span><span class="chevron">›</span></article>`).join('')}
+function sortedNewest(list){return [...list].sort((a,b)=>{const ta=Date.parse(a.publishedAt||a.date||0)||0,tb=Date.parse(b.publishedAt||b.date||0)||0;return tb-ta||String(b.name).localeCompare(String(a.name),undefined,{numeric:true,sensitivity:'base'})})}
+function paginationMarkup(key,total){
+  const pages=Math.ceil(total/PAGE_SIZE);if(pages<=1)return '';
+  const current=Math.min(listPages[key]||1,pages);let buttons='';
+  for(let i=1;i<=pages;i++){
+    if(pages>7&&i>2&&i<pages-1&&Math.abs(i-current)>1){if(i===3||i===pages-2)buttons+='<span class="muted">…</span>';continue}
+    buttons+=`<button class="${i===current?'active':''}" onclick="goListPage('${key}',${i})">${i}</button>`;
+  }
+  return `<div class="pagination-info">মোট ${total}টি অ্যাপ · পৃষ্ঠা ${current} / ${pages}</div><div class="pagination"><button ${current===1?'disabled':''} onclick="goListPage('${key}',${current-1})">← আগের</button>${buttons}<button ${current===pages?'disabled':''} onclick="goListPage('${key}',${current+1})">পরের →</button></div>`;
+}
+function renderList(listKey,items,listId,paginationId){const pageCount=Math.max(1,Math.ceil(items.length/PAGE_SIZE));listPages[listKey]=Math.min(Math.max(1,listPages[listKey]||1),pageCount);const start=(listPages[listKey]-1)*PAGE_SIZE;document.getElementById(listId).innerHTML=appCards(items.slice(start,start+PAGE_SIZE));document.getElementById(paginationId).innerHTML=paginationMarkup(listKey,items.length)}
+function goListPage(key,page){listPages[key]=page;renderApps();const target=key==='all'?'home':key;showPage(target);}
+function renderApps(){const q=(document.getElementById('search')?.value||'').toLowerCase().trim();const matches=sortedNewest(apps.filter(a=>`${a.name} ${a.desc}`.toLowerCase().includes(q)));const free=matches.filter(a=>a.status==='free'),premium=matches.filter(a=>a.status==='premium');renderList('all',matches,'appList','appPagination');renderList('free',free,'freeAppList','freePagination');renderList('premium',premium,'premiumAppList','premiumPagination')}
+let previousPage='home';
+function getAppIdFromHash(){const h=location.hash||'';if(h.startsWith('#app/'))return decodeURIComponent(h.slice(5));if(h.startsWith('#app='))return decodeURIComponent(h.slice(5));return ''}
+function appDetailsUrl(a){return location.origin+location.pathname+'#app/'+encodeURIComponent(a.id)}
+function showPage(id,fromPop=false){if(!document.getElementById(id))id='home';const state=history.state||{};const current=state.scPage||'home';if(id==='details'&&current!=='details')previousPage=current;if(!fromPop){if(id==='details'){const a=apps.find(x=>x.id===currentId);if(a)history.pushState({scPage:'details',appId:a.id,hasInAppParent:current!=='details'},'',appDetailsUrl(a))}else if(current!==id){history.pushState({scPage:id},'',location.pathname+location.search+'#'+id)}}document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.mobilebar button').forEach(b=>b.classList.toggle('active',b.dataset.page===id||((id==='details')&&b.dataset.page==='home')));window.scrollTo({top:0,behavior:'auto'});if(id==='admin'){renderAdminList();refreshMediaSelect()}}
+function goBackFromDetails(){const state=history.state||{};if(state.scPage==='details'&&state.hasInAppParent&&history.length>1){history.back();return}showPage(previousPage||'home')}
+window.addEventListener('popstate',function(event){const state=event.state||{};const hashId=getAppIdFromHash();if(hashId){const found=apps.find(a=>a.id===hashId);if(found){currentId=found.id;openDetails(found.id,true);return}currentId=hashId;showPage('details',true);return}let id=state.scPage;if(!id){const hash=location.hash.slice(1);id=['home','about','free','premium','details','admin'].includes(hash)?hash:'home'}if(id==='details'){const target=state.appId||'';if(target&&apps.some(a=>a.id===target)){openDetails(target,true);return}id='home'}showPage(id,true)});
+const initialAppId=getAppIdFromHash();const initialHash=location.hash.slice(1);if(!history.state||!history.state.scPage)history.replaceState(initialAppId?{scPage:'details',appId:initialAppId,hasInAppParent:false}:{scPage:['home','about','free','premium','admin'].includes(initialHash)?initialHash:'home'},'',location.pathname+location.search+location.hash);
+function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(window.__scToastTimer);window.__scToastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
+async function shareApp(id){const a=apps.find(x=>x.id===id);if(!a){toast('অ্যাপের তথ্য পাওয়া যায়নি।');return}const url=appDetailsUrl(a);const description=String(a.desc||'অ্যাপের বিস্তারিত ও ডাউনলোড লিংক দেখুন।').trim();const message=`📱 ${a.name} — SC Android Studio
+
+${description}
+
+🔗 বিস্তারিত ও ডাউনলোড:
+${url}
+
+SC Android Studio
+Imagine. Build. Inspire.`;if(navigator.share){try{await navigator.share({title:`${a.name} — SC Android Studio`,text:message});return}catch(err){if(err&&err.name==='AbortError')return}}let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(message);copied=true}}catch(e){}if(!copied){const ta=document.createElement('textarea');ta.value=message;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{copied=document.execCommand('copy')}catch(e){}ta.remove()}toast(copied?'শেয়ারের মেসেজ ও অ্যাপের লিংক কপি হয়েছে।':'এই ব্রাউজারে শেয়ার বা কপি করা যাচ্ছে না।')}
+function openDetails(id,fromPop=false){const a=apps.find(x=>x.id===id);if(!a)return;currentId=id;const buttonLabel=a.status==='premium'?'⇩ Download ZIP / 7z':'⇩ Download APK';const download=`<button class="primary" onclick="downloadApp('${safe(a.id)}')">${buttonLabel}</button>`;const pin=a.status==='premium'?`<a class="whatsapp" href="https://wa.me/8801303072964?text=${encodeURIComponent('আসসালামু আলাইকুম, '+a.name+' অ্যাপের Premium PIN চাই।') }" target="_blank" rel="noopener">◉ Get PIN on WhatsApp</a>`:'';const features=(a.features||[]).filter(Boolean);const shots=(a.shots||[]).filter(Boolean);const screenshots=shots.length?`<div class="section"><h2>▧ App Screenshots (${shots.length})</h2><div class="screenshots">${shots.map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="${safe(a.name)} screenshot ${i+1}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`).join('')}</div></div>`:'';document.getElementById('detailContent').innerHTML=`<div class="detailtop"><div class="appicon">${appIcon(a)}</div><div style="min-width:0;flex:1"><div class="detailtitle">${safe(a.name)}</div><div class="muted">${safe(a.desc||'')}</div><div class="meta"><span>${safe(a.version||'')}</span><span>${safe(a.date||'')}</span><span>${safe(a.size||'')}</span><span>⬇ ${Number(a.downloadCount||0).toLocaleString()} downloads</span></div></div><span class="badge ${a.status==='premium'?'premium':'free'}">${a.status==='premium'?'PREMIUM':'FREE'}</span></div><div class="actions">${download}<button class="secondary" onclick="copyDownload('${safe(a.id)}')">⧉ Copy Download Link</button>${pin}</div><div class="facts"><div class="fact"><small>App Version</small><strong>${safe(a.version||'—')}</strong></div><div class="fact"><small>Updated</small><strong>${safe(a.date||'—')}</strong></div><div class="fact"><small>File Size</small><strong>${safe(a.size||'—')}</strong></div><div class="fact"><small>Downloads</small><strong>${Number(a.downloadCount||0).toLocaleString()}</strong></div><div class="fact"><small>License</small><strong>${a.status==='premium'?'Premium':'Free'}</strong></div></div>${screenshots}<div class="section"><h2>About This App</h2><p style="white-space:pre-line">${safe(a.about||a.desc||'')}</p>${features.length?`<h2 style="margin-top:20px">⚙ Key Features</h2><ul style="padding-left:20px;color:#bad0e0;line-height:1.9">${features.map(f=>`<li>${safe(f)}</li>`).join('')}</ul>`:''}${a.platform?`<h2 style="margin-top:20px">Platform</h2><p style="white-space:pre-line">${safe(a.platform)}</p>`:''}${a.license?`<h2 style="margin-top:20px">License</h2><p style="white-space:pre-line">${safe(a.license)}</p>`:''}</div>${a.status==='premium'?'<div class="notice">Premium অ্যাপ ব্যবহারের জন্য ZIP/7z ফাইলের PIN প্রয়োজন হতে পারে। PIN পেতে WhatsApp-এ যোগাযোগ করুন।</div>':''}`;showPage('details',fromPop)}
+function downloadApp(id){const a=apps.find(x=>x.id===id);if(!a)return;if(!a.download){toast('এই অ্যাপের ডাউনলোড লিংক শিগগিরই যুক্ত করা হবে।');return}window.open(a.download,'_blank','noopener')}
+async function copyDownload(id){const a=apps.find(x=>x.id===id);if(!a)return;if(!a.download){toast('এই অ্যাপের ডাউনলোড লিংক এখনো প্রস্তুত নয়।');return}let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(a.download);copied=true}}catch(e){}if(!copied){const ta=document.createElement('textarea');ta.value=a.download;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{copied=document.execCommand('copy')}catch(e){}ta.remove()}toast(copied?'Download link কপি হয়েছে।':'এই ব্রাউজারে কপি করা যাচ্ছে না।')}
+function adminTab(id,btn){document.querySelectorAll('.adminsection').forEach(x=>x.classList.toggle('active',x.id==='admin-'+id));document.querySelectorAll('.adminnav button').forEach(x=>x.classList.toggle('active',x===btn));if(id==='apps')renderAdminList();if(id==='media'){refreshMediaSelect();loadMedia()}}
+function renderAdminList(){const el=document.getElementById('adminList');if(!el)return;el.innerHTML=apps.map(a=>`<div class="adminrow"><div class="appicon">${appIcon(a)}</div><div class="appinfo"><strong>${safe(a.name)}</strong><div class="muted">${safe(a.version||'')} · ${a.status==='premium'?'Premium':'Free'}</div></div><button class="smallbtn" onclick="editApp('${safe(a.id)}')">Edit</button><button class="smallbtn danger" onclick="deleteApp('${safe(a.id)}')">Delete</button></div>`).join('')||'<div class="empty">কোনো অ্যাপ নেই।</div>'}
+function newApp(){document.getElementById('appForm').reset();document.getElementById('fId').value='';document.getElementById('formTitle').textContent='নতুন অ্যাপ যোগ করুন';const btn=[...document.querySelectorAll('.adminnav button')].find(b=>b.textContent.includes('নতুন'));adminTab('edit',btn)}
+function editApp(id){const a=apps.find(x=>x.id===id);if(!a)return;document.getElementById('fId').value=a.id;document.getElementById('fName').value=a.name||'';document.getElementById('fStatus').value=a.status||'free';document.getElementById('fVersion').value=a.version||'';document.getElementById('fDate').value=a.date||'';document.getElementById('fSize').value=a.size||'';document.getElementById('fIcon').value=a.icon||'';document.getElementById('fDesc').value=a.desc||'';document.getElementById('fFeatures').value=(a.features||[]).join('\n');document.getElementById('fAbout').value=a.about||'';document.getElementById('fDownload').value=a.download||'';document.getElementById('fPin').value=a.pin||'';document.getElementById('formTitle').textContent='অ্যাপ এডিট করুন';adminTab('edit',[...document.querySelectorAll('.adminnav button')].find(b=>b.textContent.includes('নতুন')))}
+function saveApp(e){e.preventDefault();const oldid=document.getElementById('fId').value;const name=document.getElementById('fName').value.trim();let id=oldid||name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||('app-'+Date.now());const a={id,name,status:document.getElementById('fStatus').value,version:document.getElementById('fVersion').value.trim(),date:document.getElementById('fDate').value,size:document.getElementById('fSize').value.trim(),icon:document.getElementById('fIcon').value.trim(),iconText:name.slice(0,3).toUpperCase(),desc:document.getElementById('fDesc').value.trim(),features:document.getElementById('fFeatures').value.split('\n').map(x=>x.trim()).filter(Boolean),about:document.getElementById('fAbout').value.trim(),download:document.getElementById('fDownload').value.trim(),pin:document.getElementById('fPin').value.trim(),shots:apps.find(x=>x.id===oldid)?.shots||[]};const idx=apps.findIndex(x=>x.id===id);if(idx>=0)apps[idx]=a;else apps.push(a);persist();renderApps();renderAdminList();refreshMediaSelect();alert('অ্যাপের তথ্য এই ব্রাউজারে সেভ হয়েছে।');adminTab('apps',[...document.querySelectorAll('.adminnav button')][0])}
+function deleteApp(id){const a=apps.find(x=>x.id===id);if(!a||!confirm(`“${a.name}” মুছে ফেলবেন?`))return;apps=apps.filter(x=>x.id!==id);persist();renderApps();renderAdminList();refreshMediaSelect()}
+function refreshMediaSelect(){const s=document.getElementById('mediaApp');if(!s)return;const prev=s.value;s.innerHTML=apps.map(a=>`<option value="${safe(a.id)}">${safe(a.name)}</option>`).join('');if(apps.some(a=>a.id===prev))s.value=prev}
+function loadMedia(){const id=document.getElementById('mediaApp').value;const a=apps.find(x=>x.id===id);document.getElementById('fShots').value=(a?.shots||[]).join('\n');document.getElementById('mediaPreview').innerHTML=(a?.shots||[]).map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="Preview ${i+1}" onerror="this.parentElement.innerHTML='<span>ছবি লোড হয়নি</span>'"></div>`).join('')}
+function saveMedia(){const a=apps.find(x=>x.id===document.getElementById('mediaApp').value);if(!a)return;a.shots=document.getElementById('fShots').value.split('\n').map(x=>x.trim()).filter(x=>/^https?:\/\//i.test(x)).slice(0,6);persist();loadMedia();alert('স্ক্রিনশট URL সেভ হয়েছে।')}
+function saveAbout(){const data={text:document.getElementById('aboutText').value,logo:document.getElementById('brandLogoUrl').value.trim()||'https://i.imgur.com/4ZfSPii.png',shots:document.getElementById('aboutShotUrls').value.split('\n').map(x=>x.trim()).filter(x=>/^https?:\/\//i.test(x)).slice(0,6)};localStorage.setItem(ABOUTKEY,JSON.stringify(data));renderAbout();toast('About তথ্য সেভ হয়েছে।')}
+function renderAbout(){try{const a=JSON.parse(localStorage.getItem(ABOUTKEY)||'{}');const logo=a.logo||'https://i.imgur.com/4ZfSPii.png';document.getElementById('brandMark').innerHTML=`<img src="${safe(logo)}" alt="SC Android Studio logo" onerror="this.style.display='none'">`;document.getElementById('aboutLogo').innerHTML=`<img src="${safe(logo)}" alt="SC Android Studio logo" onerror="this.style.display='none'">`;if(a.text)document.querySelector('#about .section p').textContent=a.text;if(document.getElementById('brandLogoUrl'))document.getElementById('brandLogoUrl').value=logo;const shots=(a.shots||[]);document.getElementById('aboutShots').innerHTML=shots.map((s,i)=>`<div class="shot"><img src="${safe(s)}" alt="About screenshot ${i+1}" onerror="this.parentElement.style.display='none'"></div>`).join('');document.getElementById('aboutShotsSection').style.display=shots.length?'block':'none'}catch(e){}}
+function exportData(){const data={brand:'SC Android Studio',apps,about:JSON.parse(localStorage.getItem(ABOUTKEY)||'{}')};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sc-android-studio-backup.json';a.click();URL.revokeObjectURL(url)}
+function importData(e){const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);if(!Array.isArray(data.apps))throw new Error('Invalid');apps=data.apps;persist();if(data.about)localStorage.setItem(ABOUTKEY,JSON.stringify(data.about));renderApps();renderAdminList();renderAbout();alert('Backup import হয়েছে।')}catch(err){alert('এই JSON ফাইলটি সঠিক backup নয়।')}};r.readAsText(f)}
+document.getElementById('mediaApp').addEventListener('change',loadMedia);
+renderApps();renderAbout();
+if(initialAppId){const existing=apps.find(a=>a.id===initialAppId);if(existing){currentId=existing.id;openDetails(existing.id,true)}else{currentId=initialAppId;showPage('details',true);document.getElementById('detailContent').innerHTML='<div class="empty">অ্যাপের তথ্য লোড হচ্ছে…</div>'}}
+else if(['home','about','free','premium','admin'].includes(location.hash.slice(1))){showPage(location.hash.slice(1),true)}
+syncGitHubReleases();
+</script>
+</body>
+</html>
